@@ -50,6 +50,26 @@
         </div>
       </div>
     </div>
+    
+    <div class="container" style="margin-top:10px;">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <?php
+              if($this->session->flashdata('success')){
+            ?>
+              <div class="alert alert-success"> <strong><?php echo $this->session->flashdata('success');?></strong> </div>
+            <?php
+              }
+              if($this->session->flashdata('failed')){
+            ?>
+              <div class="alert alert-danger"> <strong><?php echo $this->session->flashdata('failed');?></strong> </div>
+            <?php
+              }
+            ?>
+          </div>
+        </div>
+    </div>
+    
     <div class="container results-container">
       <section style="padding-top:50px;">
         <div class="container">

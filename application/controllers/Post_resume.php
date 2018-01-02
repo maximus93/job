@@ -94,11 +94,11 @@ class Post_resume extends CI_Controller {
 		$insert_data = $this->post_resume_m->save_resume_m($records);
 		if($insert_data)
 		{
-			$this->session->set_flashdata("success", "News created successfully!");
+			$this->session->set_flashdata("success", "Resume uploaded successfully!");
 			redirect('Post_resume');	
 		}
 		else{
-			$this->session->set_flashdata("failed", "Something went wrong!");
+			$this->session->set_flashdata("failed", "Something went wrong! please try again later.");
 			redirect('Post_resume');	
 		}
 	}

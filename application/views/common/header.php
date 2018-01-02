@@ -19,7 +19,7 @@ background:white;
                 </div>
             </div>
             <div class="col-xs-3" id="top-recruiter-links" style="margin-top:30px;float:right;">
-					<a  href="<?php echo base_url();?>register" style="color:black;padding:5px 10px;text-transform:capitalize  !important;border:1px solid black;float:right;">REGISTER</a>
+					<a  href="<?php echo base_url();?>register" style="color:black;padding:5px 10px;text-transform:capitalize  !important;border:1px solid black;float:right;border-radius: 7px !important;">REGISTER</a>
 					<a  href="<?php echo base_url();?>login"style="color:black;padding:5px 10px;text-transform:capitalize  !important;float:right;"><img src="<?php echo base_url();?>images/if_102_111044.png" style="height:18px;"> LOGIN </a>
 					
 			</div>
@@ -51,7 +51,7 @@ background:white;
 
     
     <a href="<?php echo base_url();?>job_post" style="float:right;margin-top:15px;" class="btn-warning">
-        <span class="navbar-item-text-no-icon register-text" style="background:#ff9900;padding:10px 20px;">POST A JOB</span>
+        <span class="navbar-item-text-no-icon register-text" style="background:#ff9900;padding:10px 20px;border-radius: 7px !important;">POST A JOB</span>
     </a>
 
     <span id="navbar-register-separator" class="navbar-toggle navbar-always-on collapsed pull-right navbar-item navbar-item-anchor hidden-xs hidden-sm navbar-separator"></span>
