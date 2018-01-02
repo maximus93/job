@@ -22,5 +22,40 @@ class Login extends CI_Controller {
 	{
 		$this->load->view('login');
 	}
+
+	public function login_user()
+	{
+		$this->load->model('login_m');
+		echo $email = $this->input->post('email');
+		echo $password = $this->input->post('password');
+		$records=array('email'=>$email,'password'=>$password);
+		$get_login = $this->login_m->check_login($records);
+		if($get_login)
+		{
+			$sess_array = array();
+			foreach($get_login as $row)
+			{
+				$sess_array = array(
+				 'user_id' => $row->user_id,
+			   );
+			   $this->session->set_userdata('logged_in', $sess_array);
+			   $get_type = $row->user_type;
+			   if($get_type == 'employee')
+				{
+					redirect('post_resume');
+				}
+				elseif($get_type == 'employeer')
+				{
+					redirect('job_post');
+				}
+			}
+		}
+		else
+		{
+			$this->session->set_flashdata("password_failed", "Email Or Password Does Not match!");
+			redirect('login');
+		}
+
+	}
 }
 ?>
