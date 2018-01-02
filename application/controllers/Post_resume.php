@@ -38,25 +38,62 @@ class Post_resume extends CI_Controller {
 		$posted_date = time();
 		$user_id = 1;
 
-		if(!empty($_FILES['image']['resume'])){
+		if(!empty($_FILES['resume']['name'])){
                 $config['upload_path'] = 'uploads/';
-                $config['allowed_types'] = 'jpg|jpeg|png|gif';
-                $config['file_name'] = rand(999,99999).$_FILES['image']['name'];
+                $config['allowed_types'] = 'pdf|docx|doc';
+                $config['file_name'] = rand(999,99999).$_FILES['resume']['name'];
                 
                 $this->load->library('upload',$config);
                 $this->upload->initialize($config);
                 
-                if($this->upload->do_upload('image')){
+                if($this->upload->do_upload('resume')){
                     $uploadData = $this->upload->data();
-					$image = $uploadData['file_name'];
-					$records=array('news_name'=>$news_name,'news_description'=> $news_details,'news_image'=> $image,'date'=> $date);
+					$resume_file = $uploadData['file_name'];
                 }else{
-                    $image = '';
-					$records=array('news_name'=>$news_name,'news_description'=> $news_details,'date'=> $date);
+                    $resume_file = '';
                 }
 		}else{
-			$records=array('news_name'=>$news_name,'news_description'=> $news_details,'date'=> $date);
+			$resume_file = '';
 		}
+
+		if(!empty($_FILES['cover_letter']['name'])){
+                $config['upload_path'] = 'uploads/';
+                $config['allowed_types'] = 'pdf|docx|doc';
+                $config['file_name'] = rand(999,99999).$_FILES['cover_letter']['name'];
+                
+                $this->load->library('upload',$config);
+                $this->upload->initialize($config);
+                
+                if($this->upload->do_upload('cover_letter')){
+                    $uploadData = $this->upload->data();
+					$coverletr_file = $uploadData['file_name'];
+                }else{
+                    $coverletr_file = '';
+                }
+		}else{
+			$coverletr_file = '';
+		}
+
+		$records=array(
+			'job_title'=>$news_name,
+			'company_name'=> $news_details,
+			'start_date'=> $date,
+			'end_date'=>$news_name,
+			'education'=> $news_details,
+			'max_salary'=> $date,
+			'travel_distance'=>$news_name,
+			'relocate'=> $news_details,
+			'start_date'=> $date,
+			'job_title'=>$news_name,
+			'company_name'=> $news_details,
+			'start_date'=> $date,
+			'job_title'=>$news_name,
+			'company_name'=> $news_details,
+			'start_date'=> $date,
+			'job_title'=>$news_name,
+			'company_name'=> $news_details,
+			'start_date'=> $date,
+		);
 	}
 }
 ?>
