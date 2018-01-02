@@ -309,16 +309,17 @@
     </div>
     <div class="container results-container">
 		<?php
-			if($this->session->flashdata('success')){
-		?>
-			<div class="alert alert-success"> <strong><?php echo $this->session->flashdata('success');?></strong> </div>
-		<?php
-			}
+		
 			if($this->session->flashdata('failed')){
 		?>
-			<div class="alert alert-danger"> <strong><?php echo $this->session->flashdata('failed');?></strong> </div>
+			<div class="alert alert-danger" style="margin-top:10px;text-align:center;"> <strong><?php echo $this->session->flashdata('failed');?></strong> </div>
 		<?php
 			}
+		if($this->session->flashdata('password_failed')){
+		?>
+			<div class="alert alert-danger" style="margin-top:10px;text-align:center;"> <strong><?php echo $this->session->flashdata('password_failed');?></strong> </div>
+		<?php
+		}
 		?>
       <!--<div class="row">
 <div class="col-sm-12">

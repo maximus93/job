@@ -40,22 +40,23 @@ class Register extends CI_Controller {
 		{
 			$records = array('first_name'=>$first_name,'last_name'=>$last_name,'email'=>$email,'password'=>$password,'phone'=>$phone,'postcode'=>$postcode,'user_type'=>$user_type,'user_status'=>$user_status);
 			$insert_data = $this->register_m->insert_employee($records);
-			if($insert_id)
+
+			if($insert_data != '')
 		{
 			 $sess_array = array(
-				 'user_id' => $insert_id,
+				 'user_id' => $insert_data,
 			   );
-			$this->session->set_flashdata("success", "You Have Been Registred Successfully!");
+			$this->session->set_userdata('logged_in', $sess_array);
 			redirect('post_resume');	
 		}
 		else{
-			$this->session->set_flashdata("failed", "Something went wrong!");
+			$this->session->set_flashdata("failed", "Something Is Wrong!");
 			redirect('register');	
 		}
 		}
 		else
 		{
-			$this->session->set_flashdata("failed", "Something went wrong!");
+			$this->session->set_flashdata("password_failed", "Password Does Not match!");
 			redirect('register');
 		}
 	}
@@ -82,14 +83,15 @@ class Register extends CI_Controller {
 			$records = array('first_name'=>$first_name,'last_name'=>$last_name,'email'=>$email,'password'=>$password,'phone'=>$phone,'postcode'=>$postcode,'address'=>$address,'account_first_name'=>$account_first_name,'account_last_name'=>$account_last_name,'comapny_name'=>$company_name,'registration_date'=>$date,'user_type'=>$user_type,'user_status'=>$user_status);
 
 			$insert_employeer = $this->register_m->insert_employee($records);
-			if($insert_id)
-			{
-				$sess_array = array(
-				 'user_id' => $insert_id,
+		
+			if($insert_employeer != '')
+		{
+			 $sess_array = array(
+				 'user_id' => $insert_data,
 			   );
-				$this->session->set_userdata('logged_in', $sess_array);
-				redirect('job_post');	
-			}
+			$this->session->set_userdata('logged_in', $sess_array);
+			redirect('job_post');	
+		}
 		else
 			{
 				$this->session->set_flashdata("failed", "Something went wrong!");
