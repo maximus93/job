@@ -308,6 +308,18 @@
       </div>
     </div>
     <div class="container results-container">
+		<?php
+			if($this->session->flashdata('success')){
+		?>
+			<div class="alert alert-success"> <strong><?php echo $this->session->flashdata('success');?></strong> </div>
+		<?php
+			}
+			if($this->session->flashdata('failed')){
+		?>
+			<div class="alert alert-danger"> <strong><?php echo $this->session->flashdata('failed');?></strong> </div>
+		<?php
+			}
+		?>
       <!--<div class="row">
 <div class="col-sm-12">
 <ol class="breadcrumb small">
@@ -354,45 +366,45 @@
                           <div class="form-group col-md-6">
                             <label for="name">First Name
                             </label>
-                            <input id="name" type="text" name="f_name" class="form-control">
+                            <input id="name" type="text" name="f_name" class="form-control" required>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="name">Last Name
                             </label>
-                            <input id="name" type="text" name="l_name" class="form-control">
+                            <input id="name" type="text" name="l_name" class="form-control" required>
                           </div>
                           <div class="form-group col-md-12">
                             <label for="email">Email
                             </label>
-                            <input id="email" type="text" name="email" class="form-control">
+                            <input id="email" type="text" name="email" class="form-control" required>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="name">Phone Number
                             </label>
-                            <input id="name" type="text" name="phone" class="form-control">
+                            <input id="name" type="text" name="phone" class="form-control" required>
                           </div>
 						 
                           <div class="form-group col-md-6">
                             <label for="name">Postcode
                             </label>
-                            <input id="name" type="text" name="postcode" class="form-control">
+                            <input id="name" type="text" name="postcode" class="form-control" required>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="password">Password
                             </label>
-                            <input id="password" type="password" name="password" class="form-control">
+                            <input id="password" type="password" name="password" class="form-control" required>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="password">Re Enter Password
                             </label>
-                            <input id="password" type="password" name="con_password" class="form-control">
+                            <input id="password" type="password" name="con_password" class="form-control" required>
                           </div>
                           <div class="row">
                             <div class="col-md-12">
                               <hr>
                               <div class="checkbox text-center">
                                 <label>
-                                  <input type="checkbox">By registering you agree to ResumeBroswe.com privacy policy 
+                                  <input type="checkbox" required>By registering you agree to ResumeBroswe.com privacy policy 
                                   <a href="#" style="color:blue;">Terms and conditions
                                   </a>.
                                 </label>
@@ -411,67 +423,67 @@
                           <div class="form-group col-md-6">
                             <label for="name">First Name
                             </label>
-                            <input id="name" type="text" class="form-control">
+                            <input id="name" type="text" class="form-control" name="f_name" required>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="name">Last Name
                             </label>
-                            <input id="name" type="text" class="form-control">
+                            <input id="name" type="text" class="form-control" name="l_name" required>
                           </div>
                           <div class="form-group col-md-12">
                             <label for="email">Email
                             </label>
-                            <input id="email" type="text" class="form-control">
+                            <input id="email" type="text" class="form-control" name="email" required>
                           </div>
                           <div class="form-group col-md-12">
                             <label for="name">Phone Number
                             </label>
-                            <input id="name" type="text" class="form-control">
+                            <input id="name" type="text" class="form-control" name="phone" required>
                           </div>
 						   <p>ACCOUNT PERSON</p>
 
 						     <div class="form-group col-md-6">
                             <label for="name">First Name
                             </label>
-                            <input id="name" type="text" class="form-control" name="acc_fname">
+                            <input id="name" type="text" class="form-control" name="acc_fname" required>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="name">Last Name
                             </label>
-                            <input id="name" type="text" class="form-control" name="acc_lname">
+                            <input id="name" type="text" class="form-control" name="acc_lname" required>
                           </div>
                           <div class="form-group col-md-12">
                             <label for="name">Comapny Name
                             </label>
-                            <input id="name" type="text" class="form-control" name="company_name">
+                            <input id="name" type="text" class="form-control" name="company_name" required>
                           </div>
                           <div class="form-group col-md-12">
                             <label for="password">Address
                             </label>
-							<textarea name="address" class="form-control"></textarea>
+							<textarea name="address" class="form-control" required></textarea>
                             
                           </div>
 						     <div class="form-group col-md-6">
                             <label for="password">Password
                             </label>
-                            <input id="password" type="password" name="password" class="form-control">
+                            <input id="password" type="password" name="password" class="form-control" required>
                           </div>
                           <div class="form-group col-md-6">
                             <label for="password">Re Enter Password
                             </label>
-                            <input id="password" type="password" name="con_password" class="form-control">
+                            <input id="password" type="password" name="con_password" class="form-control" required>
                           </div>
 						  <div class="form-group col-md-6">
                             <label for="password">Postcode
                             </label>
-                            <input id="password" type="password" class="form-control">
+                            <input id="password" type="password" class="form-control" name="post_code" required>
                           </div>
                           <div class="row">
                             <div class="col-md-12">
                               <hr>
                               <div class="checkbox text-center">
                                 <label>
-                                  <input type="checkbox">By registering you agree to ResumeBroswe.com privacy policy 
+                                  <input type="checkbox" required>By registering you agree to ResumeBroswe.com privacy policy 
                                   <a href="#" style="color:blue;">Terms and conditions
                                   </a>.
                                 </label>

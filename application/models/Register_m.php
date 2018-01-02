@@ -11,7 +11,8 @@ class Register_m extends CI_Model
 	public function insert_employee($records)
 	{
 		$this->db->insert('users', $records);
-		return true;
+		$this->db->trans_complete();
+		return $this->db->insert_id();
 	}
 
 }

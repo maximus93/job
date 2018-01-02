@@ -43,7 +43,7 @@ class Register extends CI_Controller {
 			if($insert_data)
 		{
 			$this->session->set_flashdata("success", "You Have Been Registred Successfully!");
-			redirect('register');	
+			redirect('post_resume');	
 		}
 		else{
 			$this->session->set_flashdata("failed", "Something went wrong!");
@@ -68,7 +68,7 @@ class Register extends CI_Controller {
 		$account_last_name  = $this->input->post('acc_lname');
 		$company_name = $this->input->post('company_name');
 		$address = $this->input->post('address');
-		$postcode = $this->input->post('postcode');
+		$postcode = $this->input->post('post_code');
 		$password  = $this->input->post('password');
 		$con_pass = $this->input->post('con_password');
 		$date = time();
@@ -82,7 +82,7 @@ class Register extends CI_Controller {
 			if($insert_employeer)
 			{
 				$this->session->set_flashdata("success", "You Have Been Registred Successfully!");
-				redirect('register');	
+				redirect('job_post');	
 			}
 		else
 			{
