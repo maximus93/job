@@ -8,12 +8,13 @@
 
 class Register_m extends CI_Model 
 {
-	public function insert_employee($records)
+	public function Insert_employee($records)
 	{
+
 		$this->db->insert('users', $records);
-		$this->db->trans_complete();
-		 $insert_id = $this->db->insert_id();
-		return  $insert_id;
+		$last_id = $this->db->insert_id();
+		return $last_id;
+
 	}
 
 }
