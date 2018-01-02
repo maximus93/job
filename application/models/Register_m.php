@@ -12,7 +12,8 @@ class Register_m extends CI_Model
 	{
 		$this->db->insert('users', $records);
 		$this->db->trans_complete();
-		return $this->db->insert_id();
+		 $insert_id = $this->db->insert_id();
+		return  $insert_id;
 	}
 
 }

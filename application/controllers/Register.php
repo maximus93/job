@@ -40,8 +40,11 @@ class Register extends CI_Controller {
 		{
 			$records = array('first_name'=>$first_name,'last_name'=>$last_name,'email'=>$email,'password'=>$password,'phone'=>$phone,'postcode'=>$postcode,'user_type'=>$user_type,'user_status'=>$user_status);
 			$insert_data = $this->register_m->insert_employee($records);
-			if($insert_data)
+			if($insert_id)
 		{
+			 $sess_array = array(
+				 'user_id' => $insert_id,
+			   );
 			$this->session->set_flashdata("success", "You Have Been Registred Successfully!");
 			redirect('post_resume');	
 		}
@@ -79,8 +82,11 @@ class Register extends CI_Controller {
 			$records = array('first_name'=>$first_name,'last_name'=>$last_name,'email'=>$email,'password'=>$password,'phone'=>$phone,'postcode'=>$postcode,'address'=>$address,'account_first_name'=>$account_first_name,'account_last_name'=>$account_last_name,'comapny_name'=>$company_name,'registration_date'=>$date,'user_type'=>$user_type,'user_status'=>$user_status);
 
 			$insert_employeer = $this->register_m->insert_employee($records);
-			if($insert_employeer)
+			if($insert_id)
 			{
+				$sess_array = array(
+				 'user_id' => $insert_id,
+			   );
 				$this->session->set_flashdata("success", "You Have Been Registred Successfully!");
 				redirect('job_post');	
 			}
