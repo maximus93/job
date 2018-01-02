@@ -87,7 +87,7 @@ class Register extends CI_Controller {
 				$sess_array = array(
 				 'user_id' => $insert_id,
 			   );
-				$this->session->set_flashdata("success", "You Have Been Registred Successfully!");
+				$this->session->set_userdata('logged_in', $sess_array);
 				redirect('job_post');	
 			}
 		else
