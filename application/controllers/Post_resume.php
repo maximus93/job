@@ -24,7 +24,7 @@ class Post_resume extends CI_Controller {
 	}
 
 	public function save_resume(){
-		$this->$this->load->model('Post_resume_m');
+		$this->load->model('post_resume_m');
 
 		$job_title = $this->input->post('job_title');
 		$company_name = $this->input->post('company_name');
@@ -74,26 +74,33 @@ class Post_resume extends CI_Controller {
 			$coverletr_file = '';
 		}
 
-		$records=array(
-			'job_title'=>$news_name,
-			'company_name'=> $news_details,
-			'start_date'=> $date,
-			'end_date'=>$news_name,
-			'education'=> $news_details,
-			'max_salary'=> $date,
-			'travel_distance'=>$news_name,
-			'relocate'=> $news_details,
-			'start_date'=> $date,
-			'job_title'=>$news_name,
-			'company_name'=> $news_details,
-			'start_date'=> $date,
-			'job_title'=>$news_name,
-			'company_name'=> $news_details,
-			'start_date'=> $date,
-			'job_title'=>$news_name,
-			'company_name'=> $news_details,
-			'start_date'=> $date,
+		$records = array(
+			'job_title' => $job_title,
+			'company_name' => $company_name,
+			'start_date' => $start_date,
+			'end_date' => $end_date,
+			'education' => $education,
+			'max_salary' => $max_salary,
+			'travel_distance' => $travel_distance,
+			'relocate' => $relocate,
+			'resume_file' => $resume_file,
+			'cover_letter' => $coverletr_file,
+			'post_type' => $post_type,
+			'date_posted' => $posted_date,
+			'user_id' => $user_id
 		);
+
+		print_r($records);
+		$insert_data = $this->post_resume_m->save_resume_m($records);
+		if($insert_data)
+		{
+			$this->session->set_flashdata("success", "News created successfully!");
+			redirect('Post_resume');	
+		}
+		else{
+			$this->session->set_flashdata("failed", "Something went wrong!");
+			redirect('Post_resume');	
+		}
 	}
 }
 ?>

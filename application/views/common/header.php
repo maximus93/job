@@ -20,7 +20,7 @@ background:white;
             </div>
             <div class="col-xs-3" id="top-recruiter-links" style="margin-top:30px;float:right;">
 					<a  href="<?php echo base_url();?>register" style="color:black;padding:5px 10px;text-transform:capitalize  !important;border:1px solid black;float:right;">REGISTER</a>
-					<a  href="<?php echo base_url();?>login"style="color:black;padding:5px 10px;text-transform:capitalize  !important;float:right;"><img src="images/if_102_111044.png" style="height:18px;"> LOGIN </a>
+					<a  href="<?php echo base_url();?>login"style="color:black;padding:5px 10px;text-transform:capitalize  !important;float:right;"><img src="<?php echo base_url();?>images/if_102_111044.png" style="height:18px;"> LOGIN </a>
 					
 			</div>
 		</div>
