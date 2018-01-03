@@ -17,5 +17,16 @@ class Register_m extends CI_Model
 
 	}
 
+	public function check_email($records)
+	{
+		$condition = "email =" . "'" . $records['email'] . "'";
+		$this->db->select('*');
+		$this->db->from('users');
+		$this->db->where($condition);
+		$query = $this->db->get();
+		$check_rows = $query->num_rows();
+		return $check_rows;
+	}
+
 }
 ?>	

@@ -42,11 +42,11 @@ class Login extends CI_Controller {
 			   $get_type = $row->user_type;
 			   if($get_type == 'employee')
 				{
-					redirect('post_resume');
+					redirect('dashboard');
 				}
 				elseif($get_type == 'employeer')
 				{
-					redirect('job_post');
+					redirect('dashboard');
 				}
 			}
 		}
