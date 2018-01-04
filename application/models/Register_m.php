@@ -8,12 +8,12 @@
 
 class Register_m extends CI_Model 
 {
-	public function Insert_employee($records)
+	public function insert_employee($records)
 	{
 
 		$this->db->insert('users', $records);
 		$last_id = $this->db->insert_id();
-		return $last_id;
+		return $last_id
 
 	}
 
@@ -30,7 +30,7 @@ class Register_m extends CI_Model
 
 	public function insert_emp($records)	
 	{
-		$query = $this->db->insert('employee_details', $records);
+		$query = $this->db->insert('resume', $records);
 		if($query)
 		{
 			return true;

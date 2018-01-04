@@ -216,10 +216,11 @@ font-size: 13px;
                       <strong style="font-size: 12px;" class="col-md-12">Education
                       </strong>
 					  
+					  
                     </div>
                     <div class="col-md-6">
                       <strong style="font-size: 12px;color:#237fa5" class="col-md-12">
-						&nbsp;<?php
+						<?php
 						$date = time();
 						$resume_upload_time = $key->registration_date;
 						$remain = $date - $resume_upload_time;
@@ -231,7 +232,7 @@ font-size: 13px;
 						if($key->start_date =='' && $key->end_date =='')
 							{
 							?>
-							&nbsp;Not Provided Yet
+							Not Provided Yet
 							<?php
 							}
 							else{
@@ -239,7 +240,7 @@ font-size: 13px;
 								$end_date = $key->end_date;
 								$experience = $start_date - $end_date;
 							?>
-								&nbsp;<?php echo date('Y',$experience);?>years
+								<?php echo date('Y',$experience);?>years
 							<?php
 							}
 						?>
@@ -247,31 +248,31 @@ font-size: 13px;
                       </strong>
                     
                       <strong style="font-size: 12px;color:#237fa5" class="col-md-12"><?php
-						if($key->maximum_salary == '')
+						if($key->max_salary == '')
 						{
 						?>
-						&nbsp;Not Provided Yet
+						Not Provided Yet
 						<?php
 						}
 						else
 						{
 					  ?>
-							&nbsp;<?php echo $key->maximum_salary;?>years
+							<?php echo $key->max_salary;?>years
 					  <?php
 						}
 					  ?>
                       </strong>
                       <strong style="font-size: 12px;color:#237fa5" class="col-md-12"><?php
-						if($key->will_to_travel	 == '')
+						if($key->travel_distance == '')
 						{
 					  ?>
-						&nbsp;Not Provided Yet
+						Not Provided Yet
 					  <?php
 						}
 					  else
 						{
 					  ?>
-						<?php echo $key->will_to_travel;?>
+						<?php echo $key->travel_distance;?> km
 					  <?php
 						}
 					  ?>
@@ -281,7 +282,7 @@ font-size: 13px;
 						if($key->relocate	 == '')
 						{
 					  ?>
-						&nbsp;Not Provided Yet
+						Not Provided Yet
 					  <?php
 						}
 					  else
@@ -308,11 +309,13 @@ font-size: 13px;
 						}
 					  ?>
                       </strong>
+
+					 
 					 
                     </div>
                   </div>
                   <div class="col-md-3">
-                    <a href=""><div class="col-md-12" style="padding:20px;">
+                    <a href="<?php echo base_url();?>post_resume/fetch_data/<?php echo $key->user_id?>"><div class="col-md-12" style="padding:20px;">
                       <button class="btn btn-primary" style="background:#5cc069;border:1px solid #5cc069;">Edit Profile
                       </button>
                     </div></a>

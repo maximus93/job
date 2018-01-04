@@ -11,10 +11,10 @@ class Dashboard_m extends CI_Model
 	
 	public function fetch_details($user_id)
 		{
-		$condition = "user_id =" . "'" . $user_id ."'";
+		$condition = "users.user_id =" . "'" . $user_id ."'";
 		$this->db->select('*');
 		$this->db->from('users');
-		$this->db->join('employee_details', 'users.user_id = employee_details.emp_id');
+		$this->db->join('resume', 'users.user_id = resume.user_id');
 		$this->db->where($condition);
 		$query = $this->db->get();
 		return $query;
