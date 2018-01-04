@@ -28,5 +28,18 @@ class Register_m extends CI_Model
 		return $check_rows;
 	}
 
+	public function insert_emp($records)	
+	{
+		$query = $this->db->insert('employee_details', $records);
+		if($query)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+	}
 }
 ?>	
