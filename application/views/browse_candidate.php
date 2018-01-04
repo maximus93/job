@@ -179,6 +179,11 @@ $this->load->view("common/meta_links");
                 </div>
                 <div class="clearfix"></div>
                 
+                <?php
+                  print_r($resume_details);
+                  foreach($resume_details as $data_val){
+                      $skills = explode(",",$data_val->skills);
+                ?>
                 <div class="page_listing candidate" style="border:1px  solid #e1e1e1;border-bottom:  1px solid #e1e1e1;">
                   <div class="sorting_content col-md-7" style=" padding: 25px 15px 15px;overflow: hidden;">
                     <div class="tab-image" style="float: left;text-align: center;margin-right: 20px;">
@@ -192,38 +197,25 @@ $this->load->view("common/meta_links");
                           </h1>
                         </a>
                         <ul class="unstyled" style="margin-top:-25px;padding: 0px;">
-                          <li style="display: inline-block;padding: 0 50px 0 0;color: #7d7d7d;font-size: 13px;"> Toulouse, France | Vocational
-                          </li>
+                          <li style="display: inline-block;padding: 0 50px 0 0;color: #7d7d7d;font-size: 13px;"> Toulouse, France | Vocational</li>
+                        </ul>
+
+                        <ul class="" style="margin-top:-15px;padding: 0px;list-style: none;">
+                          <?php
+                            for($i=0; $i<count($skills) ; $i++){
+                          ?>
+                          <li style='float:left;background:#fafafa;border:1px solid #CCC;padding:3px 10px;margin:5px;font-size: 12px;'> <?php echo $skills[$i];?></li>
+                          <?php
+                            }
+                          ?>
                         </ul>
                         <p>
                         </p>
                       </div>
                     </div>
-                    <div class="col-md-12">
-                      <p></p>
-
-                      <div class="contact_details col-md-12 col-sm-8 p-l" style="display: block;padding-bottom: 8px;font-size: 13px;color: #7d7d7d;margin-top:10px;float:left;margin-left:-10px;margin-top:-7px;">
-                        <li>
-                          <strong style="color: #237fa5;">Accounting Manager</strong>
-                        </li>
-                      </div>
-                      <div class="contact_details col-md-8 col-sm-8 p-l">
-                        <span class="col-md-8">
-                          <strong style="float:left;margin-left:-15px;font-size: 13px; padding-bottom:10px;" class="col-md-12">Top Skills</strong>
-                          <p style="float:left;margin-left:-13px;font-size: 11px;margin-top:-5px;" class="col-md-12">People Management</p>
-                          <p style="float:left;margin-left:-13px;font-size: 11px;margin-top:-5px;" class="col-md-12">Payroll Software Services</p>
-                          <p style="float:left;margin-left:-13px;font-size: 11px;margin-top:-5px;" class="col-md-12">Time Management</p>
-                        </span>
-
-                        <span class="col-md-4">
-                          <strong style="padding-bottom:10px;float:left;margin-left:-15px;font-size: 13px;" class="col-md-12">Experience</strong>
-                          <p style="float:left;margin-left:-5px;font-size: 11px;margin-top:-5px;">40.0 Years</p>
-                          <p style="float:left;margin-left:-5px;font-size: 11px;margin-top:-5px;">40.0 Years</p>
-                          <p style="float:left;margin-left:-5px;font-size: 11px;margin-top:-5px;">37.8 Years</p>
-                        </span>
-                      </div>
-                    </div>
                   </div>
+
+
                   <div class="sorting_content col-md-5" style="padding: 25px 15px 15px;overflow: hidden;">
                     <div class="col-md-6 ">
                       <strong style="font-size: 12px;" class="col-md-12">Resume Updated</strong>
@@ -231,7 +223,6 @@ $this->load->view("common/meta_links");
                       <strong style="font-size: 12px;" class="col-md-12">Authorization</strong>
                       <strong style="font-size: 12px;" class="col-md-12">Desired Salary</strong>
                       <strong style="font-size: 12px;" class="col-md-12">Relocaion</strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Board</strong>
                     </div>
 
                     <div class="col-md-6">
@@ -240,10 +231,13 @@ $this->load->view("common/meta_links");
                       <strong style="font-size: 12px;" class="col-md-12">US Authorised </strong>
                       <strong style="font-size: 12px;" class="col-md-12">-</strong>
                       <strong style="font-size: 12px;" class="col-md-12">-</strong>
-                      <strong style="font-size: 12px;" class="col-md-12">-</strong>
                     </div>
                   </div>
                 </div>
+
+                <?php
+                  }
+                ?>
                 <div class="row" >
                   <div class="col-xs-12">
                     <div class="results-footer-links-container">
@@ -251,51 +245,8 @@ $this->load->view("common/meta_links");
                     </div>
                   </div>
                 </div>
-                
-                <div class="modal fade" id="sendJobModal" tabindex="-1" role="dialog" aria-labelledby="sendJobModal" aria-hidden="true">
-                  <div class="modal-dialog modal-sm">
-                    <div class="modal-content">
-                      <div class="modal-body">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span class="close-btn">
-                          </span>
-                        </button>
-                        <h3 class="brand-font">Email this job
-                        </h3>
-                        <form>
-                          <div id="email-job">
-                            <div class="form-group">
-                              <p>Email address:
-                              </p>
-                              <input id="emailMeThisJob" type="email" placeholder="name@example.com" class="form-control" />
-                              <div id="SendJobEmptyEmail" class="alert alert-danger alert-danger-icon alert-extensions" style="display: none;">Please enter your email address.
-                              </div>
-                              <div id="SendJobInvalidEmail" class="alert alert-danger alert-danger-icon alert-extensions" style="display: none;">Please enter a valid email address.
-                              </div>
-                            </div>
-                            <div class="form-group text-center">
-                              <input id="sendJobByEmail" type="submit" value="Send job" class="btn btn-primary btn-lg"/>
-                            </div>
-                          </div>
-                          <div id="send-job-confirmation" class="alert alert-success alert-success-icon" style="display: none;">
-                            This job has been emailed to:
-                            <br/>
-                            <span id="confirmationEmail" class="confirmationEmail">
-                            </span>
-                          </div>
-                        </form>
-                        <div class="text-center">
-                          <a data-dismiss="modal" aria-label="Close" href="#">Close this window
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div id="jbe-dialog-container">
-                </div>
-                <div id="jbe-dialog-onload-container">
-                </div>
+
+
               </div>
             </div>
           </div>

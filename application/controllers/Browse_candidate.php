@@ -67,7 +67,7 @@ class Browse_candidate extends CI_Controller {
 		$end = ($this->uri->segment(3) == floor($config['total_rows']/ $config['per_page']))? $config['total_rows'] : (int)$this->uri->segment(3) * $config['per_page'] + $config['per_page'];
 
 		$data['result_count']= "Showing ".$start." - ".$end." of ".$config['total_rows']." Results";
-        $data["results"] = $this->browse_candidate_m->fetch_countries($config["per_page"], $page);
+        $data["resume_details"] = $this->browse_candidate_m->fetch_resume($config["per_page"], $page);
         $data["links"] = $this->pagination->create_links();
 
         $this->load->view("browse_candidate", $data);
