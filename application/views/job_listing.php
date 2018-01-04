@@ -92,16 +92,14 @@
 				</div>
 			</div>
                 <?php
-                  for ($i=0; $i < 9; $i++) { 
-                    # code...
-                  
+                  foreach ($job_details->result() as $fetch_job) { 
                 ?>
                 <div class="job new " id="77913552">
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="job-title">
                         <a href="<?php echo base_url();?>job_details/" title="See details for a PHP Developer ( Laravel ) in Southampton (matches on php developer)">
-                          <h2 style="color:#06c;">PHP Developer ( Laravel )
+                          <h2 style="color:#06c;"><?php echo $fetch_job->job_title;?>
                           </h2>
                         </a>
                       </div>
@@ -116,21 +114,19 @@
                               <li class="location">
                                 <span>
                                   <span>
-                                    <a href="#" style="color:black;">Southampton
-                                    </a>, 
-                                    <a href="#" style="color:black;">Hampshire
+                                    <a href="#" style="color:black;"><?php echo $fetch_job->location;?>
                                     </a>
                                   </span>
                                 </span>
                               </li>
-                              <li class="salary" title="salary">&#163;35000 - &#163;38000 per annum + Benefits
+                              <li class="salary" title="salary"><i class="fa fa-usd" aria-hidden="true"></i><?php echo $fetch_job->salary_details;?>
                               </li>
                             </ul>
                           </div>
                           <div id="recruiterImageContainer" class="col-xs-5 col-sm-4 pull-right">
                             <div class="recruiter-image">
                               <a href="#" title="Spectrum IT Recruitment (South) Ltd">
-                                <img src="<?php echo base_url();?>images/a7856ea2b883484b86ccb45ce991ee0e.png" />
+                                <img src="<?php echo base_url();?>uploads/<?php echo $fetch_job->company_logo;?>" />
                               </a>
                             </div>
                           </div>
@@ -139,7 +135,7 @@
 
                               <li class="company" title="hiring organization">
                                 <h3>
-                                  <a href="#" title="Spectrum IT Recruitment (South) Ltd" style="color:black;">Spectrum IT Recruitment (South) Ltd
+                                  <a href="#" title="Spectrum IT Recruitment (South) Ltd" style="color:black;"><?php echo (($fetch_job->name_status == 'yes')?'Company Name Hidden':$fetch_job->company_name);?>
                                   </a>
                                 </h3>
                               </li>
@@ -151,24 +147,7 @@
                           <div class="col-sm-12 col-md-10">
                             <div title="job details">
                               <p class="job-intro">
-                                <span>
-                                  <strong>PHP Developer
-                                  </strong> ( Laravel ) A 
-                                  <strong>PHP Developer
-                                  </strong> with experience of Laravel is required to join a&nbsp;&hellip;&nbsp;
-                                </span>
-                                <span class="hidden-xs">This is a fantastic time for a 
-                                  <strong>PHP Developer
-                                  </strong> to join dynamic technology company that is&nbsp;&hellip;&nbsp;
-                                </span>
-                                <span class="hidden-xs">SQL Linux SVN, Git PostgreSQL DBMS The role of 
-                                  <strong>PHP Developer
-                                  </strong> ( Laravel) is paying a salary&nbsp;&hellip;&nbsp;
-                                </span>
-                                <span class="hidden-xs">SQL Linux SVN, Git PostgreSQL DBMS The role of 
-                                  <strong>PHP Developer
-                                  </strong> ( Laravel) is paying a salary&nbsp;&hellip;&nbsp;
-                                </span>
+                               <?php echo $fetch_job->job_description;?>
                               </p>
                             </div>
                           </div>

@@ -20,7 +20,9 @@ class Joblisting extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('job_listing');
+		$this->load->model('job_listing_m');
+		$data['job_details'] = $this->job_listing_m->fetch_job();
+		$this->load->view('job_listing',$data);
 	}
 }
 ?>

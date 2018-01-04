@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head prefix="og: http://ogp.me/ns#">
-    <title>Job Listing | Home </title>
+    <title>Job Listing | Job Post </title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta charset="utf-8" />
   <?php
@@ -44,150 +44,92 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12 text-center">
-                                 <!-- <div class="work-timee" style="font-size:18px;margin-bottom:5px;">Full Time</div>  -->
                                 <div class="banner-heading" style="font-size:25px;font-weight:700;color:white;">Post A Job</div>    
                             </div>  
                         </div>
                     </div>
                 </div>
+
     <div class="container results-container">
-      <!--<div class="row">
-        <div class="col-sm-12">
-          <ol class="breadcrumb small">
-            <li>
-              <a href="#" style="color:black;">Jobs
-              </a>
-              <span class="separator">
-              </span>
-            </li>
-            <li>
-              <a href="#" style="color:black;">IT
-              </a>
-              <span class="separator">
-              </span>
-            </li>
-            <li style="color:black;">PHP Developer
-            </li>
-          </ol>
-        </div>
-      </div>-->
+     
 	
     <section style="padding-top:50px;">
       <div class="container">
         <div class="row"  style="background:#fafafa;">
+          <?php
+      if($this->session->flashdata('success')){
+    ?>
+       <div class="alert alert-success" style="margin-top:10px;text-align:center;"> <strong><?php echo $this->session->flashdata('success');?></strong> </div>
+    <?php
+      }
+      if($this->session->flashdata('failed')){
+    ?>
+       <div class="alert alert-danger" style="margin-top:10px;text-align:center;"> <strong><?php echo $this->session->flashdata('failed');?></strong> </div>
+    <?php
+      }
+    ?>
           <div class="col-lg-10 col-lg-offset-1">
-            <form id="job-main-form" method="get" action="#" class="job-add-form">
+            <form id="job-main-form" method="POST" enctype="multipart/form-data" action="<?php echo base_url();?>/job_post/submit_job" class="job-add-form">
               <div class="row">
                 <div class="col-md-12" style="margin-top:10px;">
-                  <h4 class="heading" style="font-weight:900;">Job details</h4>
-                  <!-- <p class="text-muted text-small" style="color:black;">Some additional info for this screen about validity of the ads, etc. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.     </p> -->
+                  <h4 class="heading" style="font-weight:900;">Job details </h4>
                   <hr>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12 form-group">
-                  <label for="title" style="font-size:12px;">Job Title</label>
-                  <input id="title" type="text" class="form-control">
-                  <!-- <p class="help-block text-small">Example block-level help text here. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.</p> -->
+                  <label for="title" style="font-size:12px;">Job Title <span style="color:red;" title="This field is required">*</span></label>
+                  <input id="title" type="text" name="job_title" class="form-control" required>
                 </div>
               </div>
-              <!-- <div class="row">
-                <div class="col-md-12 form-group">
-                  <label for="text">Job Description</label>
-                  <textarea id="text" rows="5" class="form-control"></textarea>
-                  <p class="help-block text-small">Example block-level help text here. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.</p>
-                </div>
-              </div> -->
               <div class="row">
                 <div class="col-md-12 form-group">
-                  <label for="category" style="font-size:12px;">Job ad category</label>
-                  <select id="category" multiple="multiple" placeholder="Choose category" class="form-control select2"> 
-                    <option value="10" style="font-size:12px;">Accounting</option>
-												 <option value="20">Administration & Office Support</option>
-												 <option value="20">Advertising, Arts & Media</option>
-												 <option value="20">Banking & Financial Services</option>
-												 <option value="20">Call Centre & Customer Service</option>
-												 <option value="20">Community Services & Development</option>
-												 <option value="20">Design & Architecture</option>
-												 <option value="20">Education & Teaching</option>
-												 <option value="20">Engineering</option>
-												 <option value="20">Farming & Veterinary</option>
-												 <option value="20">Government & Defence</option>
-												 <option value="20">Healthcare & Nursing</option>
-												 <option value="20">Hospitality & Tourism</option>
-												 <option value="20">Information & Communication Technology</option>
-												 <option value="20">Legal</option>
-												 <option value="20">Manufacturing, Transport & Logistics</option>
-												 <option value="20">Marketing & Communications</option>
-												 <option value="20">Mining, Resources & Energy</option>
-												 <option value="20">Real Estate & Property</option>
-												 <option value="20">Recruitment & HR</option>
-												 <option value="20">Retail</option>
-												 <option value="20">Sales</option>
-												 <option value="20">Sports & Recreation</option>
-												 <option value="20">Trades & Services</option>
-												 <option value="20">Other Jobs</option>
+                  <label for="category" style="font-size:12px;">Job ad category <span style="color:red;" title="This field is required">*</span></label>
+                  <select id="category" multiple="multiple" name="job_cat[]" placeholder="Choose category" class="form-control select2" required> 
+                    <?php
+                    foreach ($fetch_cat->result() as $job_cat) {
+                    ?>
+                     <option value="<?php echo $job_cat->category_id;?>"><?php echo $job_cat->category_name;?></option>
+                    <?php
+                    }
+                    ?>
                   </select>
                 </div>
               </div>
 			  <div class="row">
                 <div class="col-md-6 form-group">
-                  <label for="location" style="font-size:12px;">Location</label>
-                  <input id="location" type="text" placeholder="e.g. Rio de Janeiro" class="form-control">
+                  <label for="location" style="font-size:12px;">Location <span style="color:red;" title="This field is required">*</span></label>
+                  <input id="location" type="text" name="location" placeholder="e.g. Rio de Janeiro" class="form-control" required>
                 </div>
                 <div class="col-md-6 form-group">
-                  <label for="type" style="font-size:12px;">Type</label>
-                  <select id="type" placeholder="Choose job type" class="form-control select2">
-                    <option>Full-time</option>
-                    <option>Part-time</option>
-                    <option>Internship</option>
+                  <label for="type" style="font-size:12px;">Type <span style="color:red;" title="This field is required">*</span></label>
+                  <select id="type" placeholder="Choose job type" name="job_type" class="form-control select2" required>
+                    <option value="Full Time">Full-time</option>
+                    <option value="Part Time">Part-time</option>
+                    <option value="Internship">Internship</option>
                   </select>
                 </div>
               </div>
-              <!-- <div class="row">
-                <div class="col-md-12 form-group">
-                  <label for="tag">Tags</label>
-                  <select id="tag" multiple="multiple" placeholder="Choose tags" class="form-control select2">
-                    <option>HTML</option>
-                    <option>CSS</option>
-                    <option>Ruby on Rails</option>
-                    <option>PHP</option>
-                    <option>Python</option>
-                    <option>React</option>
-                  </select>
-                </div>
-              </div> -->
               <div class="row">
                 <div class="col-md-12 form-group">
                   <label for="post_type" style="font-size:12px;">Salary Details (optional)</label>
-                  <select id="post_type" data-placeholder="Choose type of the post" class="form-control select2">
+                  <select id="post_type" data-placeholder="Choose type of the post" name="salary" class="form-control select2">
                     <option style="background:#003A83;">$30k +</option>
                     <option style="background:#003A83;">$40k +</option>
-					<option style="background:#003A83;">$50k +</option>
-					<option style="background:#003A83;">$60k +</option>
-					<option style="background:#003A83;">$70k +</option>
-					<option style="background:#003A83;">$80k +</option>
-					<option style="background:#003A83;">$100k +</option>
-					<option style="background:#003A83;">$125k +</option>
-					<option style="background:#003A83;">$150k +</option>
+          					<option style="background:#003A83;">$50k +</option>
+          					<option style="background:#003A83;">$60k +</option>
+          					<option style="background:#003A83;">$70k +</option>
+          					<option style="background:#003A83;">$80k +</option>
+          					<option style="background:#003A83;">$100k +</option>
+          					<option style="background:#003A83;">$125k +</option>
+          					<option style="background:#003A83;">$150k +</option>
                   </select>
                 </div>
-                <!-- <div class="col-md-4 form-group">
-                  <label for="apply_url">Apply URL <span class="note">(users will apply on your website)</span></label>
-                  <input id="apply_url" type="url" class="form-control">
-                </div>
-                <div class="col-md-4 form-group">
-                  <label for="validity">Validity of the post</label>
-                  <input id="validity" type="date" class="form-control">
-                </div> -->
               </div>
 			  <div class="row">
                 <div class="col-md-12 form-group">
-                  <label for="text" style="font-size:12px;">Job Description</label>
-                  <!-- <textarea id="text" rows="5" class="form-control"></textarea> -->
-				  <textarea class="form-control ckeditor" id="editor" placeholder="Share what you are thinking here..." name="status"></textarea>
-                  <!-- <p class="help-block text-small">Example block-level help text here. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.</p>
-                </div> -->
+                  <label for="text" style="font-size:12px;">Job Description <span style="color:red;" title="This field is required">*</span></label>
+				  <textarea class="form-control ckeditor" id="editor" placeholder="Share what you are thinking here..." name="description" required></textarea>
               </div>
               <div class="row">
                 <div class="col-md-12">                           
@@ -197,18 +139,17 @@
               <div class="row">
                 <div class="col-md-12">
                   <h4><strong style="font-weight:900;">Company Information</strong></h4>
-                  <!-- <p class="text-muted text-small" style="color:black;">Some additional info for this screen about validity of the ads, etc. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.     </p> -->
                   <hr>
                 </div>
               </div>
               <div class="row">
                 <div class="form-group">
-                  <div class="col-md-2"><label for="company_name" class="" style="font-size:12px;">Company name</label></div>
+                  <div class="col-md-2"><label for="company_name" class="" style="font-size:12px;">Company name <span style="color:red;" title="This field is required">*</span></label></div>
                   <div class="col-md-8">
-					  <input id="company_name" type="text" class="form-control" class="">
+					  <input id="company_name" type="text" class="form-control" name="company_name" required>
 					  <div class="checkbox ">
 							<label>
-							  <input type="checkbox" style="font-size:12px;">Keep company name confidential
+							  <input type="checkbox" name="company_status" value="no" style="font-size:12px;">Keep company name confidential
 							</label>
 					  </div>
 				  </div>
@@ -216,50 +157,34 @@
               </div>
 			  </br>
 				
-              <!-- <div class="row">
-                <div class="col-md-12 form-group">
-                  <label for="company_description">Company Description</label>
-                  <textarea id="company_description" rows="3" class="form-control"></textarea>
-                  <p class="help-block text-small">Example block-level help text here. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.</p>
-                </div>
-              </div> -->
               <div class="row">
-                <!-- <div class="col-md-4 form-group">
-                  <label for="company_website">Website</label>
-                  <input id="company_website" type="url" class="form-control">
-                </div> -->
 					<div class="form-group">
-					  <div class="col-md-2"><label for="company_logo" style="font-size:12px;">Company Logo</label></div>
+					  <div class="col-md-2"><label for="company_logo" style="font-size:12px;">Company Logo <span style="color:red;" title="This field is required">*</span></label></div>
 					  <div class="col-md-8">
 						<div class="form-group">
-						  <input id="company_logo" type="file" class="form-control">
+						  <input id="company_logo" type="file" class="form-control" name="image" required>
 						</div>
 						<div class="checkbox ">
 							<label>
-							  <input type="checkbox" style="font-size:12px;">Use a company logo
+							  <input type="checkbox" name="logo_status" value="no" style="font-size:12px;">Use a company logo
 							</label>
 						</div>
 					   </div>
 					</div>
 
-				
-                <!-- <div class="col-md-4 form-group">
-                  <label for="company_twitter">Twitter</label>
-                  <input id="company_twitter" placeholder="@getbootstrap" class="form-control">
-                </div> -->
               </div>
 			  </br>
 			  <div class="row">
                 <div class="form-group">
-                  <div class="col-md-2"><label for="location" style="font-size:12px;">Contact Name</label></div>
-                  <div class="col-md-8"><input id="location" type="text" placeholder="name" class="form-control"></div>
+                  <div class="col-md-2"><label for="location" style="font-size:12px;">Contact Name <span style="color:red;" title="This field is required">*</span></label></div>
+                  <div class="col-md-8"><input id="location" type="text" placeholder="name" name="contact_name" class="form-control" required></div>
                 </div>
 			  </div>
 			  </br>
 			  <div class="row">
                 <div class="form-group">
-                  <div class="col-md-2"><label for="type" style="font-size:12px;">Contact Number</label></div>
-				  <div class="col-md-8"><input id="location" type="text" placeholder="phone number" class="form-control"></div>
+                  <div class="col-md-2"><label for="type" style="font-size:12px;">Contact Number <span style="color:red;" title="This field is required">*</span></label></div>
+				  <div class="col-md-8"><input id="location" type="text" placeholder="phone number" name="contact_number" class="form-control" required></div>
                 </div>
               </div>
               <div class="row">
@@ -277,7 +202,6 @@
                 <div class="col-md-12 text-center">
                   <hr>
                   <button type="submit" class="btn btn-success"> <i class="fa fa-magic">post job</button>
-                  <!-- <button type="submit" class="btn btn-default"> <i class="fa fa-save"></i> Save draft</button> -->
                 </div>
               </div>
             </form>
@@ -296,12 +220,4 @@
 <?php
 	 $this->load->view("common/footer");
 ?> 
-  <script>
-      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='//www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
 </html>
