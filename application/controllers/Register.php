@@ -49,11 +49,17 @@ class Register extends CI_Controller {
 
 			if($insert_data != '')
 		{
-			 $sess_array = array(
-				 'user_id' => $insert_data,
-			   );
-			$this->session->set_userdata('logged_in', $sess_array);
-			redirect('dashboard');	
+			$records = array('emp_id'=> $insert_data);
+			$insert_emp_details = $this->register_m->insert_emp($records);
+			if($insert_emp_details)
+			{
+
+				 $sess_array = array(
+					 'user_id' => $insert_data,
+				   );
+				$this->session->set_userdata('logged_in', $sess_array);
+				redirect('dashboard');
+			}
 		}
 		else{
 			$this->session->set_flashdata("failed", "Something Is Wrong!");
