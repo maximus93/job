@@ -29,25 +29,37 @@ class Register extends CI_Controller {
 		$first_name = $this->input->post('f_name');
 		$last_name = $this->input->post('l_name');
 		$email = $this->input->post('email');
+		$records = array('email'=> $email);
+		$got_email = $this->register_m->check_email($records);
+		if($got_email == 0)
+		{
 		$phone =  $this->input->post('phone');
 		$postcode = $this->input->post('postcode');
 		$password  = $this->input->post('password');
 		$con_pass = $this->input->post('con_password');
+		$profile_image = "images/if_user_male2_172626.png";
+		$date = time();
 		$user_type= "employee";
 		$user_status = "pending";
 
 		if($password == $con_pass)
 		{
-			$records = array('first_name'=>$first_name,'last_name'=>$last_name,'email'=>$email,'password'=>$password,'phone'=>$phone,'postcode'=>$postcode,'user_type'=>$user_type,'user_status'=>$user_status);
+			$records = array('first_name'=>$first_name,'last_name'=>$last_name,'email'=>$email,'password'=>$password,'phone'=>$phone,'postcode'=>$postcode,'profile_picture'=>$profile_image,'registration_date'=>$date,'user_type'=>$user_type,'user_status'=>$user_status);
 			$insert_data = $this->register_m->insert_employee($records);
 
 			if($insert_data != '')
 		{
-			 $sess_array = array(
-				 'user_id' => $insert_data,
-			   );
-			$this->session->set_userdata('logged_in', $sess_array);
-			redirect('post_resume');	
+			$records = array('emp_id'=> $insert_data);
+			$insert_emp_details = $this->register_m->insert_emp($records);
+			if($insert_emp_details)
+			{
+
+				 $sess_array = array(
+					 'user_id' => $insert_data,
+				   );
+				$this->session->set_userdata('logged_in', $sess_array);
+				redirect('dashboard');
+			}
 		}
 		else{
 			$this->session->set_flashdata("failed", "Something Is Wrong!");
@@ -59,14 +71,26 @@ class Register extends CI_Controller {
 			$this->session->set_flashdata("password_failed", "Password Does Not match!");
 			redirect('register');
 		}
+		}
+		else
+		{
+			$this->session->set_flashdata("email_failed", "Email Already Exist!");
+			redirect('register');
+
+		}
 	}
 	
+
 	public function add_employeer()
 	{
 		$this->load->model('register_m');
 		$first_name = $this->input->post('f_name');
 		$last_name = $this->input->post('l_name');
 		$email = $this->input->post('email');
+		$records = array('email'=> $email);
+		$got_email = $this->register_m->check_email($records);
+		if($got_email == 0)
+		{
 		$phone =  $this->input->post('phone');
 		$account_first_name = $this->input->post('acc_fname');
 		$account_last_name  = $this->input->post('acc_lname');
@@ -75,12 +99,13 @@ class Register extends CI_Controller {
 		$postcode = $this->input->post('post_code');
 		$password  = $this->input->post('password');
 		$con_pass = $this->input->post('con_password');
+		$profile_image = "images/if_user_male2_172626.png";
 		$date = time();
 		$user_type= "employeer";
 		$user_status = "pending";
 		if($password == $con_pass)
 		{
-			$records = array('first_name'=>$first_name,'last_name'=>$last_name,'email'=>$email,'password'=>$password,'phone'=>$phone,'postcode'=>$postcode,'address'=>$address,'account_first_name'=>$account_first_name,'account_last_name'=>$account_last_name,'comapny_name'=>$company_name,'registration_date'=>$date,'user_type'=>$user_type,'user_status'=>$user_status);
+			$records = array('first_name'=>$first_name,'last_name'=>$last_name,'email'=>$email,'password'=>$password,'phone'=>$phone,'postcode'=>$postcode,'address'=>$address,'profile_picture'=>$profile_image,'account_first_name'=>$account_first_name,'account_last_name'=>$account_last_name,'comapny_name'=>$company_name,'registration_date'=>$date,'user_type'=>$user_type,'user_status'=>$user_status);
 
 			$insert_employeer = $this->register_m->insert_employee($records);
 		
@@ -90,7 +115,7 @@ class Register extends CI_Controller {
 				 'user_id' => $insert_data,
 			   );
 			$this->session->set_userdata('logged_in', $sess_array);
-			redirect('job_post');	
+			redirect('dashboard');	
 		}
 		else
 			{
@@ -101,6 +126,12 @@ class Register extends CI_Controller {
 		else
 		{
 			$this->session->set_flashdata("failed", "Something went wrong!");
+			redirect('register');
+		}
+		}
+		else
+		{
+			$this->session->set_flashdata("email_failed", "Email Already Exist!");
 			redirect('register');
 		}
 	}

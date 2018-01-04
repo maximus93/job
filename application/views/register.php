@@ -320,6 +320,11 @@
 			<div class="alert alert-danger" style="margin-top:10px;text-align:center;"> <strong><?php echo $this->session->flashdata('password_failed');?></strong> </div>
 		<?php
 		}
+		if($this->session->flashdata('email_failed')){
+		?>
+		<div class="alert alert-danger" style="margin-top:10px;text-align:center;"> <strong><?php echo $this->session->flashdata('email_failed');?></strong> </div>
+		<?php
+		}
 		?>
       <!--<div class="row">
 <div class="col-sm-12">
