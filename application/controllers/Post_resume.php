@@ -35,6 +35,8 @@ class Post_resume extends CI_Controller {
 		$travel_distance = $this->input->post('travel_distance');
 		$relocate = $this->input->post('relocate');
 		$post_type = $this->input->post('post_type');
+		$skills_get = $this->input->post('skills');
+		$all_skills = implode(",",$skills_get);
 		$posted_date = time();
 		$user_id = 1;
 
@@ -77,6 +79,7 @@ class Post_resume extends CI_Controller {
 		$records = array(
 			'job_title' => $job_title,
 			'company_name' => $company_name,
+			'skills' => $all_skills,
 			'start_date' => $start_date,
 			'end_date' => $end_date,
 			'education' => $education,

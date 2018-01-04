@@ -117,8 +117,8 @@ $this->load->view("common/meta_links");
     </div>
     <div id="header-container">
       <?php
-$this->load->view("common/header");
-?>
+        $this->load->view("common/header");
+      ?>
     </div>
     <div class="simple_bannenr" style="margin-bottom:20px;">
       <div class="container">
@@ -138,23 +138,21 @@ $this->load->view("common/header");
       <div class="row job-results-row" style="margin-bottom:40px;">
         <div class="col-sm-12 reset-to-row equal-height">
 	
-		<?php
-			$this->load->view("common/another_sidebar");
-		?>
+    		<?php
+    			$this->load->view("common/another_sidebar");
+    		?>
 		
           <div class="col-sm-9 job-results clearfix" style="background:none;">
             <div class="row">
               <div class="col-xs-12 job-results clearfix" style="background:none;">
                 <div class="col-md-7 col-sm-7 p-l">
                   <div class="page-heading">
-                    <p>Showing 1-8 of 254
-                    </p>
+                    <p><?php echo $result_count;?></p>
                   </div>
                 </div>  
                 <div class="col-md-5 col-sm-5 filter p-r text-right">
                   <div class="col-md-7 col-sm-5">
-                    <p>Short by:
-                    </p>
+                    <p>Sort by:</p>
                   </div>
                   <div class="col-md-5 col-sm-7 p-r">
                     <div class="dropdown">
@@ -179,470 +177,22 @@ $this->load->view("common/header");
                     </div>
                   </div>
                 </div>
-                <div class="clearfix">
-                </div>
-                <div class="page_listing candidate" style="border:1px  solid #e1e1e1;
-                                                           border-bottom:  1px solid #e1e1e1;">
-                  <div class="sorting_content col-md-7" style=" padding: 25px 15px 15px;
-                                                               overflow: hidden;">
-                    <div class="tab-image" style="    float: left;
-                                                  text-align: center;
-                                                  margin-right: 20px;">
-                      <img src="<?php echo base_url();?>images/candidate-6.png" alt="" class="img-responsive">
-                    </div>
-                    <div class="overflow" style="overflow:hidden;">
-                      <div class="text-shorting" style="    font-size: 16px;
-                                                        color: #333;
-                                                        line-height: 30px;
-                                                        font-weight: 500;
-                                                        margin: 0px;">
-                        <a href="<?php echo base_url();?>candidate_details/">
-                          <h1 style="    font-size: 16px;
-                                     color: #237fa5;
-                                     line-height: 35px;
-                                     font-weight: 700;
-                                     margin-top:-10px;">
-                            <u>Homer Simpson
-                            </u>
-                          </h1>
-                        </a>
-                        <ul class="unstyled" style="margin-top:-25px;padding: 0px;">
-                          <li style="display: inline-block;
-                                     padding: 0 50px 0 0;
-                                     color: #7d7d7d;
-                                     font-size: 13px;"> Toulouse, France | Vocational
-                          </li>
-                        </ul>
-                        <p>
-                        </p>
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <p>
-                      </p>
-                      <!-- <p class="col-md-12 p-l" style="    padding-top: 3px;
-color: #7d7d7d;
-font-size: 13px;
-}">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis ultricies nec pellentesque eu.</p> -->
-                      <div class="contact_details col-md-12 col-sm-8 p-l" style="display: block;
-                                                                                 padding-bottom: 8px;
-                                                                                 font-size: 13px;
-                                                                                 color: #7d7d7d;margin-top:10px;float:left;margin-left:-10px;margin-top:-7px;">
-                        <li>
-                          <strong style="color: #237fa5;">Accounting Manager
-                          </strong>
-                        </li>
-                      </div>
-                      <div class="contact_details col-md-8 col-sm-8 p-l">
-                        <span class="col-md-8">
-                          <strong  style="float:left;margin-left:-15px;font-size: 13px; padding-bottom:10px;" class="col-md-12">Top Skills
-                          </strong>
-                          <p style="float:left;margin-left:-13px;font-size: 11px;margin-top:-5px;" class="col-md-12">People Management
-                          </p>
-                          <p style="float:left;margin-left:-13px;font-size: 11px;margin-top:-5px;" class="col-md-12">Payroll Software Services
-                          </p>
-                          <p style="float:left;margin-left:-13px;font-size: 11px;margin-top:-5px;" class="col-md-12">Time Management
-                          </p>
-                        </span>
-                        <span class="col-md-4">
-                          <strong style="padding-bottom:10px;float:left;margin-left:-15px;font-size: 13px;" class="col-md-12">Experience
-                          </strong>
-                          <p style="float:left;margin-left:-5px;font-size: 11px;margin-top:-5px;">40.0 Years
-                          </p>
-                          <p style="float:left;margin-left:-5px;font-size: 11px;margin-top:-5px;">40.0 Years
-                          </p>
-                          <p style="float:left;margin-left:-5px;font-size: 11px;margin-top:-5px;">37.8 Years
-                          </p>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="sorting_content col-md-5" style="padding: 25px 15px 15px;
-                                                               overflow: hidden;">
-                    <div class="col-md-6 ">
-                      <strong style="font-size: 12px;" class="col-md-12">Resume Updated
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Experience
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Authorization
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Desired Salary
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Relocaion
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Board
-                      </strong>
-                    </div>
-                    <div class="col-md-6">
-                      <strong style="font-size: 12px;" class="col-md-12">26 months ago
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">40.0 years
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">US Authorised 
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">-
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">-
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">-
-                      </strong>
-                    </div>
-                  </div>
-                </div>
-                <div class="page_listing candidate" style="border:1px  solid #e1e1e1;
-                                                           border-bottom:  1px solid #e1e1e1;">
-                  <div class="sorting_content col-md-7" style=" padding: 25px 15px 15px;
-                                                               overflow: hidden;">
-                    <div class="tab-image" style="    float: left;
-                                                  text-align: center;
-                                                  margin-right: 20px;">
-                      <img src="<?php echo base_url();?>images/candidate-2.png" alt="" class="img-responsive">
-                    </div>
-                    <div class="overflow" style="overflow:hidden;">
-                      <div class="text-shorting" style="    font-size: 16px;
-                                                        color: #333;
-                                                        line-height: 30px;
-                                                        font-weight: 500;
-                                                        margin: 0px;">
-                        <a href="<?php echo base_url();?>candidate_details/">
-                          <h1 style="    font-size: 16px;
-                                     color: #237fa5;
-                                     line-height: 35px;
-                                     font-weight: 700;
-                                     margin-top:-10px;">
-                            <u>Homer Simpson
-                            </u>
-                          </h1>
-                        </a>
-                        <ul class="unstyled" style="margin-top:-25px;padding: 0px;">
-                          <li style="display: inline-block;
-                                     padding: 0 50px 0 0;
-                                     color: #7d7d7d;
-                                     font-size: 13px;"> Toulouse, France | Vocational
-                          </li>
-                        </ul>
-                        <p>
-                        </p>
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <p>
-                      </p>
-                      <!-- <p class="col-md-12 p-l" style="    padding-top: 3px;
-color: #7d7d7d;
-font-size: 13px;
-}">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis ultricies nec pellentesque eu.</p> -->
-                      <div class="contact_details col-md-12 col-sm-8 p-l" style="display: block;
-                                                                                 padding-bottom: 8px;
-                                                                                 font-size: 13px;
-                                                                                 color: #7d7d7d;margin-top:10px;float:left;margin-left:-10px;margin-top:-7px;">
-                        <li>
-                          <strong style="color: #237fa5;">Accounting Manager
-                          </strong>
-                        </li>
-                      </div>
-                      <div class="contact_details col-md-8 col-sm-8 p-l">
-                        <span class="col-md-8">
-                          <strong  style="float:left;margin-left:-15px;font-size: 13px; padding-bottom:10px;" class="col-md-12">Top Skills
-                          </strong>
-                          <p style="float:left;margin-left:-13px;font-size: 11px;margin-top:-5px;" class="col-md-12">People Management
-                          </p>
-                          <p style="float:left;margin-left:-13px;font-size: 11px;margin-top:-5px;" class="col-md-12">Payroll Software Services
-                          </p>
-                          <p style="float:left;margin-left:-13px;font-size: 11px;margin-top:-5px;" class="col-md-12">Time Management
-                          </p>
-                        </span>
-                        <span class="col-md-4">
-                          <strong style="padding-bottom:10px;float:left;margin-left:-15px;font-size: 13px;" class="col-md-12">Experience
-                          </strong>
-                          <p style="float:left;margin-left:-5px;font-size: 11px;margin-top:-5px;">40.0 Years
-                          </p>
-                          <p style="float:left;margin-left:-5px;font-size: 11px;margin-top:-5px;">40.0 Years
-                          </p>
-                          <p style="float:left;margin-left:-5px;font-size: 11px;margin-top:-5px;">37.8 Years
-                          </p>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="sorting_content col-md-5" style="padding: 25px 15px 15px;
-                                                               overflow: hidden;">
-                    <div class="col-md-6 ">
-                      <strong style="font-size: 12px;" class="col-md-12">Resume Updated
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Experience
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Authorization
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Desired Salary
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Relocaion
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Board
-                      </strong>
-                    </div>
-                    <div class="col-md-6">
-                      <strong style="font-size: 12px;" class="col-md-12">26 months ago
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">40.0 years
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">US Authorised 
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">-
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">-
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">-
-                      </strong>
-                    </div>
-                  </div>
-                </div>
-                <div class="page_listing candidate" style="border:1px  solid #e1e1e1;
-                                                           border-bottom:  1px solid #e1e1e1;">
-                  <div class="sorting_content col-md-7" style=" padding: 25px 15px 15px;
-                                                               overflow: hidden;">
-                    <div class="tab-image" style="    float: left;
-                                                  text-align: center;
-                                                  margin-right: 20px;">
-                      <img src="<?php echo base_url();?>images/candidate-3.png" alt="" class="img-responsive">
-                    </div>
-                    <div class="overflow" style="overflow:hidden;">
-                      <div class="text-shorting" style="    font-size: 16px;
-                                                        color: #333;
-                                                        line-height: 30px;
-                                                        font-weight: 500;
-                                                        margin: 0px;">
-                        <a href="<?php echo base_url();?>candidate_details/">
-                          <h1 style="    font-size: 16px;
-                                     color: #237fa5;
-                                     line-height: 35px;
-                                     font-weight: 700;
-                                     margin-top:-10px;">
-                            <u>Homer Simpson
-                            </u>
-                          </h1>
-                        </a>
-                        <ul class="unstyled" style="margin-top:-25px;padding: 0px;">
-                          <li style="display: inline-block;
-                                     padding: 0 50px 0 0;
-                                     color: #7d7d7d;
-                                     font-size: 13px;"> Toulouse, France | Vocational
-                          </li>
-                        </ul>
-                        <p>
-                        </p>
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <p>
-                      </p>
-                      <!-- <p class="col-md-12 p-l" style="    padding-top: 3px;
-color: #7d7d7d;
-font-size: 13px;
-}">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis ultricies nec pellentesque eu.</p> -->
-                      <div class="contact_details col-md-12 col-sm-8 p-l" style="display: block;
-                                                                                 padding-bottom: 8px;
-                                                                                 font-size: 13px;
-                                                                                 color: #7d7d7d;margin-top:10px;float:left;margin-left:-10px;margin-top:-7px;">
-                        <li>
-                          <strong style="color: #237fa5;">Accounting Manager
-                          </strong>
-                        </li>
-                      </div>
-                      <div class="contact_details col-md-8 col-sm-8 p-l">
-                        <span class="col-md-8">
-                          <strong  style="float:left;margin-left:-15px;font-size: 13px; padding-bottom:10px;" class="col-md-12">Top Skills
-                          </strong>
-                          <p style="float:left;margin-left:-13px;font-size: 11px;margin-top:-5px;" class="col-md-12">People Management
-                          </p>
-                          <p style="float:left;margin-left:-13px;font-size: 11px;margin-top:-5px;" class="col-md-12">Payroll Software Services
-                          </p>
-                          <p style="float:left;margin-left:-13px;font-size: 11px;margin-top:-5px;" class="col-md-12">Time Management
-                          </p>
-                        </span>
-                        <span class="col-md-4">
-                          <strong style="padding-bottom:10px;float:left;margin-left:-15px;font-size: 13px;" class="col-md-12">Experience
-                          </strong>
-                          <p style="float:left;margin-left:-5px;font-size: 11px;margin-top:-5px;">40.0 Years
-                          </p>
-                          <p style="float:left;margin-left:-5px;font-size: 11px;margin-top:-5px;">40.0 Years
-                          </p>
-                          <p style="float:left;margin-left:-5px;font-size: 11px;margin-top:-5px;">37.8 Years
-                          </p>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="sorting_content col-md-5" style="padding: 25px 15px 15px;
-                                                               overflow: hidden;">
-                    <div class="col-md-6 ">
-                      <strong style="font-size: 12px;" class="col-md-12">Resume Updated
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Experience
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Authorization
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Desired Salary
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Relocaion
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Board
-                      </strong>
-                    </div>
-                    <div class="col-md-6">
-                      <strong style="font-size: 12px;" class="col-md-12">26 months ago
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">40.0 years
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">US Authorised 
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">-
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">-
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">-
-                      </strong>
-                    </div>
-                  </div>
-                </div>
-                <div class="page_listing candidate" style="border:1px  solid #e1e1e1;
-                                                           border-bottom:  1px solid #e1e1e1;">
-                  <div class="sorting_content col-md-7" style=" padding: 25px 15px 15px;
-                                                               overflow: hidden;">
-                    <div class="tab-image" style="    float: left;
-                                                  text-align: center;
-                                                  margin-right: 20px;">
-                      <img src="<?php echo base_url();?>images/candidate-4.png" alt="" class="img-responsive">
-                    </div>
-                    <div class="overflow" style="overflow:hidden;">
-                      <div class="text-shorting" style="    font-size: 16px;
-                                                        color: #333;
-                                                        line-height: 30px;
-                                                        font-weight: 500;
-                                                        margin: 0px;">
-                        <a href="<?php echo base_url();?>candidate_details/">
-                          <h1 style="    font-size: 16px;
-                                     color: #237fa5;
-                                     line-height: 35px;
-                                     font-weight: 700;
-                                     margin-top:-10px;">
-                            <u>Homer Simpson
-                            </u>
-                          </h1>
-                        </a>
-                        <ul class="unstyled" style="margin-top:-25px;padding: 0px;">
-                          <li style="display: inline-block;
-                                     padding: 0 50px 0 0;
-                                     color: #7d7d7d;
-                                     font-size: 13px;"> Toulouse, France | Vocational
-                          </li>
-                        </ul>
-                        <p>
-                        </p>
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <p>
-                      </p>
-                      <!-- <p class="col-md-12 p-l" style="    padding-top: 3px;
-color: #7d7d7d;
-font-size: 13px;
-}">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis ultricies nec pellentesque eu.</p> -->
-                      <div class="contact_details col-md-12 col-sm-8 p-l" style="display: block;
-                                                                                 padding-bottom: 8px;
-                                                                                 font-size: 13px;
-                                                                                 color: #7d7d7d;margin-top:10px;float:left;margin-left:-10px;margin-top:-7px;">
-                        <li>
-                          <strong style="color: #237fa5;">Accounting Manager
-                          </strong>
-                        </li>
-                      </div>
-                      <div class="contact_details col-md-8 col-sm-8 p-l">
-                        <span class="col-md-8">
-                          <strong  style="float:left;margin-left:-15px;font-size: 13px; padding-bottom:10px;" class="col-md-12">Top Skills
-                          </strong>
-                          <p style="float:left;margin-left:-13px;font-size: 11px;margin-top:-5px;" class="col-md-12">People Management
-                          </p>
-                          <p style="float:left;margin-left:-13px;font-size: 11px;margin-top:-5px;" class="col-md-12">Payroll Software Services
-                          </p>
-                          <p style="float:left;margin-left:-13px;font-size: 11px;margin-top:-5px;" class="col-md-12">Time Management
-                          </p>
-                        </span>
-                        <span class="col-md-4">
-                          <strong style="padding-bottom:10px;float:left;margin-left:-15px;font-size: 13px;" class="col-md-12">Experience
-                          </strong>
-                          <p style="float:left;margin-left:-5px;font-size: 11px;margin-top:-5px;">40.0 Years
-                          </p>
-                          <p style="float:left;margin-left:-5px;font-size: 11px;margin-top:-5px;">40.0 Years
-                          </p>
-                          <p style="float:left;margin-left:-5px;font-size: 11px;margin-top:-5px;">37.8 Years
-                          </p>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="sorting_content col-md-5" style="padding: 25px 15px 15px;
-                                                               overflow: hidden;">
-                    <div class="col-md-6 ">
-                      <strong style="font-size: 12px;" class="col-md-12">Resume Updated
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Experience
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Authorization
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Desired Salary
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Relocaion
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Board
-                      </strong>
-                    </div>
-                    <div class="col-md-6">
-                      <strong style="font-size: 12px;" class="col-md-12">26 months ago
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">40.0 years
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">US Authorised 
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">-
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">-
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">-
-                      </strong>
-                    </div>
-                  </div>
-                </div>
-                <div class="page_listing candidate" style="border:1px  solid #e1e1e1;
-                                                           border-bottom:  1px solid #e1e1e1;">
-                  <div class="sorting_content col-md-7" style=" padding: 25px 15px 15px;
-                                                               overflow: hidden;">
-                    <div class="tab-image" style="    float: left;
-                                                  text-align: center;
-                                                  margin-right: 20px;">
+                <div class="clearfix"></div>
+                
+                <div class="page_listing candidate" style="border:1px  solid #e1e1e1;border-bottom:  1px solid #e1e1e1;">
+                  <div class="sorting_content col-md-7" style=" padding: 25px 15px 15px;overflow: hidden;">
+                    <div class="tab-image" style="float: left;text-align: center;margin-right: 20px;">
                       <img src="<?php echo base_url();?>images/candidate-5.png" alt="" class="img-responsive">
                     </div>
                     <div class="overflow" style="overflow:hidden;">
-                      <div class="text-shorting" style="font-size: 16px;
-                                                        color: #333;
-                                                        line-height: 30px;
-                                                        font-weight: 500;
-                                                        margin: 0px;">
+                      <div class="text-shorting" style="font-size: 16px;color: #333;line-height: 30px;font-weight: 500;margin: 0px;">
                         <a href="<?php echo base_url();?>candidate_details/">
-                          <h1 style="    font-size: 16px;
-                                     color: #237fa5;
-                                     line-height: 35px;
-                                     font-weight: 700;
-                                     margin-top:-10px;">
-                            <u>Homer Simpson
-                            </u>
+                          <h1 style="font-size: 16px;color: #237fa5;line-height: 35px;font-weight: 700;margin-top:-10px;">
+                            <u>Homer Simpson</u>
                           </h1>
                         </a>
                         <ul class="unstyled" style="margin-top:-25px;padding: 0px;">
-                          <li style="display: inline-block;
-                                     padding: 0 50px 0 0;
-                                     color: #7d7d7d;
-                                     font-size: 13px;"> Toulouse, France | Vocational
+                          <li style="display: inline-block;padding: 0 50px 0 0;color: #7d7d7d;font-size: 13px;"> Toulouse, France | Vocational
                           </li>
                         </ul>
                         <p>
@@ -650,117 +200,58 @@ font-size: 13px;
                       </div>
                     </div>
                     <div class="col-md-12">
-                      <p>
-                      </p>
-                      <!-- <p class="col-md-12 p-l" style="    padding-top: 3px;
-color: #7d7d7d;
-font-size: 13px;
-}">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis ultricies nec pellentesque eu.</p> -->
-                      <div class="contact_details col-md-12 col-sm-8 p-l" style="display: block;
-                                                                                 padding-bottom: 8px;
-                                                                                 font-size: 13px;
-                                                                                 color: #7d7d7d;margin-top:10px;float:left;margin-left:-10px;margin-top:-7px;">
+                      <p></p>
+
+                      <div class="contact_details col-md-12 col-sm-8 p-l" style="display: block;padding-bottom: 8px;font-size: 13px;color: #7d7d7d;margin-top:10px;float:left;margin-left:-10px;margin-top:-7px;">
                         <li>
-                          <strong style="color: #237fa5;">Accounting Manager
-                          </strong>
+                          <strong style="color: #237fa5;">Accounting Manager</strong>
                         </li>
                       </div>
                       <div class="contact_details col-md-8 col-sm-8 p-l">
                         <span class="col-md-8">
-                          <strong  style="float:left;margin-left:-15px;font-size: 13px; padding-bottom:10px;" class="col-md-12">Top Skills
-                          </strong>
-                          <p style="float:left;margin-left:-13px;font-size: 11px;margin-top:-5px;" class="col-md-12">People Management
-                          </p>
-                          <p style="float:left;margin-left:-13px;font-size: 11px;margin-top:-5px;" class="col-md-12">Payroll Software Services
-                          </p>
-                          <p style="float:left;margin-left:-13px;font-size: 11px;margin-top:-5px;" class="col-md-12">Time Management
-                          </p>
+                          <strong style="float:left;margin-left:-15px;font-size: 13px; padding-bottom:10px;" class="col-md-12">Top Skills</strong>
+                          <p style="float:left;margin-left:-13px;font-size: 11px;margin-top:-5px;" class="col-md-12">People Management</p>
+                          <p style="float:left;margin-left:-13px;font-size: 11px;margin-top:-5px;" class="col-md-12">Payroll Software Services</p>
+                          <p style="float:left;margin-left:-13px;font-size: 11px;margin-top:-5px;" class="col-md-12">Time Management</p>
                         </span>
+
                         <span class="col-md-4">
-                          <strong style="padding-bottom:10px;float:left;margin-left:-15px;font-size: 13px;" class="col-md-12">Experience
-                          </strong>
-                          <p style="float:left;margin-left:-5px;font-size: 11px;margin-top:-5px;">40.0 Years
-                          </p>
-                          <p style="float:left;margin-left:-5px;font-size: 11px;margin-top:-5px;">40.0 Years
-                          </p>
-                          <p style="float:left;margin-left:-5px;font-size: 11px;margin-top:-5px;">37.8 Years
-                          </p>
+                          <strong style="padding-bottom:10px;float:left;margin-left:-15px;font-size: 13px;" class="col-md-12">Experience</strong>
+                          <p style="float:left;margin-left:-5px;font-size: 11px;margin-top:-5px;">40.0 Years</p>
+                          <p style="float:left;margin-left:-5px;font-size: 11px;margin-top:-5px;">40.0 Years</p>
+                          <p style="float:left;margin-left:-5px;font-size: 11px;margin-top:-5px;">37.8 Years</p>
                         </span>
                       </div>
                     </div>
                   </div>
-                  <div class="sorting_content col-md-5" style="padding: 25px 15px 15px;
-                                                               overflow: hidden;">
+                  <div class="sorting_content col-md-5" style="padding: 25px 15px 15px;overflow: hidden;">
                     <div class="col-md-6 ">
-                      <strong style="font-size: 12px;" class="col-md-12">Resume Updated
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Experience
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Authorization
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Desired Salary
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Relocaion
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Board
-                      </strong>
+                      <strong style="font-size: 12px;" class="col-md-12">Resume Updated</strong>
+                      <strong style="font-size: 12px;" class="col-md-12">Experience</strong>
+                      <strong style="font-size: 12px;" class="col-md-12">Authorization</strong>
+                      <strong style="font-size: 12px;" class="col-md-12">Desired Salary</strong>
+                      <strong style="font-size: 12px;" class="col-md-12">Relocaion</strong>
+                      <strong style="font-size: 12px;" class="col-md-12">Board</strong>
                     </div>
+
                     <div class="col-md-6">
-                      <strong style="font-size: 12px;" class="col-md-12">26 months ago
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">40.0 years
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">US Authorised 
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">-
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">-
-                      </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">-
-                      </strong>
+                      <strong style="font-size: 12px;" class="col-md-12">26 months ago</strong>
+                      <strong style="font-size: 12px;" class="col-md-12">40.0 years</strong>
+                      <strong style="font-size: 12px;" class="col-md-12">US Authorised </strong>
+                      <strong style="font-size: 12px;" class="col-md-12">-</strong>
+                      <strong style="font-size: 12px;" class="col-md-12">-</strong>
+                      <strong style="font-size: 12px;" class="col-md-12">-</strong>
                     </div>
                   </div>
                 </div>
                 <div class="row" >
                   <div class="col-xs-12">
                     <div class="results-footer-links-container">
-                      <nav style="background:#f2f2f2">
-                        <ul class="pagination" >
-                          <li >
-                            <a href="#" aria-label="Previous" rel="nofollow" class="btn btn-default previous  disabled">
-                            </a>
-                          </li>
-                          <li >
-                            <span class="active" style="background:#237fa5;border:1px solid #237fa5;color:#fff;margin-left:5px;">1
-                            </span>
-                          </li>
-                          <li>
-                            <a href="#" class="page-link" style="background:#fafafa;border:1px solid #237fa5;color:#237fa5;">2
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#" class="page-link" style="background:#fafafa;border:1px solid #237fa5;color:#237fa5;">3
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#" class="page-link" style="background:#fafafa;border:1px solid #237fa5;color:#237fa5;">4
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#" class="page-link" style="background:#fafafa;border:1px solid #237fa5;color:#237fa5;margin-right:5px;">5
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#" rel="nofollow" aria-label="Next" class="btn btn-default next ">
-                            </a>
-                          </li>
-                        </ul>
-                      </nav>
-                      <div id="mobileFilters">
-                      </div>
+                      <?php echo $links;?>
                     </div>
                   </div>
                 </div>
+                
                 <div class="modal fade" id="sendJobModal" tabindex="-1" role="dialog" aria-labelledby="sendJobModal" aria-hidden="true">
                   <div class="modal-dialog modal-sm">
                     <div class="modal-content">

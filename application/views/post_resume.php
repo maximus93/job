@@ -69,7 +69,7 @@
           </div>
         </div>
     </div>
-    
+
     <div class="container results-container">
       <section style="padding-top:50px;">
         <div class="container">
@@ -87,6 +87,22 @@
                     </div>
                   </div>
                 </div>
+
+                <div class="row form-group ">
+                    <div class="col-md-12">
+                        <label for="location" style="font-size:12px;">Skills/Keywords</label>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="addsz">
+                            <input id="location" type="text" name="skills[]" placeholder="e.g. php developer , web design" class="form-control" required>
+                        </div>
+                        <!--<p class="add_something btn-warning" style="margin-top:11px;" >Add Another Skills</p>-->
+                        <a href="javascript:void(0);" style="float:right;margin-top:15px;" class="add_something btn-warning">
+                            <span class="navbar-item-text-no-icon register-text" style="background:#ff9900;padding:10px 20px;border-radius: 7px !important;">Add More skills</span>
+                        </a>
+                    </div>
+                </div>
+
                 </br>
               <div class="row">
                 <div class="col-md-6 form-group">
@@ -209,6 +225,29 @@
 <p style="margin-bottom:20px;"> </p>
 </div>
 <?php
-$this->load->view("common/footer");
+  $this->load->view("common/footer");
 ?>
+    <script>
+        $(document).ready(function() {
+      var max_fields      = 10; //maximum input boxes allowed
+      var wrapper         = $(".addsz"); //Fields wrapper
+      var add_button      = $(".add_something"); //Add button ID
+      
+      var x = 1; //initlal text box count
+      $(add_button).click(function(e){ //on add input button click
+        
+        e.preventDefault();
+        if(x < max_fields){ //max input box allowed
+          x++; //text box increment
+          $(wrapper).append("<div style='margin-top:10px;'><div class='col-md-11' style='padding:0px 0px 0px 0px;'><input id='location' name='skills[]'' type='text'  placeholder='e.g. php developer , web design' class='form-control '></div>&nbsp;<a href='#' class='remove_field btn red'><div class='col-md-1' style='padding:0px 0px 0px 0px;'><img src='<?php echo base_url();?>images/if_Remove_27874.png' style='height:20px;width:20px;margin-top:-10px;'></div></a></div>"); //add input box
+        }
+      });
+      
+      $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+      })
+    });
+      
+    </script>
+
 </html>
