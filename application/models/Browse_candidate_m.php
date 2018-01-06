@@ -10,11 +10,12 @@ class Browse_candidate_m extends CI_Model
     }
 
     public function fetch_resume($limit, $start) {
-        $this->db->select('*')->from('lists')
-        ->join('list_items', 'list_items.list_id = lists.id')
-        ->where('list_id', $id)
-        ->limit($limit, $start);
-        $query = $this->db->get("resume");
+        $this->db->select('*');
+        $this->db->from('resume');
+        $this->db->join('users', 'users.user_id = resume.user_id');
+        //$this->db->where('list_id', $id);
+        $this->db->limit($limit, $start);
+        $query = $this->db->get();
         return $query->result();
    }
 }

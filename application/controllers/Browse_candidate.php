@@ -31,7 +31,7 @@ class Browse_candidate extends CI_Controller {
         $config = array();
         $config["base_url"] = base_url() . "browse_candidate";
         $config["total_rows"] = $this->browse_candidate_m->record_count();
-        $config['per_page'] = 1;
+        $config['per_page'] = 10;
 		$config['uri_segment'] = 2;
 		$config['num_links'] = 3;
 		$config['page_query_string'] = FALSE;
@@ -59,8 +59,8 @@ class Browse_candidate extends CI_Controller {
         $data["resume_details"] = $this->browse_candidate_m->fetch_resume($config["per_page"], $page);
         $data["links"] = $this->pagination->create_links();
         //$v = $data["resume_details"];
-       // print_r($v['user_id']]);
-        exit;
+        //print_r($data["resume_details"]);
+        
         $this->load->view("browse_candidate", $data);
 
         //print_r($data);
