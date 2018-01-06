@@ -17,7 +17,15 @@ class Dashboard_m extends CI_Model
 		$this->db->join('resume', 'users.user_id = resume.user_id');
 		$this->db->where($condition);
 		$query = $this->db->get();
-		return $query;
+		return $query->row();
 		}
+
+	public function edit_resume_file($user_id,$records)
+	{
+		$where  = array('user_id' => $user_id);
+		$this->db->where($where);
+		$query = $this->db->update('resume', $records);
+		return $query;
+	}
 }
 ?>

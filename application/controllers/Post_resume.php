@@ -105,5 +105,101 @@ class Post_resume extends CI_Controller {
 			redirect('Post_resume');	
 		}
 	}
+
+	public function fetch_data()
+	{
+		$emp_id = $this->uri->segment(3);
+		$this->load->model('post_resume_m');
+		$emp_details['emp_details'] = $this->post_resume_m->fetch_emp_details($emp_id);
+		$this->load->view('post_resume',$emp_details);
+	}
+	public function edit_resume()
+	{
+		$this->load->model('post_resume_m');
+		$user_id = $this->session->userdata['logged_in']['user_id'];
+		$job_title = $this->input->post('job_title');
+		$company_name = $this->input->post('company_name');
+		$start_date = $this->input->post('start_date');
+		$end_date = $this->input->post('end_date');
+		$education = $this->input->post('education');
+		$max_salary = $this->input->post('max_salary');
+		$travel_distance = $this->input->post('travel_distance');
+		$relocate = $this->input->post('relocate');
+		$post_type = $this->input->post('post_type');
+		$skills_get = $this->input->post('skills');
+		$all_skills = implode(",",$skills_get);
+		$kichu = $this->post_resume_m->fetch_get_resume($user_id);
+		$resume_file = $kichu->resume_file;
+
+		if(!empty($_FILES['resume']['name'])){
+			$config['upload_path'] = 'uploads/';
+			$config['allowed_types'] = 'pdf|docx|doc';
+			$config['file_name'] = rand(999,99999).$_FILES['resume']['name'];
+			
+			$this->load->library('upload',$config);
+			$this->upload->initialize($config);
+			
+			if($this->upload->do_upload('resume')){
+				$uploadData = $this->upload->data();
+				$resume_file = $uploadData['file_name'];
+			}else{
+				$resume_file = '';
+			}
+		}else{
+			$resume_file = '$resume_file';
+		}
+		$cover_letter = $kichu->cover_letter;
+		if(!empty($_FILES['cover_letter']['name'])){
+                $config['upload_path'] = 'uploads/';
+                $config['allowed_types'] = 'pdf|docx|doc';
+                $config['file_name'] = rand(999,99999).$_FILES['cover_letter']['name'];
+                
+                $this->load->library('upload',$config);
+                $this->upload->initialize($config);
+                
+                if($this->upload->do_upload('cover_letter')){
+                    $uploadData = $this->upload->data();
+					$coverletr_file = $uploadData['file_name'];
+                }else{
+                    $coverletr_file = '';
+                }
+		}else{
+			$coverletr_file = '$cover_letter';
+		}
+		$posted_date = time();
+
+		$records = array(
+			'job_title' => $job_title,
+			'company_name' => $company_name,
+			'skills' => $all_skills,
+			'start_date' => strtotime($start_date),
+			'end_date' => strtotime($end_date),
+			'education' => $education,
+			'max_salary' => $max_salary,
+			'travel_distance' => $travel_distance,
+			'relocate' => $relocate,
+			'resume_file' => $resume_file,
+			'cover_letter' => $coverletr_file,
+			'post_type' => $post_type,
+			'date_posted' => $posted_date,
+			'user_id' => $user_id
+		);
+		$edit_data = $this->post_resume_m->edit_resume_m($user_id,$records);
+		if($edit_data)
+		{
+			$this->session->set_flashdata("success", "Success , Your Profile Details Update Successfully!");
+			redirect('post_resume/fetch_data/'.$user_id);
+		}
+		else
+		{
+			$this->session->set_flashdata("failed", "Something went wrong!");
+			redirect('post_resume/fetch_data/'.$user_id);
+		}
+		
+
+
+	}
+
+	
 }
 ?>
