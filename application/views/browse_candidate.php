@@ -158,33 +158,8 @@
                     <p><?php echo $result_count;?></p>
                   </div>
                 </div>  
-                <div class="col-md-5 col-sm-5 filter p-r text-right">
-                  <div class="col-md-7 col-sm-5">
-                    <p>Sort by:</p>
-                  </div>
-                  <div class="col-md-5 col-sm-7 p-r">
-                    <div class="dropdown">
-                      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">By Default 
-                        <span class="caret">
-                        </span>
-                      </button>
-                      <ul class="dropdown-menu pull-right">
-                        <li>
-                          <a href="#" style="color:black;">Executive
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" style="color:black;">SEO
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" style="color:black;">Java Developer
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
+
+
                 <div class="clearfix"></div>
                 
                 <?php
@@ -196,22 +171,37 @@
                 <div class="page_listing candidate" style="border:1px  solid #e1e1e1;border-bottom:  1px solid #e1e1e1;">
                   <div class="sorting_content col-md-7" style=" padding: 25px 15px 15px;overflow: hidden;">
                     <div class="tab-image" style="float: left;text-align: center;margin-right: 20px;">
-                      <img src="<?php echo base_url();?>images/candidate-5.png" alt="" class="img-responsive">
+                      <img src="<?php echo base_url();?><?php echo $data_val->profile_picture;?>" alt="" style="height:100px;" class="img-responsive">
                     </div>
                     <div class="overflow" style="overflow:hidden;">
                       <div class="text-shorting" style="font-size: 16px;color: #333;line-height: 30px;font-weight: 500;margin: 0px;">
                         <a href="<?php echo base_url();?>candidate_details/">
                           <h1 style="font-size: 16px;color: #237fa5;line-height: 35px;font-weight: 700;margin-top:-10px;">
-                            <u>Homer Simpson</u>
+                            <u><?php echo ucfirst($data_val->first_name);?> <?php echo ucfirst($data_val->last_name);?></u>
                           </h1>
                         </a>
                         <ul class="unstyled" style="margin-top:-25px;padding: 0px;">
-                          <li style="display: inline-block;padding: 0 50px 0 0;color: #7d7d7d;font-size: 13px;"> Toulouse, France | Vocational</li>
+                          <li style="display: inline-block;padding: 0 50px 0 0;color: #7d7d7d;font-size: 13px;"> 
+                            <?php 
+                              $addr = ucfirst($data_val->address);
+                              if($addr != NULL){
+                                echo $addr;
+                              }else{
+                                echo "Address not provided";
+                              }
+                            ?>
+                              
+                          </li>
                         </ul>
 
                         <ul class="" style="margin-top:-15px;padding: 0px;list-style: none;">
                           <?php
-                            for($i=0; $i<count($skills) ; $i++){
+                            if(count($skills) > 5){
+                                $count_skillz = 5;
+                            }else{
+                                $count_skillz = count($skills);
+                            }
+                            for($i=0; $i<$count_skillz ; $i++){
                           ?>
                           <li style='float:left;background:#fafafa;border:1px solid #CCC;padding:3px 10px;margin:5px;font-size: 12px;'> <?php echo $skills[$i];?></li>
                           <?php
@@ -226,16 +216,19 @@
 
 
                   <div class="sorting_content col-md-5" style="padding: 25px 15px 15px;overflow: hidden;">
+                    <p style="font-size: 12px;"> 
+                        <a href='' class="btn btn-warning" >Shortlist</a>
+                        <a href='' class="btn btn-default" >Compare</a>
+                        <a href='' class="btn btn-primary" >Details</a>
+                    </p>
                     <div class="col-md-3 ">
-                      <p style="font-size: 12px;font-weight:bold;">Added:</p>
                       <p style="font-size: 12px;font-weight:bold;">Job Title:</p>
                       <p style="font-size: 12px;font-weight:bold;">Salary:</p>
                       <p style="font-size: 12px;font-weight:bold;">Relocation:</p>
                       <p style="font-size: 12px;font-weight:bold;">Company:</p>
                     </div>
 
-                    <div class="col-md-9">
-                      <p style="font-size: 12px;"> <?php echo $resume_uploaded_date;?></p>
+                    <div class="col-md-9"> 
                       <p style="font-size: 12px;"> <?php echo $data_val->job_title;?> </p>
                       <p style="font-size: 12px;"> $<?php echo $data_val->max_salary;?> </p>
                       <p style="font-size: 12px;"> <?php echo $data_val->relocate;?> </p>
