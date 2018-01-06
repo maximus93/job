@@ -138,7 +138,7 @@ $this->load->view("common/header");
         <div class="col-sm-12 reset-to-row equal-height">
           <?php
 $this->load->view("common/another_sidebar");
-foreach ($user_details->result() as $key) {
+
 ?> 
           <div class="col-sm-9 job-results clearfix" style="background:none;border:1px;">
             <div class="row">
@@ -150,7 +150,7 @@ foreach ($user_details->result() as $key) {
                   <div class="sorting_content col-md-4" style=" padding: 25px 15px 15px;
                                                                overflow: hidden;">
                     <div class="tab-image" style="float: left;text-align: center;margin-right: 20px;">
-                      <img src="<?php echo base_url();?><?php echo $key->profile_picture;?>" alt="" class="img-responsive" style="height:60px;width:60px;">
+                      <img src="<?php echo base_url();?><?php echo $user_details->profile_picture;?>" alt="" class="img-responsive" style="height:60px;width:60px;">
                     </div>
                     <div class="overflow" style="overflow:hidden;">
                       <div class="text-shorting" style="font-size: 16px;color: #333;
@@ -162,14 +162,14 @@ foreach ($user_details->result() as $key) {
                                    line-height: 35px;
                                    font-weight: 700;
                                    margin-top:-1px;">
-                          <?php echo ucfirst($key->first_name);?> <?php echo ucfirst($key->last_name);?>
+                          <?php echo ucfirst($user_details->first_name);?> <?php echo ucfirst($user_details->last_name);?>
                        
                         </h1>
                         <ul class="unstyled" style="margin-top:-25px;padding: 0px;">
                           <li style="display: inline-block;
                                      padding: 0 50px 0 0;
                                      color: #7d7d7d;
-                                     font-size: 13px;"> <?php echo $key->address;?>
+                                     font-size: 13px;"> <?php echo $user_details->address;?>
                           </li>
                         </ul>
                         <p>
@@ -186,11 +186,11 @@ font-size: 13px;
                     
                       <div class="contact_details col-md-8 col-sm-8 p-l">
                         <span class="col-md-8">
-						<strong  style="float:left;margin-left:-30px;font-size: 12px; padding-bottom:5px;" class="col-md-12"><b style="font-size:13px;">TYPE</b>:&nbsp;<span style="color:#237fa5"><?php echo ucfirst($key->user_type);?></span>
+						<strong  style="float:left;margin-left:-30px;font-size: 12px; padding-bottom:5px;" class="col-md-12"><b style="font-size:13px;">TYPE</b>:&nbsp;<span style="color:#237fa5"><?php echo ucfirst($user_details->user_type);?></span>
                           </strong>
-                          <strong  style="float:left;margin-left:-30px;font-size: 12px; padding-bottom:5px;" class="col-md-12"><b style="font-size:13px;">STATUS</b>:&nbsp;<span style="color:#237fa5"><?php echo ucfirst($key->user_status);?></span>
+                          <strong  style="float:left;margin-left:-30px;font-size: 12px; padding-bottom:5px;" class="col-md-12"><b style="font-size:13px;">STATUS</b>:&nbsp;<span style="color:#237fa5"><?php echo ucfirst($user_details->user_status);?></span>
                           </strong>
-                          <strong  style="float:left;margin-left:-30px;font-size: 12px; padding-bottom:5px;" class="col-md-12"><b style="font-size:13px;">JOINING</b>:&nbsp;<span style="color:#237fa5"><?php echo date('d/m/Y',$key->registration_date);?></span>
+                          <strong  style="float:left;margin-left:-30px;font-size: 12px; padding-bottom:5px;" class="col-md-12"><b style="font-size:13px;">JOINING</b>:&nbsp;<span style="color:#237fa5"><?php echo date('d/m/Y',$user_details->registration_date);?></span>
                           </strong>
                           
                         </span>
@@ -222,22 +222,22 @@ font-size: 13px;
                       <strong style="font-size: 12px;color:#237fa5" class="col-md-12">
 						<?php
 						$date = time();
-						$resume_upload_time = $key->registration_date;
+						$resume_upload_time = $user_details->registration_date;
 						$remain = $date - $resume_upload_time;
 						echo date('m',$remain);
 						?> month's ago
                       </strong>
                       <strong style="font-size: 12px;color:#237fa5" class="col-md-12">
 						<?php
-						if($key->start_date =='' && $key->end_date =='')
+						if($user_details->start_date =='' && $user_details->end_date =='')
 							{
 							?>
 							Not Provided Yet
 							<?php
 							}
 							else{
-								$start_date = $key->start_date;
-								$end_date = $key->end_date;
+								$start_date = $user_details->start_date;
+								$end_date = $user_details->end_date;
 								$experience = $start_date - $end_date;
 							?>
 								<?php echo date('Y',$experience);?>years
@@ -248,7 +248,7 @@ font-size: 13px;
                       </strong>
                     
                       <strong style="font-size: 12px;color:#237fa5" class="col-md-12"><?php
-						if($key->max_salary == '')
+						if($user_details->max_salary == '')
 						{
 						?>
 						Not Provided Yet
@@ -257,13 +257,13 @@ font-size: 13px;
 						else
 						{
 					  ?>
-							<?php echo $key->max_salary;?>years
+							<?php echo $user_details->max_salary;?>years
 					  <?php
 						}
 					  ?>
                       </strong>
                       <strong style="font-size: 12px;color:#237fa5" class="col-md-12"><?php
-						if($key->travel_distance == '')
+						if($user_details->travel_distance == '')
 						{
 					  ?>
 						Not Provided Yet
@@ -272,14 +272,14 @@ font-size: 13px;
 					  else
 						{
 					  ?>
-						<?php echo $key->travel_distance;?> km
+						<?php echo $user_details->travel_distance;?> km
 					  <?php
 						}
 					  ?>
                       </strong>
                       <strong style="font-size: 12px;color:#237fa5" class="col-md-12">
 					  <?php
-						if($key->relocate	 == '')
+						if($user_details->relocate	 == '')
 						{
 					  ?>
 						Not Provided Yet
@@ -288,14 +288,14 @@ font-size: 13px;
 					  else
 						{
 					  ?>
-					  <?php echo $key->relocate;?>
+					  <?php echo $user_details->relocate;?>
 					  <?php
 						}
 					  ?>
                       </strong>
 					  <strong style="font-size: 12px;color:#237fa5;" class="col-md-12">  
 					  <?php
-						if($key->education == '')
+						if($user_details->education == '')
 						{
 					  ?>
 						&nbsp;Not Provided Yet
@@ -304,7 +304,7 @@ font-size: 13px;
 					  else
 						{
 					  ?>
-					  <?php echo $key->education;?>
+					  <?php echo $user_details->education;?>
 					  <?php
 						}
 					  ?>
@@ -315,7 +315,7 @@ font-size: 13px;
                     </div>
                   </div>
                   <div class="col-md-3">
-                    <a href="<?php echo base_url();?>post_resume/fetch_data/<?php echo $key->user_id?>"><div class="col-md-12" style="padding:20px;">
+                    <a href="<?php echo base_url();?>post_resume/fetch_data/<?php echo $user_details->user_id?>"><div class="col-md-12" style="padding:20px;">
                       <button class="btn btn-primary" style="background:#5cc069;border:1px solid #5cc069;">Edit Profile
                       </button>
                     </div></a>
@@ -387,17 +387,23 @@ font-size: 13px;
                           </strong>
                         </p>
                         <p style="font-size:13px;">
-                          <strong>Resume Download
+                          <strong>Resume Update
                           </strong>
                         </p>
                       </div>
                       <div class="col-md-6">
                         <p style="font-size:13px;">
-                          <strong>2 Months Ago
+                          <strong><?php 
+						  $posted_date = $user_details->date_posted;
+							$now = time();
+							$remain_date = $now - $posted_date;
+							echo date('d',$remain_date);
+
+						?> Months Ago
                           </strong>
                         </p>
                         <p>
-                          <button class="btn btn-primary btn-xs">Download
+                          <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">Update
                           </button>
                         </p>
                       </div>
@@ -419,7 +425,7 @@ font-size: 13px;
                     <br>
                     <p>
                       <u>
-                        <strong>KEY SKILLS
+                        <strong>user_details SKILLS
                         </strong>
                       </u>
                     </p>
@@ -554,7 +560,8 @@ font-size: 13px;
 </div>
 </div>
 </div> -->
-        <div class="modal fade" id="sendJobModal" tabindex="-1" role="dialog" aria-labelledby="sendJobModal" aria-hidden="true">
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="sendJobModal" aria-hidden="true">
           <div class="modal-dialog modal-sm">
             <div class="modal-content">
               <div class="modal-body">
@@ -562,29 +569,13 @@ font-size: 13px;
                   <span class="close-btn">
                   </span>
                 </button>
-                <h3 class="brand-font">Email this job
-                </h3>
-                <form>
-                  <div id="email-job">
-                    <div class="form-group">
-                      <p>Email address:
-                      </p>
-                      <input id="emailMeThisJob" type="email" placeholder="name@example.com" class="form-control" />
-                      <div id="SendJobEmptyEmail" class="alert alert-danger alert-danger-icon alert-extensions" style="display: none;">Please enter your email address.
-                      </div>
-                      <div id="SendJobInvalidEmail" class="alert alert-danger alert-danger-icon alert-extensions" style="display: none;">Please enter a valid email address.
-                      </div>
-                    </div>
-                    <div class="form-group text-center">
-                      <input id="sendJobByEmail" type="submit" value="Send job" class="btn btn-primary btn-lg"/>
-                    </div>
-                  </div>
-                  <div id="send-job-confirmation" class="alert alert-success alert-success-icon" style="display: none;">
-                    This job has been emailed to:
-                    <br/>
-                    <span id="confirmationEmail" class="confirmationEmail">
-                    </span>
-                  </div>
+                <form method="POST" action="<?php echo base_url();?>dashboard/edit_resume_file" enctype="multipart/form-data" class="job-add-form">
+                   <div class="form-group" style="margin-top:5px;">
+					<label for="location" style="font-size:12px;">Update Resume
+					</label>
+					
+					<input type="file" name="resume_file" class="form-control" required>
+				  </div>
                 </form>
                 <div class="text-center">
                   <a data-dismiss="modal" aria-label="Close" href="#">Close this window
@@ -601,9 +592,7 @@ font-size: 13px;
       </div>
     </div>
     </div>
-	<?php
-		}
-	?>
+	
   </div>
 </div>
 </div>

@@ -32,5 +32,43 @@ class Dashboard extends CI_Controller {
 		$data['user_details'] = $this->dashboard_m->fetch_details($user_id);
 		$this->load->view('dashboard',$data);
 	}
+
+	public function edit_resume_file()
+	{
+		$this->load->model('dashboard_m');
+		$user_id = $this->session->userdata['logged_in']['user_id'];
+		
+			$config['upload_path'] = 'uploads/';
+			$config['allowed_types'] = 'pdf|docx|doc';
+			$config['file_name'] = rand(999,99999).$_FILES['resume_file']['name'];
+			
+			$this->load->library('upload',$config);
+			$this->upload->initialize($config);
+			
+			if($this->upload->do_upload('resume_file')){
+				$uploadData = $this->upload->data();
+				$resume_file = $uploadData['file_name'];
+			}else{
+				$resume_file = '';
+			}
+
+			$posted_date = time();
+
+			$records = array(
+			'resume_file' => $resume_file,
+			'date_posted' => $posted_date,	
+		);
+		$edit_resume_data = $this->dashboard_m->edit_resume_file($user_id,$records);
+		if($edit_resume_data)
+		{
+			$this->session->set_flashdata("success", "Success , Your Profile Details Update Successfully!");
+			redirect('dashboard');
+		}
+		else
+		{
+			$this->session->set_flashdata("failed", "Something Went Wrong!");
+			redirect('dashboard');
+		}
+	}
 }
 ?>
