@@ -296,17 +296,7 @@
 		$this->load->view("common/header");
 	?> 
     </div>
-    <div class="simple_bannenr" style="">
-      <div class="container">
-        <div class="row" >
-          <div class="col-md-12 text-center">
-            <!-- <div class="work-timee" style="font-size:18px;margin-bottom:5px;">Full Time</div>  -->
-            <div class="banner-heading" style="font-size:25px;font-weight:300;color:white;">Sign Up
-            </div>    
-          </div>  
-        </div>
-      </div>
-    </div>
+
     <div class="container results-container">
 		<?php
 		

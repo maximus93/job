@@ -32,27 +32,22 @@
     </div>
     <div id="header-container">
      <?php
-		$this->load->view("common/header");
-	?> 
+		    $this->load->view("common/header");
+	   ?> 
     </div>
-				 <div class="simple_bannenr" style="">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12 text-center">
-                                 <!-- <div class="work-timee" style="font-size:18px;margin-bottom:5px;">Full Time</div>  -->
-                                <div class="banner-heading" style="font-size:25px;font-weight:300;color:white;">Login</div>    
-                            </div>  
-                        </div>
-                    </div>
-                </div>
+
+	  <!--<div class="simple_bannenr" style="">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                     <div class="work-timee" style="font-size:18px;margin-bottom:5px;">Full Time</div>  
+                    <div class="banner-heading" style="font-size:25px;font-weight:300;color:white;">Login</div>    
+                </div>  
+            </div>
+        </div>
+    </div>-->
     <div class="container results-container">
-		<?php
-			if($this->session->flashdata('password_failed')){
-		?>
-			<div class="alert alert-danger" style="margin-top:10px;text-align:center;"> <strong><?php echo $this->session->flashdata('password_failed');?></strong> </div>
-		<?php
-			}
-		?>
+		
       <!--<div class="row">
         <div class="col-sm-12">
           <ol class="breadcrumb small">
@@ -73,40 +68,40 @@
           </ol>
         </div>
       </div>-->
-      
-      
-      <p style="margin-bottom:20px;"> </p>
 
         <section>
-      <div class="container">
-        <div class="row">
-
-		  <div class="col-md-3"></div>
-           <div class="col-md-6">
-            <div class="box" style="background:#fafafa;">
-              <h3 class="heading">Login</h3>
-              <!-- <p class="lead" >Already our customer?</p> -->
-              <!-- <p class="text-muted" style="color:black;">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p> -->
-              <hr>
-              <form action="<?php echo base_url();?>Login/login_user" method="post">
-                <div class="form-group">
-                  <label for="email">Email</label>
-					<input id="email" type="text" class="form-control" name="email">
-				</div>
-				<div class="form-group" name="email" style="margin-top:10px;">
-					<label for="password">Password</label></br>
-					<input id="password" name="password" type="password" class="form-control">
-			 </div>
-              <div class="text-center">
-                <button type="submit" class="btn btn-primary"><!-- <i class="fa fa-sign-in"> --></i> Log in</button>
+          <div class="container">
+            
+            <div class="row">
+      		    <div class="col-md-3"></div>
+                   <div class="col-md-6">
+                      <?php
+                        if($this->session->flashdata('password_failed')){
+                      ?>
+                        <div class="alert alert-danger" style="margin-top:10px;text-align:center;"> <strong><?php echo $this->session->flashdata('password_failed');?></strong> </div>
+                      <?php
+                        }
+                      ?>
+                      <div class="box" style="background:#fafafa;">
+                        <form action="<?php echo base_url();?>Login/login_user" method="post">
+                          <div class="form-group">
+                               <label for="email">Email</label>
+          					           <input id="email" type="email" class="form-control" name="email" required="true">
+          				        </div>
+          				        <div class="form-group" name="email" style="margin-top:10px;" required="true">
+          					           <label for="password">Password</label></br>
+          					           <input id="password" name="password" type="password" class="form-control">
+          			          </div>
+                          <div class="text-center">
+                            <button type="submit" class="btn btn-primary"><!-- <i class="fa fa-sign-in"> --></i> Log in</button>
+                          </div>
+          		          </form>
+                      </div>
+                  </div> 
+      		        <div class="col-md-3"></div>
               </div>
-		    </form>
-            </div>
-          </div> 
-		  <div class="col-md-3"></div>
-        </div>
-      </div>
-    </section>
+          </div>
+        </section>
 
     </div>
   <?php

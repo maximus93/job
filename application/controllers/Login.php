@@ -55,7 +55,11 @@ class Login extends CI_Controller {
 			$this->session->set_flashdata("password_failed", "Email Or Password Does Not match!");
 			redirect('login');
 		}
+	}
 
+	public function logout(){
+		$this->session->sess_destroy();
+		redirect('login','refresh'); 
 	}
 }
 ?>

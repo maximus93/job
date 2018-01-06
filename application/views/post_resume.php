@@ -40,16 +40,6 @@
         $this->load->view("common/header");
       ?>
     </div>
-    <div class="simple_bannenr" style="">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <div class="banner-heading" style="font-size:25px;font-weight:700;color:white;">Upload Resume
-            </div>    
-          </div>  
-        </div>
-      </div>
-    </div>
     
     <div class="container" style="margin-top:10px;">
         <div class="row">
@@ -73,10 +63,9 @@
     <div class="container results-container">
       <section style="padding-top:50px;">
         <div class="container">
-          <div class="row"   style="background:#fff;">
+          <div class="row" style="background:#fff;">
             <div class="col-lg-10 col-lg-offset-1">
               <form method="POST" action="<?php echo base_url();?>post_resume/save_resume" enctype="multipart/form-data" class="job-add-form">
-
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
@@ -94,7 +83,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="addsz">
-                            <input id="location" type="text" name="skills[]" placeholder="e.g. php developer , web design" class="form-control" required>
+                          <input id="location" type="text" name="skills[]" placeholder="e.g. php developer , web design" class="form-control" required>
                         </div>
                         <!--<p class="add_something btn-warning" style="margin-top:11px;" >Add Another Skills</p>-->
                         <a href="javascript:void(0);" style="float:right;margin-top:15px;" class="add_something btn-warning">
