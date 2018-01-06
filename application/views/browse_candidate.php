@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta charset="utf-8" />
     <?php
-$this->load->view("common/meta_links");
-?> 
+      $this->load->view("common/meta_links");
+    ?> 
     <style>
       .job_title{
         color: #333;
@@ -101,12 +101,31 @@ $this->load->view("common/meta_links");
         .bottom_text {
           overflow: hidden;
         }
+        .pagination ul{
+            list-style: none !important;
+        }
+        .pagination ul li{
+            float:left;
+            list-style: none;
+        }
+        .anchor_class{
+          background:#fafafa;border:1px solid #237fa5;color:#237fa5 !important;
+        }
+
+
     </style>
     <style>
       .sidebar-text{
         font-size: 13px;
         color: #333;
         font-weight: 500;
+      }
+      .page-link{
+        background:#fafafa !important;
+        border:1px solid #237fa5 !important;
+        color:#237fa5 !important;
+        margin:3px !important;
+        border-radius: 5px !important;
       }
     </style>
   </head>
@@ -180,9 +199,10 @@ $this->load->view("common/meta_links");
                 <div class="clearfix"></div>
                 
                 <?php
-                  print_r($resume_details);
+                  //print_r($resume_details);
                   foreach($resume_details as $data_val){
                       $skills = explode(",",$data_val->skills);
+                      $resume_uploaded_date = date("M d Y",$data_val->date_posted);
                 ?>
                 <div class="page_listing candidate" style="border:1px  solid #e1e1e1;border-bottom:  1px solid #e1e1e1;">
                   <div class="sorting_content col-md-7" style=" padding: 25px 15px 15px;overflow: hidden;">
@@ -217,20 +237,20 @@ $this->load->view("common/meta_links");
 
 
                   <div class="sorting_content col-md-5" style="padding: 25px 15px 15px;overflow: hidden;">
-                    <div class="col-md-6 ">
-                      <strong style="font-size: 12px;" class="col-md-12">Resume Updated</strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Experience</strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Authorization</strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Desired Salary</strong>
-                      <strong style="font-size: 12px;" class="col-md-12">Relocaion</strong>
+                    <div class="col-md-3 ">
+                      <p style="font-size: 12px;font-weight:bold;">Added:</p>
+                      <p style="font-size: 12px;font-weight:bold;">Job Title:</p>
+                      <p style="font-size: 12px;font-weight:bold;">Salary:</p>
+                      <p style="font-size: 12px;font-weight:bold;">Relocation:</p>
+                      <p style="font-size: 12px;font-weight:bold;">Company:</p>
                     </div>
 
-                    <div class="col-md-6">
-                      <strong style="font-size: 12px;" class="col-md-12">26 months ago</strong>
-                      <strong style="font-size: 12px;" class="col-md-12">40.0 years</strong>
-                      <strong style="font-size: 12px;" class="col-md-12">US Authorised </strong>
-                      <strong style="font-size: 12px;" class="col-md-12">-</strong>
-                      <strong style="font-size: 12px;" class="col-md-12">-</strong>
+                    <div class="col-md-9">
+                      <p style="font-size: 12px;"> <?php echo $resume_uploaded_date;?></p>
+                      <p style="font-size: 12px;"> <?php echo $data_val->job_title;?> </p>
+                      <p style="font-size: 12px;"> $<?php echo $data_val->max_salary;?> </p>
+                      <p style="font-size: 12px;"> <?php echo $data_val->relocate;?> </p>
+                      <p style="font-size: 12px;"> <?php echo $data_val->company_name;?> </p>
                     </div>
                   </div>
                 </div>
