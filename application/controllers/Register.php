@@ -46,7 +46,6 @@ class Register extends CI_Controller {
 		{
 			$records = array('first_name'=>$first_name,'last_name'=>$last_name,'email'=>$email,'password'=>$password,'phone'=>$phone,'postcode'=>$postcode,'profile_picture'=>$profile_image,'registration_date'=>$date,'user_type'=>$user_type,'user_status'=>$user_status);
 			$insert_data = $this->register_m->insert_employee($records);
-
 			if($insert_data != '')
 		{
 			$records = array('emp_id'=> $insert_data);

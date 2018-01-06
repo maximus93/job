@@ -80,7 +80,7 @@ class Post_resume extends CI_Controller {
 			'job_title' => $job_title,
 			'company_name' => $company_name,
 			'skills' => $all_skills,
-			'start_date' => strotime($start_date),
+			'start_date' => strtotime($start_date),
 			'end_date' => strtotime($end_date),
 			'education' => $education,
 			'max_salary' => $max_salary,
