@@ -61,7 +61,7 @@ class Dashboard extends CI_Controller {
 		$edit_resume_data = $this->dashboard_m->edit_resume_file($user_id,$records);
 		if($edit_resume_data)
 		{
-			$this->session->set_flashdata("success", "Success , Your Profile Details Update Successfully!");
+			$this->session->set_flashdata("success", "Success , Your Resume Has Been Updated Successfully!");
 			redirect('dashboard');
 		}
 		else
