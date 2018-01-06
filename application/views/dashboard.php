@@ -120,21 +120,25 @@ $this->load->view("common/meta_links");
 $this->load->view("common/header");
 ?> 
     </div>
-    <div class="simple_bannenr" style="margin-bottom:20px;">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center">
-           
-            <div class="banner-heading" style="font-size:25px;font-weight:300;color:#fff;">User Dashboard
-            </div>    
-          </div>  
-        </div>
-      </div>
-    </div>
+
     <div class="container results-container">
       <p style="margin-bottom:20px;"> 
       </p>
       <div class="row job-results-row" style="margin-bottom:40px;">
+	  <div class="col-sm-12">
+	         <?php
+              if($this->session->flashdata('success')){
+            ?>
+              <div class="alert alert-success"> <strong><?php echo $this->session->flashdata('success');?></strong> </div>
+            <?php
+              }
+              if($this->session->flashdata('failed')){
+            ?>
+              <div class="alert alert-danger"> <strong><?php echo $this->session->flashdata('failed');?></strong> </div>
+            <?php
+              }
+            ?>
+			</div>
         <div class="col-sm-12 reset-to-row equal-height">
           <?php
 $this->load->view("common/another_sidebar");
@@ -315,10 +319,16 @@ font-size: 13px;
                     </div>
                   </div>
                   <div class="col-md-3">
-                    <a href="<?php echo base_url();?>post_resume/fetch_data/<?php echo $user_details->user_id?>"><div class="col-md-12" style="padding:20px;">
+                    <a href="<?php echo base_url();?>post_resume/fetch_data/<?php echo $user_details->user_id?>"><div class="col-md-12" style="padding:20px;width:100px;">
                       <button class="btn btn-primary" style="background:#5cc069;border:1px solid #5cc069;">Edit Profile
                       </button>
                     </div></a>
+
+					<a href="<?php echo base_url();?>edit_setting"><div class="col-md-12" style="padding:20px;margin-top:-28px;width:100px;">
+                      <button class="btn btn-primary" style="background:#5cc069;border:1px solid #5cc069;">Get Setting
+                      </button>
+                    </div></a>
+
                     <div class="col-md-12">
                       <a href="#">
                         <p style="color:#237fa5;font-size:13px;" class="col-md-12">
@@ -370,7 +380,7 @@ font-size: 13px;
                       </a>
                     </li>
                     <li>
-                      <a href="#menu1" style="border:none;">Candidate Detail
+                      <a href="#menu1" style="border:none;">Candidate Details
                       </a>
                     </li>
                     <li>
@@ -408,55 +418,28 @@ font-size: 13px;
                         </p>
                       </div>
                       <hr>
-                      <div class="col-md-12" style="border:1px solid #e1e1e1;padding-top:20px;padding-left:30px;margin-top:20px;">
-                        <p>
-                          <strong style="font-size:15px;">CANDIDATE NAME
-                          </strong>
-                        </p>
-                        <p style="font-size:13px;margin-top:-5px;">Accounting Manager
-                        </strong>
-                      </p>
-                    <p style="font-size:13px;margin-top:-5px;">Wonderlust Finanace Corporation Private Limited
-                    </p>
-                    <p style="font-size:13px;margin-top:-5px;">Pin - 700122
-                    </p>
-                    <p style="font-size:13px;margin-top:-5px;">HSimpson@gmail.com
-                    </p>
-                    <br>
-                    <p>
-                      <u>
-                        <strong>user_details SKILLS
-                        </strong>
-                      </u>
-                    </p>
-                    <ul>
-                      <li>Accounting.
-                      </li>
-                      <li>Administration & Office Support.
-                      </li>
-                      <li>Information & Communication Technology.
-                      </li>
-                      <li>Design & Architecture.
-                      </li>
-                    </ul>
-                  </div>
+              
                 </div>
                 <div id="menu1" class="tab-pane fade">
                   <p>
-                    <strong>Homer Simpson
+                    <strong><img src="<?php echo base_url();?><?php echo $user_details->profile_picture;?>" style="height:40px;width:40px;">&nbsp;&nbsp;<?php echo $user_details->first_name;?> <?php echo $user_details->last_name;?>
                     </strong>
                   </p>
                   <div class="col-md-12" style="border:1px solid #e1e1e1;padding-top:20px;padding-left:30px;margin-top:20px;">
                     <!-- <p><strong style="font-size:15px;">CANDIDATE NAME</strong></p> -->
-                    <p style="font-size:13px;margin-top:-5px;">Accounting Manager
+                    <p style="font-size:13px;margin-top:-5px;"><?php echo $user_details->job_title;?> 
                     </strong>
                   </p>
-                <p style="font-size:13px;margin-top:-5px;">SN Banerjee Road, Barrackpore,Pin - 700122
+				  <p style="font-size:13px;margin-top:-5px;"><?php echo $user_details->email;?> 
                 </p>
-                <p style="font-size:13px;margin-top:-5px;">
+				<p style="font-size:13px;margin-top:-5px;"><?php echo $user_details->phone;?> 
                 </p>
-                <p style="font-size:13px;margin-top:-5px;">HSimpson@gmail.com
+                <p style="font-size:13px;margin-top:-5px;"><?php echo $user_details->address;?> 
                 </p>
+				<p style="font-size:13px;margin-top:-5px;"><?php echo $user_details->postcode;?> 
+                </p>
+                
+                
                 <br>
               </div>
             </div>
@@ -464,48 +447,63 @@ font-size: 13px;
               <div class="col-md-12" style="border:1px solid #e1e1e1;">
                 <div class="col-md-6" style="padding-top:10px;">
                   <p style="font-size:13px;">
-                    <strong>First Name
+                    <strong>First Name:-
                     </strong>
                   </p>
                   <p style="font-size:13px;">
-                    <strong>Last Name
+                    <strong>Last Name:-
+                    </strong>
+                  </p>
+				  <p style="font-size:13px;">
+                    <strong>Type:-
                     </strong>
                   </p>
                   <p style="font-size:13px;">
-                    <strong>Father Name
+                    <strong>Skills:-
                     </strong>
                   </p>
                   <p style="font-size:13px;">
-                    <strong>Mother Name
+                    <strong>Experience:-
+                    </strong>
+                  </p>
+				  <p style="font-size:13px;">
+                    <strong>Salary:-
                     </strong>
                   </p>
                   <p style="font-size:13px;">
-                    <strong>School
+                    <strong>Education:-
                     </strong>
                   </p>
                   <p style="font-size:13px;">
-                    <strong>College
+                    <strong>Member Since:-
                     </strong>
                   </p>
-                  <p style="font-size:13px;">
-                    <strong>University
-                    </strong>
-                  </p>
+                 
                 </div>
                 <div class="col-md-6" style="text-align:center;padding-top:10px;" >
-                  <p style="font-size:13px;">Homer
+                  <p style="font-size:13px;"><?php echo $user_details->first_name;?>
                   </p>
-                  <p style="font-size:13px;">Simpson
+                  <p style="font-size:13px;"><?php echo $user_details->last_name;?>
                   </p>
-                  <p style="font-size:13px;">Gerrard Simpson
+                  <p style="font-size:13px;"><?php echo $user_details->job_title;?>
                   </p>
-                  <p style="font-size:13px;">Kathlin Simpson
+                  <p style="font-size:13px;"><?php echo $user_details->skills;?>
                   </p>
-                  <p style="font-size:13px;">Douglas International School
+                  <p style="font-size:13px;"><?php
+					$start_date = $user_details->start_date;
+					$end_date = $user_details->end_date;
+					$experience = $start_date-$end_date;
+					echo date('m',$experience);
+				?> year's
                   </p>
-                  <p style="font-size:13px;">Kathlin Simpson
+                  <p style="font-size:13px;">&#36;<?php echo $user_details->max_salary;?>
                   </p>
-                  <p style="font-size:13px;">Cambridge University
+                  <p style="font-size:13px;"><?php echo $user_details->education;?>
+                  </p>
+				   <p style="font-size:13px;"><?php 
+				   echo date('d/m/Y',$user_details->registration_date);
+					
+				?>
                   </p>
                 </div>
               </div>
@@ -561,28 +559,28 @@ font-size: 13px;
 </div>
 </div> -->
 
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="sendJobModal" aria-hidden="true">
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="sendJobModal" aria-hidden="true" ">
           <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-              <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span class="close-btn">
-                  </span>
-                </button>
-                <form method="POST" action="<?php echo base_url();?>dashboard/edit_resume_file" enctype="multipart/form-data" class="job-add-form">
+		  <div class="modal-content" style="width:100% !important;">
+      
+      <div class="modal-body">
+           <form method="POST" action="<?php echo base_url();?>dashboard/edit_resume_file" enctype="multipart/form-data" class="job-add-form">
                    <div class="form-group" style="margin-top:5px;">
 					<label for="location" style="font-size:12px;">Update Resume
 					</label>
 					
 					<input type="file" name="resume_file" class="form-control" required>
 				  </div>
+				   <div class="form-group" style="margin-top:5px;">
+					<input type="submit" class="btn btn-default" name="submit" value="Update">
+				   </div>
                 </form>
-                <div class="text-center">
-                  <a data-dismiss="modal" aria-label="Close" href="#">Close this window
-                  </a>
-                </div>
-              </div>
-            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+           
           </div>
         </div>
         <div id="jbe-dialog-container">

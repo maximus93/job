@@ -20,7 +20,23 @@ class Job_details extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('job_details');
+		$this->load->model('job_details_m');
+		$job_id = $this->uri->segment(2);
+		$data['fetch_job'] = $this->job_details_m->get_details($job_id);
+		$jccat = $this->job_details_m->get_details($job_id);
+		$yo = explode(',',$jccat->job_category);
+
+		$cat = array();
+		$similiar = array();
+		foreach ($yo as $cat_id) {
+			$fetch_cat = $this->job_details_m->get_cat($cat_id);
+			$cat = array_merge($cat,$fetch_cat);
+			$fetch_similar = $this->job_details_m->get_similar($cat_id,$job_id);
+			$similiar = array_merge($similiar,$fetch_similar);
+		}
+		$data['fetch_cat'] = $cat;
+		$data['similar_job'] = $similiar;
+		$this->load->view('job_details',$data);
 	}
 }
 ?>
