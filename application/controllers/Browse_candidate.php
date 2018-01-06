@@ -35,28 +35,20 @@ class Browse_candidate extends CI_Controller {
 		$config['uri_segment'] = 2;
 		$config['num_links'] = 3;
 		$config['page_query_string'] = FALSE;
-		// $config['use_page_numbers'] = TRUE;
 		$config['query_string_segment'] = 'page';
 		$config['full_tag_open'] = '<nav style="background:#fff"><ul class="pagination" >';
 		$config['full_tag_close'] = '</ul></nav>';
-
 		$config['next_link'] = ' &#8594; ';
-
 		$config['next_tag_open'] = '<li class="page-item">';
 		$config['next_tag_close'] = '</li>';
-
 		$config['prev_link'] = ' &#8592; ';
 		$config['prev_tag_open'] = '<li class="page-item">';
 		$config['prev_tag_close'] = '</li>';
-
 		$config['cur_tag_open'] = '<li class="page-item" style="background:#237fa5;color:#fff;"><span class="active" style="background:#237fa5;border:1px solid #237fa5;color:#fff;margin:3px;border-radius:5px;">';
 		$config['cur_tag_close'] = '</span></li>';
 		$config['num_tag_open'] = '<li class="page-item">';
 		$config['num_tag_close'] = '</li>';
-		// $config['display_pages'] = FALSE;
 		$config['attributes'] = array('class' => 'page-link');
-		// $config['display_pages'] = FALSE;
-
         $this->pagination->initialize($config);
 
         $page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
@@ -66,7 +58,9 @@ class Browse_candidate extends CI_Controller {
 		$data['result_count']= "Showing ".$start." - ".$end." of ".$config['total_rows']." Results";
         $data["resume_details"] = $this->browse_candidate_m->fetch_resume($config["per_page"], $page);
         $data["links"] = $this->pagination->create_links();
-
+        //$v = $data["resume_details"];
+       // print_r($v['user_id']]);
+        exit;
         $this->load->view("browse_candidate", $data);
 
         //print_r($data);
