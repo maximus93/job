@@ -98,7 +98,7 @@
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="job-title">
-                        <a href="<?php echo base_url();?>job_details/" title="See details for a PHP Developer ( Laravel ) in Southampton (matches on php developer)">
+                        <a href="<?php echo base_url();?>job_details/<?php echo $fetch_job->job_id;?>" title="See details for a PHP Developer ( Laravel ) in Southampton (matches on php developer)">
                           <h2 style="color:#06c;"><?php echo $fetch_job->job_title;?>
                           </h2>
                         </a>
@@ -177,38 +177,7 @@
                 <div class="row" >
                   <div class="col-xs-12">
                     <div class="results-footer-links-container">
-                      <nav style="background:#f2f2f2">
-                        <ul class="pagination" >
-                          <li >
-                            <a href="#" aria-label="Previous" rel="nofollow" class="btn btn-default previous  disabled">
-                            </a>
-                          </li>
-                          <li >
-                            <span class="active" style="background:#237fa5;border:1px solid #237fa5;color:#fff;margin-left:5px;">1
-                            </span>
-                          </li>
-                          <li>
-                            <a href="#" class="page-link" style="background:#fafafa;border:1px solid #237fa5;color:#237fa5;">2
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#" class="page-link" style="background:#fafafa;border:1px solid #237fa5;color:#237fa5;">3
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#" class="page-link" style="background:#fafafa;border:1px solid #237fa5;color:#237fa5;">4
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#" class="page-link" style="background:#fafafa;border:1px solid #237fa5;color:#237fa5;margin-right:5px;">5
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#" rel="nofollow" aria-label="Next" class="btn btn-default next ">
-                            </a>
-                          </li>
-                        </ul>
-                      </nav>
+                      <?php echo $links;?>
                       <div id="mobileFilters">
                       </div>
                     </div>
