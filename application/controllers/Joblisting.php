@@ -18,6 +18,12 @@ class Joblisting extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	 public function __construct() {
+        parent:: __construct();
+        $this->load->helper("url");
+        $this->load->model("job_listing_m");
+        $this->load->library("pagination");
+    }
 	public function index()
 	{
 		$config = array();

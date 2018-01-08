@@ -8,15 +8,20 @@ class Job_listing_m extends CI_Model {
 	$query = $this->db->get('job_post'); 
 	return $query;
 }*/
-public function record_count() {
-        return $this->db->count_all("job_post");
+	public function __construct() {
+        parent::__construct();
     }
-public function fetch_job($limit, $start) {
-        $this->db->select('*')->from('lists')
-        ->limit($limit, $start);
-        $query = $this->db->get("job_post");
-        return $query->result();
-   }
+	public function record_count() {
+	        return $this->db->count_all("job_post");
+	    }
+
+	public function fetch_job($limit, $start) {
+	        $this->db->select('*');
+	        $this->db->from('job_post');
+	        $this->db->limit($limit, $start);
+	        $query = $this->db->get();
+	        return $query->result();
+	   }
 	
 
 }
