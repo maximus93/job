@@ -1,5 +1,5 @@
 <?php
-$page_name = BASENAME($_SERVER['PHP_SELF']); 
+$page_name = $page_nm;
 ?>
 <style>
 .reg_etxt:hover{
@@ -21,7 +21,7 @@ background:white;
             <div class="col-xs-3" id="top-recruiter-links" style="margin-top:30px;float:right;">
 
                     <?php
-                        if(isset($userdata) && $userdata != NULL){
+                        if(isset($this->session->userdata['logged_in']) && $this->session->userdata['logged_in'] != NULL){
                             $userdata = $this->session->userdata['logged_in'];
                             $profile_picture = $userdata['profile_picture'];
                             $first_name = ucfirst($userdata['first_name']);
@@ -88,20 +88,20 @@ background:white;
 
                             <div id="navbar-desktop-site-links" class="hidden-xs">
                                 <ul>
-                            	    <li class="<?php echo(($page_name == 'index.php')?'abc':'');?>">
-                                        <a class="navbar-item-anchor" href="<?php echo base_url();?>" style="<?php echo(($page_name == 'index.php')?'color:black':'');?>"><h1 class="h1-for-nav">HOME</h1></a>
+                            	    <li class="<?php echo(($page_name == 'home')?'abc':'');?>">
+                                        <a class="navbar-item-anchor" href="<?php echo base_url();?>" style="<?php echo(($page_name == 'home')?'color:black':'');?>"><h1 class="h1-for-nav">HOME</h1></a>
                                     </li>
-                                    <li class="<?php echo(($page_name == 'job_listing.php')?'abc':'');?>">
-                                        <a class="navbar-item-anchor" href="<?php echo base_url();?>joblisting" style="<?php echo(($page_name == 'job_listing.php')?'color:black':'');?>"><h1 class="h1-for-nav">JOBS SEARCH</h1></a>
+                                    <li class="<?php echo(($page_name == 'joblisting')?'abc':'');?>">
+                                        <a class="navbar-item-anchor" href="<?php echo base_url();?>joblisting" style="<?php echo(($page_name == 'joblisting')?'color:black':'');?>"><h1 class="h1-for-nav">JOBS SEARCH</h1></a>
                                     </li>
-                                    <li class="<?php echo(($page_name == 'post_resume.php' || $page_name == 'post_register.php')?'abc':'');?>">
-                                        <a href="<?php echo base_url();?>post_resume" style="<?php echo(($page_name == 'post_resume.php' || $page_name == 'post_register.php')?'color:black':'');?>">POST RESUME</a>
+                                    <li class="<?php echo(($page_name == 'post_resume')?'abc':'');?>">
+                                        <a href="<?php echo base_url();?>post_resume" style="<?php echo(($page_name == 'post_resume')?'color:black':'');?>">POST RESUME</a>
                                     </li>
-                                    <li class="<?php echo(($page_name == 'job_post.php')?'abc':'');?>">
+                                    <li class="<?php echo(($page_name == 'job_post')?'abc':'');?>">
                                         <a class="navbar-item-anchor" style="<?php echo(($page_name == 'job_post')?'color:black':'');?>" href="<?php echo base_url();?>job_post">POST A JOB</a>
                                     </li>
-                            		<li class="<?php echo(($page_name == 'resume_browse.php')?'abc':'');?>">
-                                        <a class="navbar-item-anchor" style="<?php echo(($page_name == 'resume_browse')?'color:black':'');?>" href="<?php echo base_url();?>browse_candidate">RESUME BROWSE</a>
+                            		<li class="<?php echo(($page_name == 'browse_candidate')?'abc':'');?>">
+                                        <a class="navbar-item-anchor" style="<?php echo(($page_name == 'browse_candidate')?'color:black':'');?>" href="<?php echo base_url();?>browse_candidate">RESUME BROWSE</a>
                                     </li>
                                 </ul>
                             </div>

@@ -36,6 +36,7 @@ class Job_details extends CI_Controller {
 		}
 		$data['fetch_cat'] = $cat;
 		$data['similar_job'] = $similiar;
+		$data['page_nm'] = "job_details";
 		$this->load->view('job_details',$data);
 	}
 }

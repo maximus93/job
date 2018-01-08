@@ -57,8 +57,7 @@ class Joblisting extends CI_Controller {
         $data["job_details"] = $this->job_listing_m->fetch_job($config["per_page"], $page);
         $data["links"] = $this->pagination->create_links();
 
-		$this->load->model('job_listing_m');
-		$data['job_details'] = $this->job_listing_m->fetch_job();
+		$data['page_nm'] = "joblisting";
 		$this->load->view('job_listing',$data);
 	}
 }

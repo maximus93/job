@@ -92,7 +92,8 @@
 				</div>
 			</div>
                 <?php
-                  foreach ($job_details->result() as $fetch_job) { 
+                  print_r($job_details);
+                  foreach ($job_details as $fetch_job) { 
                 ?>
                 <div class="job new " id="77913552">
                   <div class="row">

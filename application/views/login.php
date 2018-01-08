@@ -82,6 +82,13 @@
                       <?php
                         }
                       ?>
+                      <?php
+                        if($this->session->flashdata('log')){
+                      ?>
+                        <div class="alert alert-danger" style="margin-top:10px;text-align:center;"> <strong><?php echo $this->session->flashdata('log');?></strong> </div>
+                      <?php
+                        }
+                      ?>
                       <div class="box" style="background:#fafafa;">
                         <form action="<?php echo base_url();?>Login/login_user" method="post">
                           <div class="form-group">

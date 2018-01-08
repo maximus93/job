@@ -19,7 +19,7 @@ class Edit_setting extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
-	 	function __construct(){
+	function __construct(){
         parent::__construct();
         if(!$this->session->userdata['logged_in']['user_id']){
             redirect('login');
@@ -27,8 +27,8 @@ class Edit_setting extends CI_Controller {
     }
 	public function index()
 	{
-		
-		$this->load->view('edit_setting');
+		$data['page_nm'] = "edit_setting";
+		$this->load->view('edit_setting',$data);
 	}
 
 	

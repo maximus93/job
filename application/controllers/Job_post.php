@@ -18,10 +18,20 @@ class Job_post extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	function __construct(){
+        parent::__construct();
+        if(!$this->session->userdata['logged_in']['user_id']){
+        	$this->session->set_flashdata("log", "You need to login to post a job");
+            redirect('login');
+        }
+    }
+    
 	public function index()
 	{
 		$this->load->model('job_post_m');
 		$data['fetch_cat'] = $this->job_post_m->fetch_job_cat();
+		$data['page_nm'] = "job_post";
 		$this->load->view('job_post',$data);
 	}
 	public function submit_job()

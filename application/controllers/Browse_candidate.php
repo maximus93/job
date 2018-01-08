@@ -60,7 +60,7 @@ class Browse_candidate extends CI_Controller {
         $data["links"] = $this->pagination->create_links();
         //$v = $data["resume_details"];
         //print_r($data["resume_details"]);
-        
+       	$data['page_nm'] = "browse_candidate";
         $this->load->view("browse_candidate", $data);
 
         //print_r($data);
