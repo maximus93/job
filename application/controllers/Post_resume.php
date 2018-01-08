@@ -21,6 +21,7 @@ class Post_resume extends CI_Controller {
 	function __construct(){
         parent::__construct();
         if(!$this->session->userdata['logged_in']['user_id']){
+        	$this->session->set_flashdata("log", "You need to login to upload resume");
             redirect('login');
         }
     }
