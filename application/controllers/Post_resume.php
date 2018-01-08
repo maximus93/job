@@ -26,7 +26,8 @@ class Post_resume extends CI_Controller {
     }
 	public function index()
 	{
-		$this->load->view('post_resume');
+		$data['page_nm'] = "post_resume";
+		$this->load->view('post_resume',$data);
 	}
 
 	public function save_resume(){
