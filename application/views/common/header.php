@@ -21,7 +21,7 @@ background:white;
             <div class="col-xs-3" id="top-recruiter-links" style="margin-top:30px;float:right;">
 
                     <?php
-                        if(isset($userdata) && $userdata != NULL){
+                        if(isset($this->session->userdata['logged_in']) && $this->session->userdata['logged_in'] != NULL){
                             $userdata = $this->session->userdata['logged_in'];
                             $profile_picture = $userdata['profile_picture'];
                             $first_name = ucfirst($userdata['first_name']);
