@@ -36,39 +36,7 @@
 	   ?> 
     </div>
 
-	  <!--<div class="simple_bannenr" style="">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                     <div class="work-timee" style="font-size:18px;margin-bottom:5px;">Full Time</div>  
-                    <div class="banner-heading" style="font-size:25px;font-weight:300;color:white;">Login</div>    
-                </div>  
-            </div>
-        </div>
-    </div>-->
     <div class="container results-container">
-		
-      <!--<div class="row">
-        <div class="col-sm-12">
-          <ol class="breadcrumb small">
-            <li>
-              <a href="#" style="color:black;">Jobs
-              </a>
-              <span class="separator">
-              </span>
-            </li>
-            <li>
-              <a href="#" style="color:black;">IT
-              </a>
-              <span class="separator">
-              </span>
-            </li>
-            <li style="color:black;">PHP Developer
-            </li>
-          </ol>
-        </div>
-      </div>-->
-
         <section>
           <div class="container">
             
@@ -89,6 +57,17 @@
                       <?php
                         }
                       ?>
+
+                      <?php
+                        if($this->session->flashdata('logouts')){
+                      ?>
+                        <div class="alert alert-success" style="margin-top:10px;text-align:center;">
+                          <strong><?php echo $this->session->flashdata('logouts');?></strong> 
+                        </div>
+                      <?php
+                        }
+                      ?>
+
                       <div class="box" style="background:#fafafa;">
                         <form action="<?php echo base_url();?>Login/login_user" method="post">
                           <div class="form-group">
