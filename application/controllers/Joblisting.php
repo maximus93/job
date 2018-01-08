@@ -29,7 +29,7 @@ class Joblisting extends CI_Controller {
 		$config = array();
         $config["base_url"] = base_url() . "joblisting";
         $config["total_rows"] = $this->job_listing_m->record_count();
-        $config['per_page'] = 1;
+        $config['per_page'] = 10;
 		$config['uri_segment'] = 2;
 		$config['num_links'] = 3;
 		$config['page_query_string'] = FALSE;

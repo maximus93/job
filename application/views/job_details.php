@@ -144,12 +144,6 @@
                                         </div> 
                                         <p></p>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Full Name" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Email Address" />
-                                        </div>
-                                        <div class="form-group">
                                             <textarea  type="text" class="form-control" placeholder="Message"></textarea>
                                         </div>
                                         <button class="btn btn-primary btn-block">Submit Message</button>
