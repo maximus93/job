@@ -154,7 +154,7 @@ $this->load->view("common/another_sidebar");
                   <div class="sorting_content col-md-4" style=" padding: 25px 15px 15px;
                                                                overflow: hidden;">
                     <div class="tab-image" style="float: left;text-align: center;margin-right: 20px;">
-                      <img src="<?php echo base_url();?><?php echo $user_details->profile_picture;?>" alt="" class="img-responsive" style="height:60px;width:60px;">
+                      <img src="<?php echo base_url();?>uploads/<?php echo $user_details->profile_picture;?>" alt="" class="img-responsive" style="height:60px;width:60px;">
                     </div>
                     <div class="overflow" style="overflow:hidden;">
                       <div class="text-shorting" style="font-size: 16px;color: #333;
@@ -169,11 +169,11 @@ $this->load->view("common/another_sidebar");
                           <?php echo ucfirst($user_details->first_name);?> <?php echo ucfirst($user_details->last_name);?>
                        
                         </h1>
-                        <ul class="unstyled" style="margin-top:-25px;padding: 0px;">
+                        <ul class="unstyled" style="margin-top:-15px;padding: 0px;">
                           <li style="display: inline-block;
                                      padding: 0 50px 0 0;
                                      color: #7d7d7d;
-                                     font-size: 13px;"> <?php echo $user_details->address;?>
+                                     font-size: 13px;line-height:15px;"> <?php echo $user_details->address;?>
                           </li>
                         </ul>
                         <p>
@@ -324,53 +324,15 @@ font-size: 13px;
                       </button>
                     </div></a>
 
-					<a href="<?php echo base_url();?>edit_setting"><div class="col-md-12" style="padding:20px;margin-top:-28px;width:100px;">
+					<a href="<?php echo base_url();?>edit_setting/fetch_setting/<?php echo $user_details->user_id?>"><div class="col-md-12" style="padding:20px;margin-top:-28px;width:100px;">
                       <button class="btn btn-primary" style="background:#5cc069;border:1px solid #5cc069;">Get Setting
                       </button>
                     </div></a>
 
-                    <div class="col-md-12">
-                      <a href="#">
-                        <p style="color:#237fa5;font-size:13px;" class="col-md-12">
-                          <strong>
-                            <u>Add to Folder
-                            </u>
-                          </strong>
-                        </p>
-                      </a>
-                      <a href="#">
-                        <p style="color:#237fa5;font-size:13px;margin-top:-10px;" class="col-md-12">
-                          <strong>
-                            <u>Print
-                            </u>
-                          </strong>
-                        </p>
-                      </a>
-                      <a href="#">
-                        <p style="color:#237fa5;font-size:13px;margin-top:-10px;" class="col-md-12">
-                          <strong>
-                            <u>Forward resume
-                            </u>
-                          </strong>
-                        </p>
-                      </a>
-                      <a href="#">
-                        <p style="color:#237fa5;font-size:13px;margin-top:-10px;" class="col-md-12">
-                          <strong>
-                            <u>Add note 
-                            </u>
-                          </strong>
-                        </p>
-                      </a>
-                      <a href="#">
-                        <p style="color:#237fa5;font-size:13px;margin-top:-10px;" class="col-md-12">
-                          <strong>
-                            <u>Compare to other Candidates
-                            </u>
-                          </strong>
-                        </p>
-                      </a>
-                    </div>
+					<a href="<?php echo base_url();?>change_password/"><div class="col-md-12" style="padding:20px;margin-top:-28px;width:100px;">
+                      <button class="btn btn-primary" style="background:#5cc069;border:1px solid #5cc069;">Settings
+                      </button>
+                    </div></a>
                   </div>
                 </div>
                 <div class="">
@@ -422,7 +384,7 @@ font-size: 13px;
                 </div>
                 <div id="menu1" class="tab-pane fade">
                   <p>
-                    <strong><img src="<?php echo base_url();?><?php echo $user_details->profile_picture;?>" style="height:40px;width:40px;">&nbsp;&nbsp;<?php echo $user_details->first_name;?> <?php echo $user_details->last_name;?>
+                    <strong><img src="<?php echo base_url();?>uploads/<?php echo $user_details->profile_picture;?>" style="height:40px;width:40px;">&nbsp;&nbsp;<?php echo $user_details->first_name;?> <?php echo $user_details->last_name;?>
                     </strong>
                   </p>
                   <div class="col-md-12" style="border:1px solid #e1e1e1;padding-top:20px;padding-left:30px;margin-top:20px;">
