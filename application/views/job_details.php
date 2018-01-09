@@ -42,6 +42,18 @@
                 
 				<main id="maincontent">
                     <section class="resume" style="padding-top:50px !important;">
+                        <?php
+      if($this->session->flashdata('success')){
+    ?>
+       <div class="alert alert-success" style="margin-top:10px;text-align:center;"> <strong><?php echo $this->session->flashdata('success');?></strong> </div>
+    <?php
+      }
+      if($this->session->flashdata('failed')){
+    ?>
+       <div class="alert alert-danger" style="margin-top:10px;text-align:center;"> <strong><?php echo $this->session->flashdata('failed');?></strong> </div>
+    <?php
+      }
+    ?>
                         <div class="container">
                             <div class="row" >
                                 <div class="col-md-8">
@@ -101,58 +113,41 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
+
                                     <div class="panel-body" style="border:1px solid #e1e1e1;">
                                         <div class="job_title block1" style="font-weight:900;">
                                             Company Profile
-                                            <a href="#" style="color:#1c4972;float:left;margin-left:-10px;" class="col-md-12"><?php echo (($fetch_job->name_status == 'yes')?'Company Name Hidden':$fetch_job->company_name);?>
+                                            <a href="#" style="color:#1c4972;float:left;margin-left:-10px;" class="col-md-12"><?php echo (($fetch_job->name_status == 'yes')?'Company Name Hidden':$fetch_job->company_name);?></a>
                                         </div> 
 										 <div class="clearfix"></div>
-											<!--<div  style="margin-top:20px;margin-bottom:20px;">
-											<a href="https://www.facebook.com/" target="blank" class="user-media"><img src="<?php echo base_url();?>images/facebook_logos_PNG19748.png" style="height:40px;width:40px;"></a>
-                                            <a href="https://twitter.com" target="blank" class="user-media twitter"><img src="<?php echo base_url();?>images/unnamed.png" style="height:42px;width:42px;"></a>
-                                            <a href="http://www.linkedin.com/" target="blank" class="user-media linke"><img src="<?php echo base_url();?>images/official-linkedin-logo-tile.png" style="height:42px;width:42px;"></a>
-                                            <a href="https://mail.google.com/" target="blank" class="user-media google"><img src="<?php echo base_url();?>images/google-g-logo-2012.png" style="height:42px;width:42px;"></a>
+                                        <div class="contact_details">
+                                            <span style="color:black;padding-bottom:10px;font-size:12px;">
+                                                <span class="glyphicon glyphicon-map-marker"></span> 
+                                                <?php echo ucfirst($fetch_job->location);?>
+                                            </span></br>
 
-											</div>-->
-                                            <div class="clearfix"></div>
-                                            <div class="contact_details">
-                                                <span style="color:black;padding-bottom:10px;font-size:12px;">
-                                                    <span class="glyphicon glyphicon-map-marker"></span> 
-                                                    <?php echo ucfirst($fetch_job->location);?>
-                                                </span></br>
+                                            <span style="color:black;padding-bottom:10px;font-size:12px;">
+                                                <span class="glyphicon glyphicon-earphone"></span> 
+                                                <?php echo ucfirst($fetch_job->contact_number);?>
+                                            </span></br>
 
-                                                <span style="color:black;padding-bottom:10px;font-size:12px;">
-                                                    <span class="glyphicon glyphicon-earphone"></span> 
-                                                    <?php echo ucfirst($fetch_job->contact_number);?>
-                                                </span></br>
-
-                                                <span style="color:black;padding-bottom:10px;font-size:12px;">
-                                                    <span class="glyphicon glyphicon-user"></span> 
-                                                    <?php echo ucfirst($fetch_job->contact_name);?>
-                                                </span></br>
-
-                                                <span style="color:black;padding-bottom:10px;font-size:12px;">
-                                                    <span class="glyphicon glyphicon-education"></span> 
-                                                     <?php echo ucfirst($fetch_job->type);?>
-                                                </span></br>
-
-                                            </div>
+                                            <span style="color:black;padding-bottom:10px;font-size:12px;">
+                                                <span class="glyphicon glyphicon-user"></span> 
+                                                <?php echo ucfirst($fetch_job->contact_name);?>
+                                            </span></br>
+                                        </div>
                                     </div>
+
                                     <div class="panel-body" style="border:1px solid #e1e1e1;margin-top:20px;">
-                                        <div class="job_title block1">
-                                            Send a Query
-                                        </div> 
-                                        <p></p>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Full Name" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Email Address" />
-                                        </div>
-                                        <div class="form-group">
-                                            <textarea  type="text" class="form-control" placeholder="Message"></textarea>
-                                        </div>
-                                        <button class="btn btn-primary btn-block">Submit Message</button>
+                                        <a class="btn btn-primary" id="primary_button" onclick="show_box();">Apply For This Job</a>
+                                        <form id="apply_form" style="display:none;" action="<?php echo base_url();?>job_details/send_message/<?php echo $fetch_job->company_id;?>" method="post" enctype="multipart/form-data">
+                                            <p></p>
+                                            <div class="form-group">
+                                                <textarea  type="text" class="form-control" name="message" placeholder="Your Message"></textarea>
+                                            </div>
+                                            <input type="hidden" name="job_id" value="<?php echo $fetch_job->job_id;?>">
+                                            <button class="btn btn-primary" type="submit">Apply For This Job</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -220,4 +215,10 @@
   <?php
 		$this->load->view("common/footer");
 	?>
+    <script>
+        function show_box() {
+            $("#primary_button").hide();
+            $("#apply_form").show();
+        }
+    </script>>
 </html>

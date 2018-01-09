@@ -7,23 +7,126 @@
   <?php
 	 $this->load->view("common/meta_links");
 ?> 
-		<style>
-	.work-timee{
-	color: #fff !important;
-    background-color: #5cc069;
-    font-size: 13px;
-    display: inline-block;
-    border-radius: 3px;
-    margin-top: 32px;
-    padding: 2px 5px !important;
-	}
-	.simple_bannenr{
-	background:url("<?php echo base_url();?>images/listing-banner.jpg") no-repeat left top/cover;
-    border-bottom: solid 1px #f2f2f2;
-    padding: 85px 0px;
-    width: 100%;
-	}
-	</style>
+	<style>
+      .job_title{
+        color: #333;
+        font-size: 20px;
+        line-height: 33px;
+        font-weight: 500;
+      }
+      .job_search{
+        padding-top: 0px;
+        padding-bottom: 25px;
+      }
+      .borderfull-width {
+        border: solid 1px #e1e1e1;
+        position: relative;
+        overflow: hidden;
+        top: 15px;
+        margin-bottom: 35px;
+      }
+      .page-heading {
+        padding-bottom: 20px;
+      }
+      overflow: hidden;
+      .page-heading {
+        padding-bottom: 20px;
+        overflow: hidden;
+      }
+      .category{
+        overflow:hidden;
+      }
+      .col-md-11 {
+        width: 91.66666667%;
+      }
+      .col-md-1 {
+        width:  8.33333333%;
+      }
+      .p-r {
+        padding-right: 0px !important;
+      }
+      .p-l {
+        padding-left: 0px !important;
+      }
+      .work-timee{
+        color: #fff !important;
+        background-color: #5cc069;
+        font-size: 13px;
+        display: inline-block;
+        border-radius: 3px;
+        margin-top: 32px;
+        padding: 2px 5px !important;
+      }
+      .simple_bannenr{
+        background:url('<?php echo base_url();?>images/employer-banner.jpg');
+        border-bottom: solid 1px #f2f2f2;
+        padding: 55px 0px;
+        width: 100%;
+      }
+      .page_listing {
+        border: solid 1px #e1e1e1;
+        overflow: hidden;
+        border-bottom: 0px;
+        .candidate .sorting_content:hover {
+          border: solid 1px #017583;
+        }
+        .sorting_content {
+          padding: 25px 15px 15px;
+          overflow: hidden;
+        }
+        .candidate .sorting_content {
+          border: solid 1px transparent;
+          border-bottom: solid 1px #e1e1e1;
+        }
+        .text-shorting h1 {
+        }
+        .overflow {
+        }
+        ul.unstyled {
+        }
+        .contact_details span {
+          display: block;
+          padding-bottom: 8px;
+          font-size: 13px;
+          color: #7d7d7d;
+        }
+        .filter p, .bottom_text p {
+          padding-top: 3px;
+          color: #7d7d7d;
+          font-size: 13px;
+        }
+        .p-l {
+        }
+        .bottom_text {
+          overflow: hidden;
+        }
+        .pagination ul{
+            list-style: none !important;
+        }
+        .pagination ul li{
+            float:left;
+            list-style: none;
+        }
+        .anchor_class{
+          background:#fafafa;border:1px solid #237fa5;color:#237fa5 !important;
+        }
+
+
+    </style>
+    <style>
+      .sidebar-text{
+        font-size: 13px;
+        color: #333;
+        font-weight: 500;
+      }
+      .page-link{
+        background:#fafafa !important;
+        border:1px solid #237fa5 !important;
+        color:#237fa5 !important;
+        margin:3px !important;
+        border-radius: 5px !important;
+      }
+    </style>
   </head>
   <body>
     <div id="adbanner-container" class="adbanner-container-display">
@@ -35,16 +138,15 @@
 	 $this->load->view("common/header");
 	?> 
     </div>
-				   <div class="simple_bannenr" style="">
+				   <!--<div class="simple_bannenr" style="">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12 text-center">
-                                 <!-- <div class="work-timee" style="font-size:18px;margin-bottom:5px;">Full Time</div>  -->
                                 <div class="banner-heading" style="font-size:25px;font-weight:300;color:white;">Job Listing</div>    
                             </div>  
                         </div>
                     </div>
-                </div>
+                </div>-->
     <div class="container results-container">
       <!--<div class="row">
         <div class="col-sm-12">
@@ -77,22 +179,19 @@
 		  <?php
 			$this->load->view("common/left_sidebar");
 		?>
-          <div class="col-sm-9 job-results clearfix">
-            <div class="row" >
-			
-              <div class="col-xs-12 job-results clearfix">
-				<div class="show-for-large-up sort-by" id="sort-links">
-				<div class="sorting-options">
-					Sort By:
-					<a class="selected-sort-option" href="#" style="color:#06c">Relevance</a>
-						|
-					<a href="#" style="color:#06c">Date</a>
-					|
-					<a href="#" style="color:#06c">Distance</a>
-				</div>
-			</div>
+          <div class="col-sm-9 job-results clearfix" style="background:none;">
+            <div class="row">
+              <div class="col-xs-12 job-results clearfix" style="background:none;">
+                <div class="col-md-7 col-sm-7 p-l">
+                  <div class="page-heading">
+                    <p><?php echo $result_count;?></p>
+                  </div>
+                </div>  
+
+
+                <div class="clearfix"></div>
                 <?php
-                  foreach ($job_details->result() as $fetch_job) { 
+                  foreach ($job_details as $fetch_job) { 
                 ?>
                 <div class="job new " id="77913552">
                   <div class="row">

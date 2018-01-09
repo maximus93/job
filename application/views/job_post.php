@@ -67,6 +67,12 @@
        <div class="alert alert-danger" style="margin-top:10px;text-align:center;"> <strong><?php echo $this->session->flashdata('failed');?></strong> </div>
     <?php
       }
+
+      if($this->session->flashdata('log')){
+    ?>
+       <div class="alert alert-danger" style="margin-top:10px;text-align:center;"> <strong><?php echo $this->session->flashdata('log');?></strong> </div>
+    <?php
+      }
     ?>
           <div class="col-lg-10 col-lg-offset-1">
             <form id="job-main-form" method="POST" enctype="multipart/form-data" action="<?php echo base_url();?>/job_post/submit_job" class="job-add-form">

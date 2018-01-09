@@ -76,7 +76,8 @@ class Login extends CI_Controller {
 
 	public function logout(){
 		$this->session->sess_destroy();
-		redirect('login','refresh'); 
+		$this->session->set_flashdata("logouts", "You have successfully logged out!");
+		redirect('login'); 
 	}
 }
 ?>
