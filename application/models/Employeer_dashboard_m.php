@@ -6,40 +6,31 @@
 
 */
 
-class Dashboard_m extends CI_Model 
+class Employeer_dashboard_m extends CI_Model 
 {
 
-	public function fetch_type($user_id)
-	{
-		$condition = "user_id =" . "'" . $user_id ."'";
-		$this->db->select('*');
-		$this->db->from('users');
-		$this->db->where($condition);
-		$query = $this->db->get();
-		return $query->row();
-	}
-	
-	public function fetch_details($user_id)
-	{
-		$condition = "users.user_id =" . "'" . $user_id ."'";
-		$this->db->select('*');
-		$this->db->from('users');
-		$this->db->join('resume', 'users.user_id = resume.user_id');
-		$this->db->where($condition);
-		$query = $this->db->get();
-		return $query->row();
-	}
 
 
 	public function employeer_details($user_id)
 	{
-		$condition = "users.user_id =" . "'" . $user_id ."'";
+		$condition = "user_id =" . "'" . $user_id ."'";
 		$this->db->select('*');
 		$this->db->from('users');
-		$this->db->join('job_post', 'users.user_id = job_post.company_id');
+		//$this->db->join('job_post', 'users.user_id = job_post.company_id');
 		$this->db->where($condition);
 		$query = $this->db->get();
 		return $query->row();
+	}
+
+	public function job_details($user_id)
+	{
+		$condition = "company_id =" . "'" . $user_id ."'";
+		$this->db->select('*');
+		$this->db->from('job_post');
+		//$this->db->join('job_post', 'users.user_id = job_post.company_id');
+		$this->db->where($condition);
+		$query = $this->db->get();
+		return $query;
 	}
 
 	public function edit_resume_file($user_id,$records)

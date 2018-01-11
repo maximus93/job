@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
+class Employeer_dashboard extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -27,12 +27,13 @@ class Dashboard extends CI_Controller {
     }
 	public function index()
 	{
-		$this->load->model('dashboard_m');
+		$this->load->model('employeer_dashboard_m');
 		$user_id = $this->session->userdata['logged_in']['user_id'];
-		$data['user_details'] = $this->dashboard_m->fetch_details($user_id);
-
-		$data['page_nm'] = "dashboard";
-		$this->load->view('dashboard',$data);
+		$data['user_details'] = $this->employeer_dashboard_m->employeer_details($user_id);
+		$data['posted_jobs'] = $this->employeer_dashboard_m->job_details($user_id);
+	
+		$data['page_nm'] = "employeer_dashboard";
+		$this->load->view('employeer_dashboard',$data);
 	}
 
 	public function edit_resume_file()

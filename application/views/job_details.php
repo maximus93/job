@@ -108,8 +108,6 @@
                                             <h2 style="font-size:16px;font-weight:900;">Job Description</h2>
                                             <?php echo ucfirst($fetch_job->job_description);?>
                                         </div>
-                                        
-                                        <a href="#" class="btn btn-primary" style="text-align:center;margin-top:30px;margin-bottom:10px;">Apply For This Job</a>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -137,18 +135,41 @@
                                             </span></br>
                                         </div>
                                     </div>
-
-                                    <div class="panel-body" style="border:1px solid #e1e1e1;margin-top:20px;">
+									<?php
+										$user_id = $this->session->userdata['logged_in']['user_id'];
+										if($user_id != $fetch_job->company_id)
+										{
+									?>
+									<div class="panel-body" style="border:1px solid #e1e1e1;margin-top:20px;">
                                         <a class="btn btn-primary" id="primary_button" onclick="show_box();">Apply For This Job</a>
-                                        <form id="apply_form" style="display:none;" action="<?php echo base_url();?>job_details/send_message/<?php echo $fetch_job->company_id;?>" method="post" enctype="multipart/form-data">
+                                        <div id="apply_form" style="display:none;">
                                             <p></p>
                                             <div class="form-group">
                                                 <textarea  type="text" class="form-control" name="message" placeholder="Your Message"></textarea>
                                             </div>
-                                            <input type="hidden" name="job_id" value="<?php echo $fetch_job->job_id;?>">
-                                            <button class="btn btn-primary" type="submit">Apply For This Job</button>
+                                            
+                                            <a href="<?php echo base_url();?>job_details/delete_job/<?php echo $fetch_job->job_id;?>"><div class="btn btn-primary" type="submit">Apply For This Job</div>
+                                        </div>
+                                    </div>
+									<?php
+										}
+									else
+									{
+									?>
+									<div class="panel-body" style="border:1px solid #e1e1e1;margin-top:20px;">
+                                        <a class="btn btn-primary" id="primary_button" onclick="show_box();" style="background:red;border:1px solid red;margin-left:75px;">Delete This Job</a>
+                                        <form id="apply_form" style="display:none;" action="<?php echo base_url();?>job_details/delete_job" method="post" enctype="multipart/form-data">
+                                            <p></p>
+                                            <div class="form-group">
+                                                <textarea  type="text" class="form-control" name="message" placeholder="Reason For Delete This Job"></textarea>
+												<input type="hidden" name="job_id" value="<?php echo $fetch_job->job_id;?>">
+                                            </div>
+                                            <button class="btn btn-primary" type="submit" style="background:red;border:1px solid red;margin-left:75px;">Delete This Job</button>
                                         </form>
                                     </div>
+									<?php
+									}
+									?>
                                 </div>
                             </div>
                             <div class="row" style="margin-top:10px;">
@@ -166,14 +187,63 @@
 
                                 </div>
                             </div>
-							                                    <div class="clearfix"></div>
+							     <div class="clearfix"></div>
                                     <div class="page-heading col-md-12" style="background:#f8f8f8;color:#fff;border:1px solid #f8f8f8;box-shadow: 0 1px 2px 0 rgba(0,0,0,0.25);">
-                                        <h2 style="color:black;">Similar Jobs</h2>
+									<?php
+										$user_id = $this->session->userdata['logged_in']['user_id'];
+										if($user_id == $fetch_job->company_id)
+										{
+									?>
+                                       <h2 style="color:black;">Applicant For This Job</h2>
+									<?php
+										}
+										else
+										{
+									 ?>
+									  <h2 style="color:black;">Similar Jobs</h2>
+									 <?php
+										}
+									 ?>
                                     </div>
                                     <div class="table-bg" style="border:1px solid #e1e1e1;border-top:0px;">
                                         <table class="table" style="margin-bottom:0px;">
                                             <tbody>
                                                 <?php
+												$user_id = $this->session->userdata['logged_in']['user_id'];
+												if($user_id == $fetch_job->company_id)
+												{
+													$get_row = count($get_applicant_details);
+													  if($get_row > 1)
+														{
+														    foreach($get_applicant_details as $fetch_applicant) {
+																
+                                                        # code...
+                                                   
+												?>
+											    <tr>
+                                                    <td class="col-md-6">
+														<div class="tab-image col-md-2"><img src="<?php echo base_url();?>uploads/<?php echo $fetch_applicant->profile_picture;?>" style="height:60px;width:60px;" alt="" class="img-responsive"></div>
+														<div class="col-md-10"><?php echo ucfirst($fetch_applicant->first_name);?> <?php echo ucfirst($fetch_applicant->last_name);?><p><?php echo $fetch_applicant->email?></p></div>
+													</td>
+                                                    
+                                                    <td class="col-md-2" style="font-size:12px;padding-top:25px;"><a href="<?php echo base_url();?>applicant_dashboard/<?php echo $fetch_applicant->user_id?>" class="table-btn-default" style="font-size:12px;margin-top:10px;color:black;padding-top:10px;padding-bottom:10px;border:1px solid black;padding-right:10px;padding-left:10px;">View Applicant Profile</a></td>
+                                                </tr>
+											<?php
+											 }
+												}
+												else
+													{
+											?>
+											  <tr>
+                                                    <td class="col-md-6" align="center">
+                                                        No Application Have Been Submitted!
+                                                    </td>
+                                                </tr>
+											<?php
+												}
+												}
+											else
+											{
                                                 $get_row = count($similar_job);
                                                 if($get_row > 0)
                                                 {
@@ -201,6 +271,7 @@
                                                 </tr>
                                                 <?php
                                                 }
+											}
                                                 ?>
 												
                                             </tbody>

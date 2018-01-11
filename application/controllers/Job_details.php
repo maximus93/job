@@ -34,8 +34,19 @@ class Job_details extends CI_Controller {
 			$fetch_similar = $this->job_details_m->get_similar($cat_id,$job_id);
 			$similiar = array_merge($similiar,$fetch_similar);
 		}
+
+		$fetch_applicant = $this->job_details_m->get_applicant($job_id);
+		if(count($fetch_applicant) > 0){
+			$applicant_id = $fetch_applicant->employee_id;
+			$fetch_applicant_details = $this->job_details_m->get_details_applicant($applicant_id);
+		}else{
+			$fetch_applicant_details = "";
+		}
+		
+
 		$data['fetch_cat'] = $cat;
 		$data['similar_job'] = $similiar;
+		$data['get_applicant_details'] = $fetch_applicant_details;
 		$data['page_nm'] = "job_details";
 		$this->load->view('job_details',$data);
 	}
@@ -52,6 +63,23 @@ class Job_details extends CI_Controller {
 		}else{
 			$this->session->set_flashdata("error", "Error , Something Went Wrong!");
 			redirect(''.base_url().'job_details/'.$job_id.'');
+		}
+	}
+
+	public function delete_job()
+	{
+		$this->load->model('job_details_m');
+		$job_id = $this->uri->segment(3);
+		$delete_job = $this->job_details_m->delete_job($job_id);
+		if($delete_job)
+		{
+			$this->session->set_flashdata("success", "Success , Your have successfully deleted Job!");
+			redirect('job_details/'.$job_id.'');
+		}
+		else
+		{
+			$this->session->set_flashdata("failed", "Something went wrong!");
+			redirect('job_details/'.$job_id.'');
 		}
 	}
 }

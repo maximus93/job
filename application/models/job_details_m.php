@@ -18,6 +18,28 @@ public function get_similar($cat_id,$job_id)
 	$query = $this->db->query('select * from job_post where FIND_IN_SET ("'.$cat_id.'", job_category) and job_id !="'.$job_id.'"');
 	return $query->result();
 }
+
+public function get_applicant($job_id)
+{
+	$condition = "job_id =" . "'" . $job_id ."'";
+	$this->db->select('*');
+	$this->db->from('apply');
+	//$this->db->join('resume', 'users.user_id = resume.user_id');
+	$this->db->where($condition);
+	$query = $this->db->get();
+	return $query->result();
+}
+
+public function get_details_applicant($applicant_id)
+{
+	$condition = "user_id =" . "'" . $applicant_id ."'";
+	$this->db->select('*');
+	$this->db->from('users');
+	//$this->db->join('resume', 'users.user_id = resume.user_id');
+	$this->db->where($condition);
+	$query = $this->db->get();
+	return $query->row;
+}
 public function insert_msg($job_id,$message)
 {
 	$query = $this->db->query('select * from job_post where job_id = "'.$job_id.'"');
@@ -36,6 +58,12 @@ public function insert_msg($job_id,$message)
 		return true;
 	}
 }
+
+public function delete_job($job_id)
+	{
+		$query = $this->db->query("delete from job_post where job_id='".$job_id."'");
+		return true;
+	}
 
 }
 

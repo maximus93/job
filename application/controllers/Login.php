@@ -61,9 +61,9 @@ class Login extends CI_Controller {
 				{
 					redirect('dashboard');
 				}
-				elseif($get_type == 'employeer')
+				else if($get_type == 'employeer')
 				{
-					redirect('dashboard');
+					redirect('employeer_dashboard');
 				}
 			}
 		}

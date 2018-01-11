@@ -55,3 +55,4 @@ $route['translate_uri_dashes'] = FALSE;
 $route['browse_candidate/(:num)'] = "browse_candidate";
 $route['job_details/(:num)'] = "job_details";
 $route['joblisting/(:num)'] = "joblisting";
+$route['applicant_dashboard/(:num)'] = "applicant_dashboard";
