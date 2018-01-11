@@ -39,5 +39,20 @@ class Job_details extends CI_Controller {
 		$data['page_nm'] = "job_details";
 		$this->load->view('job_details',$data);
 	}
+	public function send_message()
+	{
+		$this->load->model('job_details_m');
+		$job_id = $this->input->post('job_id');
+		$message = $this->input->post('message');
+		$insert_data = $this->job_details_m->insert_msg($job_id,$message);
+		if($insert_data)
+		{
+			$this->session->set_flashdata("success", "Success , You Have Successfully Applied For This job!");
+			redirect(''.base_url().'job_details/'.$job_id.'');
+		}else{
+			$this->session->set_flashdata("error", "Error , Something Went Wrong!");
+			redirect(''.base_url().'job_details/'.$job_id.'');
+		}
+	}
 }
 ?>

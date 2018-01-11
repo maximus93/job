@@ -18,6 +18,24 @@ public function get_similar($cat_id,$job_id)
 	$query = $this->db->query('select * from job_post where FIND_IN_SET ("'.$cat_id.'", job_category) and job_id !="'.$job_id.'"');
 	return $query->result();
 }
+public function insert_msg($job_id,$message)
+{
+	$query = $this->db->query('select * from job_post where job_id = "'.$job_id.'"');
+	$yo = $query->result();
+	foreach ($yo as $val) {
+		$company_id =  $val->company_id;
+		$date = time();
+		$data = array(
+        'job_id' => $job_id,
+        'employee_id' => '1',
+        'employer_id' => $company_id,
+        'message_data' => $message,
+        'apply_date' => $date
+		);
+		$query2 = $this->db->insert('apply', $data);
+		return true;
+	}
+}
 
 }
 

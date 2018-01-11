@@ -29,7 +29,15 @@ class Dashboard extends CI_Controller {
 	{
 		$this->load->model('dashboard_m');
 		$user_id = $this->session->userdata['logged_in']['user_id'];
-		$data['user_details'] = $this->dashboard_m->fetch_details($user_id);
+		$get_type = $this->dashboard_m->fetch_type($user_id);
+		if($get_type->user_type == 'employee')
+		{
+			$data['user_details'] = $this->dashboard_m->fetch_details($user_id);
+		}
+		else if($get_type->user_type == 'employer')
+		{
+			$data['user_details'] = $this->dashboard_m->employeer_details($user_id);
+		}
 		$data['page_nm'] = "dashboard";
 		$this->load->view('dashboard',$data);
 	}

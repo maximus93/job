@@ -154,7 +154,7 @@ class Post_resume extends CI_Controller {
 				$resume_file = '';
 			}
 		}else{
-			$resume_file = '$resume_file';
+			$resume_file = $resume_file;
 		}
 		$cover_letter = $kichu->cover_letter;
 		if(!empty($_FILES['cover_letter']['name'])){
@@ -172,7 +172,7 @@ class Post_resume extends CI_Controller {
                     $coverletr_file = '';
                 }
 		}else{
-			$coverletr_file = '$cover_letter';
+			$coverletr_file = $cover_letter;
 		}
 		$posted_date = time();
 

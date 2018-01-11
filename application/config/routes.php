@@ -54,3 +54,4 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['browse_candidate/(:num)'] = "browse_candidate";
 $route['job_details/(:num)'] = "job_details";
+$route['joblisting/(:num)'] = "joblisting";
