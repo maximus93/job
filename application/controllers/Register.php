@@ -20,7 +20,8 @@ class Register extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('register');
+		$data['page_nm'] = "Register";
+		$this->load->view('register',$data);
 	}
 
 	public function add_employee()
