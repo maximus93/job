@@ -15,7 +15,7 @@ background:white;
         <div class="row">
             <div class="col-xs-9">
                 <div class="logo col-md-6">
-                    <a title="#" href="index.php"><img src="<?php echo base_url();?>images/logo-light.png" style="height:60px;"></a>
+                    <a title="#" href="<?php echo base_url();?>"><img src="<?php echo base_url();?>images/logo-light.png" style="height:60px;"></a>
                 </div>
             </div>
             <div class="col-xs-3" id="top-recruiter-links" style="margin-top:30px;float:right;">
