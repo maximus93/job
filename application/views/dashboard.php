@@ -315,21 +315,25 @@ font-size: 13px;
 					 
                     </div>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-3" >
+					<div class="col-md-12">
                     <a href="<?php echo base_url();?>post_resume/fetch_data/<?php echo $user_details->user_id?>"><div class="col-md-12" style="padding:20px;width:100px;">
-                      <button class="btn btn-primary" style="background:#5cc069;border:1px solid #5cc069;">Edit Profile
+                      <button class="btn btn-primary" style="background:#5cc069;border:1px solid #5cc069;font-size:12px;">Edit Profile
                       </button>
                     </div></a>
-
+					</div>
+					<div class="col-md-12">
 					<a href="<?php echo base_url();?>edit_setting/fetch_setting/<?php echo $user_details->user_id?>"><div class="col-md-12" style="padding:20px;margin-top:-28px;width:100px;">
-                      <button class="btn btn-primary" style="background:#5cc069;border:1px solid #5cc069;">Get Setting
+                      <button class="btn btn-primary" style="background:#5cc069;border:1px solid #5cc069;font-size:12px;">Get Settings
                       </button>
                     </div></a>
-
+					</div>
+					<div class="col-md-12">
 					<a href="<?php echo base_url();?>change_password/"><div class="col-md-12" style="padding:20px;margin-top:-28px;width:100px;">
-                      <button class="btn btn-primary" style="background:#5cc069;border:1px solid #5cc069;">Settings
+                      <button class="btn btn-primary" style="background:#5cc069;border:1px solid #5cc069;font-size:12px;">Change Password
                       </button>
                     </div></a>
+					</div>
                   </div>
                 </div>
                 <div class="">
