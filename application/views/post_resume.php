@@ -174,17 +174,17 @@
         </div>
         <div class="col-md-12 form-group checkbox">
           <label>
-            <input type="radio" style="font-size:12px;" name="relocate" value="yes" required> Yes
+            <input type="radio" style="font-size:12px;" name="relocate" value="yes" <?php echo (($emp_details->relocate == 'yes')?'checked':'')?> required> Yes
           </label>
         </div>
         <div class="col-md-12 form-group checkbox">
           <label>
-            <input type="radio" style="font-size:12px;" name="relocate" value="no" required> No
+            <input type="radio" style="font-size:12px;" name="relocate" value="no" <?php echo (($emp_details->relocate == 'no')?'checked':'')?> required> No
           </label>
         </div>
         <div class="col-md-12 form-group checkbox">
           <label>
-            <input type="radio" style="font-size:12px;" name="relocate" value="possibly" required> Possibly
+            <input type="radio" style="font-size:12px;" name="relocate" value="possibly" <?php echo (($emp_details->relocate == 'possibly')?'checked':'')?> required> Possibly
           </label>
         </div>
       </div>
@@ -193,11 +193,13 @@
       <div class="col-md-6 form-group">
         <label for="location" style="font-size:12px;">Attached Resume <span style="color:red;" title="This field is required">*</span>
         </label>
+		<span><?php echo $emp_details->resume_file;?></span>
         <input id="education" type="file" name="resume" class="form-control" required>
       </div>
       <div class="col-md-6 form-group">
         <label for="location" style="font-size:12px;">Attached Cover Letter
         </label>
+		<span><?php echo $emp_details->cover_letter;?></span>
         <input type="file" name="cover_letter" class="form-control">
       </div>
     </div>
