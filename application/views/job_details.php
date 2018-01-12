@@ -136,8 +136,15 @@
                                         </div>
                                     </div>
 									<?php
-										$user_id = $this->session->userdata['logged_in']['user_id'];
-										if($user_id != $fetch_job->company_id)
+										if($user_id == '')
+										{
+									?>
+									<div class="panel-body" style="border:1px solid #e1e1e1;margin-top:20px;">
+                                        <a class="btn btn-primary" id="primary_button" href="<?php echo base_url();?>login" style="background:red;border:1px solid red;margin-left:75px;">Login For Apply</a>
+                                    </div>
+									<?php
+										}
+										elseif($user_id != $fetch_job->company_id)
 										{
 									?>
 									<div class="panel-body" style="border:1px solid #e1e1e1;margin-top:20px;">
@@ -153,7 +160,7 @@
                                     </div>
 									<?php
 										}
-									else
+									elseif($user_id == $fetch_job->company_id)
 									{
 									?>
 									<div class="panel-body" style="border:1px solid #e1e1e1;margin-top:20px;">
@@ -170,6 +177,8 @@
 									<?php
 									}
 									?>
+								
+									
                                 </div>
                             </div>
                             <div class="row" style="margin-top:10px;">
@@ -190,7 +199,7 @@
 							     <div class="clearfix"></div>
                                     <div class="page-heading col-md-12" style="background:#f8f8f8;color:#fff;border:1px solid #f8f8f8;box-shadow: 0 1px 2px 0 rgba(0,0,0,0.25);">
 									<?php
-										$user_id = $this->session->userdata['logged_in']['user_id'];
+										
 										if($user_id == $fetch_job->company_id)
 										{
 									?>
@@ -209,7 +218,7 @@
                                         <table class="table" style="margin-bottom:0px;">
                                             <tbody>
                                                 <?php
-												$user_id = $this->session->userdata['logged_in']['user_id'];
+												
 												if($user_id == $fetch_job->company_id)
 												{
 													$get_row = count($get_applicant_details);

@@ -48,6 +48,14 @@ class Job_details extends CI_Controller {
 		$data['similar_job'] = $similiar;
 		$data['get_applicant_details'] = $fetch_applicant_details;
 		$data['page_nm'] = "job_details";
+		if($this->session->userdata['logged_in']['user_id'] != '') 
+		{
+			$data['user_id'] = $user_id;
+		}
+		else
+		{
+			$data['user_id'] = NULL;
+		}
 		$this->load->view('job_details',$data);
 	}
 	public function send_message()
