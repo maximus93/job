@@ -140,11 +140,8 @@ $this->load->view("common/header");
             ?>
 			</div>
         <div class="col-sm-12 reset-to-row equal-height">
-          <?php
-$this->load->view("common/another_sidebar");
 
-?> 
-          <div class="col-sm-9 job-results clearfix" style="background:none;border:1px;">
+          <div class="col-sm-12 job-results clearfix" style="background:none;border:1px;">
             <div class="row">
               <div class="col-xs-12 job-results clearfix" style="background:none;">
                 <div class="clearfix">
