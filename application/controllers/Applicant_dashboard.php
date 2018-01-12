@@ -23,7 +23,7 @@ class Applicant_dashboard extends CI_Controller {
 	public function index()
 	{
 		$this->load->model('applicant_dashboard_m');
-		$user_id = $this->session->userdata['logged_in']['user_id'];
+		
 		$applicant_id = $this->uri->segment(2);
 		$data['get_applicant_fetch'] = $this->applicant_dashboard_m->get_applicant_details($applicant_id);
 		$data['page_nm'] = "applicant_dashboard";
