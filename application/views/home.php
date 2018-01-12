@@ -80,31 +80,13 @@
 										<div>
 											<select id="keywords" name="JobType1" class="form-control keywords search-keywords" style="height:45px;">
 												 <option selected="selected" value="Category">Category</option>
-												 <option value="10">Accounting</option>
-												 <option value="20">Administration & Office Support</option>
-												 <option value="20">Advertising, Arts & Media</option>
-												 <option value="20">Banking & Financial Services</option>
-												 <option value="20">Call Centre & Customer Service</option>
-												 <option value="20">Community Services & Development</option>
-												 <option value="20">Design & Architecture</option>
-												 <option value="20">Education & Teaching</option>
-												 <option value="20">Engineering</option>
-												 <option value="20">Farming & Veterinary</option>
-												 <option value="20">Government & Defence</option>
-												 <option value="20">Healthcare & Nursing</option>
-												 <option value="20">Hospitality & Tourism</option>
-												 <option value="20">Information & Communication Technology</option>
-												 <option value="20">Legal</option>
-												 <option value="20">Manufacturing, Transport & Logistics</option>
-												 <option value="20">Marketing & Communications</option>
-												 <option value="20">Mining, Resources & Energy</option>
-												 <option value="20">Real Estate & Property</option>
-												 <option value="20">Recruitment & HR</option>
-												 <option value="20">Retail</option>
-												 <option value="20">Sales</option>
-												 <option value="20">Sports & Recreation</option>
-												 <option value="20">Trades & Services</option>
-												 <option value="20">Other Jobs</option>
+												 <?php
+												 	foreach($categories As $cat){
+												 ?>
+												 <option value="<?php echo $cat->category_id;?>"><?php echo $cat->category_name;?></option>
+												 <?php
+												 	}
+												 ?>
 											</select>
 										</div>
 									</div>
@@ -159,7 +141,7 @@
 					</h2>
 				</div>
 				<div class="see-all-count" style="margin-bottom:13px;">
-					<a href="<?php echo base_url();?>post_register" class="btn btn-default">Upload resume</a>
+					<a href="<?php echo base_url();?>post_resume" class="btn btn-default">Upload resume</a>
 				</div>
 			</div>
 		</div>
@@ -238,7 +220,7 @@
 
 							<div class="row">
 								<div class="" style="text-align:center;">
-									<a href="<?php echo base_url();?>post_register"><div class="btn btn-warning" style="background:#ff9900">Upload CV</div></a>
+									<a href="<?php echo base_url();?>post_resume"><div class="btn btn-warning" style="background:#ff9900">Upload CV</div></a>
 								</div>
 							</div>
 						</a>
