@@ -65,14 +65,29 @@
         <div class="container">
           <div class="row" style="background:#fff;">
             <div class="col-lg-10 col-lg-offset-1">
-              <form method="POST" action="<?php echo base_url();?>post_resume/save_resume" enctype="multipart/form-data" class="job-add-form">
+			<?php
+				if(isset($this->session->userdata['logged_in']['user_id']) && $this->session->userdata['logged_in']['user_id'] =! '')
+				{
+			?>
+			 <form method="POST" action="<?php echo base_url();?>post_resume/edit_resume" enctype="multipart/form-data" class="job-add-form">
+              
+			  <?php
+				}
+			else
+			{
+			  ?>
+			  <form method="POST" action="<?php echo base_url();?>post_resume/save_resume" enctype="multipart/form-data" class="job-add-form">
+
+			  <?php
+			}
+			  ?>
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <input id="title" type="text" name="job_title" class="form-control" placeholder="your job title" required>
+                      <input id="title" type="text" name="job_title" class="form-control" placeholder="your job title" value="<?php echo $emp_details->job_title;?>" required>
                     </div>
                     <div class="form-group">
-                      <input id="title" type="text" name="company_name" class="form-control" placeholder="company name" required>
+                      <input id="title" type="text" name="company_name" class="form-control" placeholder="company name" value="<?php echo $emp_details->company_name;?>" required>
                     </div>
                   </div>
                 </div>
@@ -83,7 +98,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="addsz">
-                          <input id="location" type="text" name="skills[]" placeholder="e.g. php developer , web design" class="form-control" required>
+                          <input id="location" type="text" name="skills[]" placeholder="e.g. php developer , web design" class="form-control" value="<?php echo $emp_details->skills;?>" required>
                         </div>
                         <!--<p class="add_something btn-warning" style="margin-top:11px;" >Add Another Skills</p>-->
                         <a href="javascript:void(0);" style="float:right;margin-top:15px;" class="add_something btn-warning">
@@ -96,25 +111,26 @@
               <div class="row">
                 <div class="col-md-6 form-group">
                   <label for="location" style="font-size:12px;">Start Date <span style="color:red;" title="This field is required">*</span></label>
-                  <input id="location" type="date" class="form-control" name="start_date" placeholder="15 January 2014" required>
+                  <input id="location" type="date" class="form-control" name="start_date" value="<?php echo date('Y,m,d',$emp_details->start_date);?>" placeholder="15 January 2014" required>
                 </div>
                 <div class="col-md-6 form-group">
                   <label for="type" style="font-size:12px;">End Date <span style="color:red;" title="This field is required">*</span></label>
-                  <input id="location" type="date" class="form-control" name="end_date" placeholder="15 January 2014" required>
+                  <input id="location" type="date" class="form-control" name="end_date" value="<?php echo date('Y,m,d',$emp_details->end_date);?>" placeholder="15 January 2014" required>
                 </div>
               </div>
               </br>
             <div class="row">
               <div class="col-md-12 form-group">
                 <label for="location" style="font-size:12px;">Education <span style="color:red;" title="This field is required">*</span></label>
-                <input id="education" type="text" placeholder="e.g. BTECH , Computer science" class="form-control" name="education" required>
+                <input id="education" type="text" placeholder="e.g. BTECH , Computer science" class="form-control" value="<?php echo $emp_details->education?>" name="education" required>
               </div>
             </div>
             </br>
           <div class="row">
             <div class="col-md-12 form-group">
               <label for="post_type" style="font-size:12px;">Maximum Salary <span style="color:red;" title="This field is required">*</span></label>
-              <select id="post_type" name="max_salary" data-placeholder="Choose type of the post" class="form-control select2" required>
+              <select id="post_type" name="max_salary" data-placeholder="Choose type of the post" class="form-control select2me" required>
+			  <option value="<?php echo $emp_details->max_salary;?>" selected><?php echo $emp_details->max_salary;?></option>
                 <option style="background:#003A83;" value="30000">$30,000 +</option>
                 <option style="background:#003A83;" value="40000">$40,000 +</option>
                 <option style="background:#003A83;" value="50000">$50,000 +</option>
@@ -134,6 +150,7 @@
           <div class="col-md-12 form-group">
             <label for="post_type" style="font-size:12px;">Willing to Travel <span style="color:red;" title="This field is required">*</span></label>
             <select id="post_type" name="travel_distance" data-placeholder="Choose type of the post" class="form-control select2" required>
+			<option value="<?php echo $emp_details->travel_distance;?>" selected ><?php echo $emp_details->travel_distance;?></option>
               <option style="background:#003A83;" value="5">5km</option>
               <option style="background:#003A83;" value="10">10km</option>
               <option style="background:#003A83;" value="15">15km</option>
@@ -157,17 +174,17 @@
         </div>
         <div class="col-md-12 form-group checkbox">
           <label>
-            <input type="radio" style="font-size:12px;" name="relocate" value="yes" required> Yes
+            <input type="radio" style="font-size:12px;" name="relocate" value="yes" <?php echo (($emp_details->relocate == 'yes')?'checked':'')?> required> Yes
           </label>
         </div>
         <div class="col-md-12 form-group checkbox">
           <label>
-            <input type="radio" style="font-size:12px;" name="relocate" value="no" required> No
+            <input type="radio" style="font-size:12px;" name="relocate" value="no" <?php echo (($emp_details->relocate == 'no')?'checked':'')?> required> No
           </label>
         </div>
         <div class="col-md-12 form-group checkbox">
           <label>
-            <input type="radio" style="font-size:12px;" name="relocate" value="possibly" required> Possibly
+            <input type="radio" style="font-size:12px;" name="relocate" value="possibly" <?php echo (($emp_details->relocate == 'possibly')?'checked':'')?> required> Possibly
           </label>
         </div>
       </div>
@@ -176,11 +193,13 @@
       <div class="col-md-6 form-group">
         <label for="location" style="font-size:12px;">Attached Resume <span style="color:red;" title="This field is required">*</span>
         </label>
+		<span><?php echo $emp_details->resume_file;?></span>
         <input id="education" type="file" name="resume" class="form-control" required>
       </div>
       <div class="col-md-6 form-group">
         <label for="location" style="font-size:12px;">Attached Cover Letter
         </label>
+		<span><?php echo $emp_details->cover_letter;?></span>
         <input type="file" name="cover_letter" class="form-control">
       </div>
     </div>
@@ -190,8 +209,9 @@
       <label for="post_type" style="font-size:12px;">Privacy <span style="color:red;" title="This field is required">*</span>
       </label>
       <select id="post_type" data-placeholder="Choose type of the post" class="form-control select2" name="post_type" required>
-        <option style="background:#003A83;" name="standard" value="standard">Standard</option>
-        <option style="background:#003A83;" name="limited" value="limited">Limited</option>
+	  <option style="background:#003A83;" value="<?php echo $emp_details->post_type;?>"><?php echo $emp_details->post_type;?></option>
+        <option style="background:#003A83;"  value="standard">Standard</option>
+        <option style="background:#003A83;"  value="limited">Limited</option>
       </select>
     </div>
   </div>
