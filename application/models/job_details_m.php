@@ -8,6 +8,12 @@ public function get_details($job_id)
 	$query = $this->db->get_where('job_post', array('job_id' => $job_id));
 	return $result=$query->row();
 }
+public function get_all_cat()
+{
+	$query = $this->db->get_where('job_category');
+	return $query->result();
+}
+
 public function get_cat($cat_id)
 {
 	$query = $this->db->get_where('job_category', array('category_id' => $cat_id));

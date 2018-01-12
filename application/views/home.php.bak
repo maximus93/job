@@ -12,6 +12,7 @@
 		$this->load->view("common/meta_links");
 	?>    
 	<style>
+	
 		.cont{
 			background: #182642;
 			background-image:url("<?php echo base_url();?>images/hero-img-large-f0e6e043ee89f310399239e54c747d4999ef7340937338143ca2fe111fe4d39a.jpg");*/
