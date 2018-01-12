@@ -138,40 +138,9 @@
 	 $this->load->view("common/header");
 	?> 
     </div>
-				   <!--<div class="simple_bannenr" style="">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12 text-center">
-                                <div class="banner-heading" style="font-size:25px;font-weight:300;color:white;">Job Listing</div>    
-                            </div>  
-                        </div>
-                    </div>
-                </div>-->
-    <div class="container results-container">
-      <!--<div class="row">
-        <div class="col-sm-12">
-          <ol class="breadcrumb small">
-            <li>
-              <a href="#" style="color:black;">Jobs
-              </a>
-              <span class="separator">
-              </span>
-            </li>
-            <li>
-              <a href="#" style="color:black;">IT
-              </a>
-              <span class="separator">
-              </span>
-            </li>
-            <li style="color:black;">PHP Developer
-            </li>
-          </ol>
-        </div>
-      </div>-->
-      
-      
-      <p style="margin-bottom:20px;"> </p>
 
+    <div class="container results-container">
+      <p style="margin-bottom:20px;"> </p>
         
       <div class="row job-results-row" style="margin-bottom:40px;">
         <div class="col-sm-12 reset-to-row equal-height">

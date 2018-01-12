@@ -56,9 +56,21 @@ class Joblisting extends CI_Controller {
 		$data['result_count']= "Showing ".$start." - ".$end." of ".$config['total_rows']." Results";
         $data["job_details"] = $this->job_listing_m->fetch_job($config["per_page"], $page);
         $data["links"] = $this->pagination->create_links();
-
+        //$data['skills_all'] = $this->Browse_candidate->get_skills_list();
+        $data['skills_all'] = $this->get_skills_list();
 		$data['page_nm'] = "joblisting";
 		$this->load->view('job_listing',$data);
 	}
+
+	public function get_skills_list(){
+		$this->load->model("browse_candidate_m");
+    	$skills = $this->browse_candidate_m->fetch_uniqu_skills();
+    	return $skills;
+    }
+
+    public function get_cities_list(){
+    	$cities = $this->
+
+    }
 }
 ?>

@@ -22,8 +22,8 @@ class Job_listing_m extends CI_Model {
 	        $this->db->limit($limit, $start);
 	        $query = $this->db->get();
 	        return $query->result();
-	   }
-
+	}
+	   
 }
 
 /* End of file job_listing_m */

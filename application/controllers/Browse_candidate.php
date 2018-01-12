@@ -71,7 +71,6 @@ class Browse_candidate extends CI_Controller {
     public function get_skills_list(){
     	$skills = $this->browse_candidate_m->fetch_uniqu_skills();
     	return $skills;
-
     }
 }
 ?>

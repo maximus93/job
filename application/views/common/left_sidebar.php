@@ -62,32 +62,18 @@
       <div class="facet-label hidden-xs" style="color:#06c;">Search by category</div>
       <div class="drilldown-container collapsed">
         <ul class="facet-links">
-          <li><input type="checkbox"> <a href="#" style="color:black;font-size:13px;">Accounting</a></li>
-          <li><input type="checkbox"> <a href="#" style="color:black;font-size:13px;">Administration & Office Support</a></li>
-          <li><input type="checkbox"> <a href="#" style="color:black;font-size:13px;">Advertising, Arts & Media</a></li>
-          <li><input type="checkbox"> <a href="#" style="color:black;font-size:13px;">Banking & Financial Services</a></li>
-          <li><input type="checkbox"> <a href="#" style="color:black;font-size:13px;">Call Centre & Customer Service</a></li>
-          <li><input type="checkbox"> <a href="#" style="color:black;font-size:13px;">Community Services & Development</a></li>
-          <li><input type="checkbox"> <a href="#" style="color:black;font-size:13px;">Construction</a></li>
-          <li><input type="checkbox"> <a href="#" style="color:black;font-size:13px;">Design & Architecture</a></li>
-          <li><input type="checkbox"> <a href="#" style="color:black;font-size:13px;">Education & Teaching</a></li>
-          <li><input type="checkbox"> <a href="#" style="color:black;font-size:13px;">Engineering</a></li>
-          <li><input type="checkbox"> <a href="#" style="color:black;font-size:13px;">Farming & Veterinary</a></li>
-          <li><input type="checkbox"> <a href="#" style="color:black;font-size:13px;">Government & Defence</a></li>
-          <li><input type="checkbox"> <a href="#" style="color:black;font-size:13px;">Healthcare & Nursing</a></li>
-          <li><input type="checkbox"> <a href="#" style="color:black;font-size:13px;">Hospitality & Tourism</a></li>
-          <li><input type="checkbox"> <a href="#" style="color:black;font-size:13px;">Information & Communication Tech</a></li>
-          <li><input type="checkbox"> <a href="#" style="color:black;font-size:13px;">Legal</a></li>
-          <li><input type="checkbox"> <a href="#" style="color:black;font-size:13px;">Manufacturing, Transport & Logistics</a></li>
-          <li><input type="checkbox"> <a href="#" style="color:black;font-size:13px;">Marketing & Communications</a></li>
-          <li><input type="checkbox"> <a href="#" style="color:black;font-size:13px;">Mining, Resources & Energy</a></li>
-          <li><input type="checkbox"> <a href="#" style="color:black;font-size:13px;">Real Estate & Property</a></li>
-          <li><input type="checkbox"> <a href="#" style="color:black;font-size:13px;">Recruitment & HR</a></li>
-          <li><input type="checkbox"> <a href="#" style="color:black;font-size:13px;">Retail</a></li>
-          <li><input type="checkbox"> <a href="#" style="color:black;font-size:13px;">Sales</a></li>
-          <li><input type="checkbox"> <a href="#" style="color:black;font-size:13px;">Sports & Recreation</a></li>
-          <li><input type="checkbox"> <a href="#" style="color:black;font-size:13px;">Trades & Services</a></li>
-          <li><input type="checkbox"> <a href="#" style="color:black;font-size:13px;">Other Jobs</a></li>   
+          <?php
+              $merge = "";
+              foreach($skills_all As $skills_unique){
+                $merge .= $skills_unique->skills;
+              }
+              $convert_merge_to = explode(",",$merge);
+              foreach($convert_merge_to As $key=>$uniqu_skills){
+          ?>
+          <li><input type="checkbox" value="<?php echo $uniqu_skills;?>"> <a href="#" style="color:black;font-size:13px;"><?php echo strtoupper($uniqu_skills);?></a></li>
+          <?php
+          }
+          ?>  
         </ul>
         
       </div>
