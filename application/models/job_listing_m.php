@@ -23,6 +23,13 @@ class Job_listing_m extends CI_Model {
 	        $query = $this->db->get();
 	        return $query->result();
 	}
+
+	public function get_cities(){
+		$this->db->select("location");
+        $this->db->from("resume");
+        $query = $this->db->get();
+        return $query->result();
+	}
 	   
 }
 
