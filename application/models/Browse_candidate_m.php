@@ -18,5 +18,12 @@ class Browse_candidate_m extends CI_Model
         $query = $this->db->get();
         return $query->result();
    }
+
+   public function fetch_uniqu_skills(){
+        $this->db->select("skills");
+        $this->db->from("resume");
+        $query = $this->db->get();
+        return $query->result();
+   }
 }
 ?>

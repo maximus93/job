@@ -167,11 +167,12 @@
                   foreach($resume_details as $data_val){
                       $skills = explode(",",$data_val->skills);
                       $resume_uploaded_date = date("M d Y",$data_val->date_posted);
+                      $pic = $data_val->profile_picture;
                 ?>
                 <div class="page_listing candidate" style="border:1px  solid #e1e1e1;border-bottom:  1px solid #e1e1e1;">
                   <div class="sorting_content col-md-7" style=" padding: 25px 15px 15px;overflow: hidden;">
                     <div class="tab-image" style="float: left;text-align: center;margin-right: 20px;">
-                      <img src="<?php echo base_url();?><?php echo $data_val->profile_picture;?>" alt="" style="height:100px;" class="img-responsive">
+                      <img src="<?php echo base_url();?>uploads/<?php echo $data_val->profile_picture;?>" alt="" style="height:100px;" class="img-responsive">
                     </div>
                     <div class="overflow" style="overflow:hidden;">
                       <div class="text-shorting" style="font-size: 16px;color: #333;line-height: 30px;font-weight: 500;margin: 0px;">
