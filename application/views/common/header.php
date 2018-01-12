@@ -27,7 +27,7 @@ background:white;
                             $first_name = ucfirst($userdata['first_name']);
                             $last_name = ucfirst(substr($userdata['last_name'],0,1));
                     ?>
-                        <a href="<?php echo base_url();?>register" style="color:black;padding:5px 10px;text-transform:capitalize  !important;border:1px solid black;float:right;border-radius: 7px !important;"><img src="<?php echo base_url();?>uploads/<?php echo $profile_picture;?>" style="height:30px;"> <?php echo $first_name;?> <?php echo $last_name;?>.</a>
+                        <a href="<?php echo base_url();?>dashboard" style="color:black;padding:5px 10px;text-transform:capitalize  !important;border:1px solid black;float:right;border-radius: 7px !important;"><img src="<?php echo base_url();?>uploads/<?php echo $profile_picture;?>" style="height:30px;"> <?php echo $first_name;?> <?php echo $last_name;?>.</a>
                         <a href="<?php echo base_url();?>login/logout"style="color:black;padding:5px 10px;text-transform:capitalize  !important;float:right;margin-top:5px;"><img src="<?php echo base_url();?>images/if_logout_54231.png" style="height:18px;"> Logout </a>
                         
                     <?php
