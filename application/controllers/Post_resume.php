@@ -118,8 +118,9 @@ class Post_resume extends CI_Controller {
 	{
 		$emp_id = $this->uri->segment(3);
 		$this->load->model('post_resume_m');
-		$emp_details['emp_details'] = $this->post_resume_m->fetch_emp_details($emp_id);
-		$this->load->view('post_resume',$emp_details);
+		$data['emp_details'] = $this->post_resume_m->fetch_emp_details($emp_id);
+		$data['page_nm'] = "post_resume";
+		$this->load->view('post_resume',$data);
 	}
 	public function edit_resume()
 	{
