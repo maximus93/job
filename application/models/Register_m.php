@@ -13,7 +13,7 @@ class Register_m extends CI_Model
 
 		$this->db->insert('users', $records);
 		$last_id = $this->db->insert_id();
-		return $last_id
+		return $last_id;
 
 	}
 
