@@ -21,7 +21,10 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		$data['page_nm'] = "home";
+		$jccat = $this->job_details_m->get_details($job_id);
 		$this->load->view('home',$data);
 	}
+
+
 }
 ?>
