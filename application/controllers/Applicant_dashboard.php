@@ -19,12 +19,7 @@ class Applicant_dashboard extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
- 	function __construct(){
-        parent::__construct();
-        if(!$this->session->userdata['logged_in']){
-            redirect('login');
-        }
-    }
+
 	public function index()
 	{
 		$this->load->model('applicant_dashboard_m');
