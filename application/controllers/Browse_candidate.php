@@ -61,10 +61,17 @@ class Browse_candidate extends CI_Controller {
         //$v = $data["resume_details"];
         //print_r($data["resume_details"]);
        	$data['page_nm'] = "browse_candidate";
+       	$data['skills_all'] = $this->get_skills_list();
         $this->load->view("browse_candidate", $data);
 
         //print_r($data);
         //exit;
+    }
+
+    public function get_skills_list(){
+    	$skills = $this->browse_candidate_m->fetch_uniqu_skills();
+    	return $skills;
+
     }
 }
 ?>
