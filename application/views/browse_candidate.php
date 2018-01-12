@@ -175,7 +175,7 @@
                     </div>
                     <div class="overflow" style="overflow:hidden;">
                       <div class="text-shorting" style="font-size: 16px;color: #333;line-height: 30px;font-weight: 500;margin: 0px;">
-                        <a href="<?php echo base_url();?>candidate_details/">
+                        <a href="<?php echo base_url();?>applicant_dashboard/<?php echo $data_val->user_id;?>">
                           <h1 style="font-size: 16px;color: #237fa5;line-height: 35px;font-weight: 700;margin-top:-10px;">
                             <u><?php echo ucfirst($data_val->first_name);?> <?php echo ucfirst($data_val->last_name);?></u>
                           </h1>
@@ -216,11 +216,11 @@
 
 
                   <div class="sorting_content col-md-5" style="padding: 25px 15px 15px;overflow: hidden;">
-                    <p style="font-size: 12px;"> 
+                    <!--<p style="font-size: 12px;"> 
                         <a href='' class="btn btn-warning" >Shortlist</a>
                         <a href='' class="btn btn-default" >Compare</a>
                         <a href='' class="btn btn-primary" >Details</a>
-                    </p>
+                    </p>-->
                     <div class="col-md-3 ">
                       <p style="font-size: 12px;font-weight:bold;">Job Title:</p>
                       <p style="font-size: 12px;font-weight:bold;">Salary:</p>

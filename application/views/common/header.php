@@ -111,7 +111,7 @@ background:white;
                             </a>
                         </div>
 
-                        <div class="collapse navbar-collapse always-collapse tj-collapse-menu personalisation-collapse-menu" id="navbar-personalisation-links">
+                        <!--<div class="collapse navbar-collapse always-collapse tj-collapse-menu personalisation-collapse-menu" id="navbar-personalisation-links">
                             <ul class="nav navbar-nav">
                                 <li><a href="#">My account</a></li>
                                 <li><a href="#">My profile</a></li>
@@ -121,26 +121,27 @@ background:white;
                                 <li><a href="#">My job alerts</a></li>
                                 <li class="signout"><a id="sign-out-link" href="#" class="signout-link">Sign out</a></li>
                             </ul>
-                        </div>
+                        </div>-->
                         
-                        <div class="visible-xs">
-                            <div class="collapse navbar-collapse always-collapse tj-collapse-menu signin-collapse-menu" id="navbar-mobile-signin-links">
-                                <ul class="nav navbar-nav">
-                                    <li><a href="#" class="signin-link">EMPLOYEE</a></li>
-                                    <li class="hidden-md hidden-lg"><a href="#">Register CV</a></li>
-                                    <li class="recruiter-nav"><a href="#">EMPLOYER</a></li>
-                                </ul>
-                            </div>
-                        </div>
 
                         
                         <div class="collapse navbar-collapse always-collapse tj-collapse-menu sitelinks-collapse-menu" id="navbar-site-links">
                             <ul class="nav navbar-nav">
-                                <li class="recruiter-nav"><a href="#">Job Search</a></li>
-                                <li><a href="#">Post Resume</a></li>
-                                <li><a href="#">Post a Job</a></li>
-                                <li><a href="#">Resume Browse</a></li>
-                                <!-- <li class="career-nav"><a href="#">Career tools</a></li> -->
+                               <li class="<?php echo(($page_name == 'home')?'abc':'');?>">
+                                        <a class="navbar-item-anchor" href="<?php echo base_url();?>" style="font-size:13px !important;<?php echo(($page_name == 'home')?'color:black':'');?>">HOME</a>
+                                </li>
+                                <li class="<?php echo(($page_name == 'joblisting')?'abc':'');?>">
+                                    <a class="navbar-item-anchor" href="<?php echo base_url();?>joblisting" style="font-size:13px !important;<?php echo(($page_name == 'joblisting')?'color:black':'');?>">JOBS SEARCH</a>
+                                </li>
+                                <li class="<?php echo(($page_name == 'post_resume')?'abc':'');?>">
+                                    <a href="<?php echo base_url();?>post_resume" style="font-size:13px !important;<?php echo(($page_name == 'post_resume')?'color:black':'');?>">POST RESUME</a>
+                                </li>
+                                <li class="<?php echo(($page_name == 'job_post')?'abc':'');?>">
+                                    <a class="navbar-item-anchor" style="font-size:13px !important;<?php echo(($page_name == 'job_post')?'color:black':'');?>" href="<?php echo base_url();?>job_post">POST A JOB</a>
+                                </li>
+                                <li class="<?php echo(($page_name == 'browse_candidate')?'abc':'');?>">
+                                    <a class="navbar-item-anchor" style="font-size:13px !important;<?php echo(($page_name == 'browse_candidate')?'color:black':'');?>" href="<?php echo base_url();?>browse_candidate">RESUME BROWSE</a>
+                                </li>
                             </ul>
                         </div>
                         
