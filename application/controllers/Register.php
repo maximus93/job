@@ -49,7 +49,7 @@ class Register extends CI_Controller {
 			$insert_data = $this->register_m->insert_employee($records);
 			if($insert_data != '')
 		{
-			$records = array('emp_id'=> $insert_data);
+			$records = array('user_id'=> $insert_data);
 			$insert_emp_details = $this->register_m->insert_emp($records);
 			if($insert_emp_details)
 			{
