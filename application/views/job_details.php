@@ -111,43 +111,19 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-
-                                    <div class="panel-body" style="border:1px solid #e1e1e1;">
-                                        <div class="job_title block1" style="font-weight:900;">
-                                            Company Profile
-                                            <a href="#" style="color:#1c4972;float:left;margin-left:-10px;" class="col-md-12"><?php echo (($fetch_job->name_status == 'yes')?'Company Name Hidden':$fetch_job->company_name);?></a>
-                                        </div> 
-										 <div class="clearfix"></div>
-                                        <div class="contact_details">
-                                            <span style="color:black;padding-bottom:10px;font-size:12px;">
-                                                <span class="glyphicon glyphicon-map-marker"></span> 
-                                                <?php echo ucfirst($fetch_job->location);?>
-                                            </span></br>
-
-                                            <span style="color:black;padding-bottom:10px;font-size:12px;">
-                                                <span class="glyphicon glyphicon-earphone"></span> 
-                                                <?php echo ucfirst($fetch_job->contact_number);?>
-                                            </span></br>
-
-                                            <span style="color:black;padding-bottom:10px;font-size:12px;">
-                                                <span class="glyphicon glyphicon-user"></span> 
-                                                <?php echo ucfirst($fetch_job->contact_name);?>
-                                            </span></br>
-                                        </div>
-                                    </div>
-									<?php
+														<?php
 										if($user_id == '')
 										{
 									?>
-									<div class="panel-body" style="border:1px solid #e1e1e1;margin-top:20px;">
-                                        <a class="btn btn-primary" id="primary_button" href="<?php echo base_url();?>login" style="background:red;border:1px solid red;margin-left:75px;">Login For Apply</a>
+									<div class="panel-body" style="border:1px solid #e1e1e1;">
+                                        <a class="btn btn-primary" id="primary_button" href="<?php echo base_url();?>login" style="margin-left:75px;">Login For Apply</a>
                                     </div>
 									<?php
 										}
 										elseif($user_id != $fetch_job->company_id)
 										{
 									?>
-									<div class="panel-body" style="border:1px solid #e1e1e1;margin-top:20px;">
+									<div class="panel-body" style="border:1px solid #e1e1e1;">
                                         <a class="btn btn-primary" id="primary_button" onclick="show_box();">Apply For This Job</a>
                                         <div id="apply_form" style="display:none;">
                                             <p></p>
@@ -163,7 +139,7 @@
 									elseif($user_id == $fetch_job->company_id)
 									{
 									?>
-									<div class="panel-body" style="border:1px solid #e1e1e1;margin-top:20px;">
+									<div class="panel-body" style="border:1px solid #e1e1e1;">
                                         <a class="btn btn-primary" id="primary_button" onclick="show_box();" style="background:red;border:1px solid red;margin-left:75px;">Delete This Job</a>
                                         <form id="apply_form" style="display:none;" action="<?php echo base_url();?>job_details/delete_job" method="post" enctype="multipart/form-data">
                                             <p></p>
@@ -177,6 +153,31 @@
 									<?php
 									}
 									?>
+                                    <div class="panel-body" style="border:1px solid #e1e1e1;margin-top:18px;">
+                                        <div class="job_title block1" style="font-weight:900;width:100% !important;padding:0px !important;">
+                                            Company Profile
+                                            <a href="#" style="color:#1c4972;float:left;margin-left:-10px;font-size:12px;" class="col-md-12"><?php echo (($fetch_job->name_status == 'yes')?'Company Name Hidden':$fetch_job->company_name);?></a>
+                                        </div> 
+										 <div class="clearfix"></div>
+                                        <div class="contact_details">
+											
+                                            <span style="color:black;padding-bottom:10px;font-size:12px;">
+                                                <span style="color:#1c4972">Address:-</span> 
+                                                <?php echo ucfirst($fetch_job->location);?>
+                                            </span></br>
+
+                                            <span style="color:black;padding-bottom:10px;font-size:12px;">
+                                                <span style="color:#1c4972">Phone:-</span> 
+                                                <?php echo ucfirst($fetch_job->contact_number);?>
+                                            </span></br>
+
+                                            <span style="color:black;padding-bottom:10px;font-size:12px;">
+                                                <span style="color:#1c4972">Person:-</span> 
+                                                <?php echo ucfirst($fetch_job->contact_name);?>
+                                            </span></br>
+                                        </div>
+                                    </div>
+				
 								
 									
                                 </div>
