@@ -27,7 +27,7 @@ class Register_m extends CI_Model
 		$check_rows = $query->num_rows();
 		return $check_rows;
 	}
-
+	
 	public function insert_emp($records)	
 	{
 		$query = $this->db->insert('resume', $records);
@@ -40,6 +40,16 @@ class Register_m extends CI_Model
 			return false;
 		}
 
+	}
+
+	public function fetch_register_details($insert_data)
+	{
+		$condition = "user_id =" . "'" . $insert_data . "'";
+		$this->db->select('*');
+		$this->db->from('users');
+		$this->db->where($condition);
+		$query = $this->db->get();
+		return $query->row();
 	}
 }
 ?>	

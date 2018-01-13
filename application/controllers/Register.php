@@ -38,7 +38,7 @@ class Register extends CI_Controller {
 		$postcode = $this->input->post('postcode');
 		$password  = $this->input->post('password');
 		$con_pass = $this->input->post('con_password');
-		$profile_image = "images/if_user_male2_172626.png";
+		$profile_image = "if_user_male2_172626.png";
 		$date = time();
 		$user_type= "employee";
 		$user_status = "pending";
@@ -51,12 +51,29 @@ class Register extends CI_Controller {
 		{
 			$records = array('user_id'=> $insert_data);
 			$insert_emp_details = $this->register_m->insert_emp($records);
-			if($insert_emp_details)
+			$get_register_details = $this->register_m->fetch_register_details($insert_data);
+		
+			if($get_register_details)
 			{
-
 				 $sess_array = array(
-					 'user_id' => $insert_data,
+				'user_id' => $get_register_details->user_id,
+				 'first_name' => $get_register_details->first_name,
+				 'last_name' => $get_register_details->last_name,
+				 'email' => $get_register_details->email,
+				 'address' => $get_register_details->address,
+				 'user_type' => $get_register_details->user_type,
+				 'address' => $get_register_details->address,
+				 'account_first_name' => $get_register_details->account_first_name,
+				 'account_last_name' => $get_register_details->account_last_name,
+				 'phone' => $get_register_details->phone,
+				 'postcode' => $get_register_details->postcode,
+				 'comapny_name' => $get_register_details->comapny_name,
+				 'registration_date' => $get_register_details->registration_date,
+				 'user_status' => $get_register_details->user_status,
+				 'profile_picture' => $get_register_details->profile_picture,
+				 'islogged_in' => "true"
 				   );
+				
 				$this->session->set_userdata('logged_in', $sess_array);
 				redirect('dashboard');
 			}

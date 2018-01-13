@@ -84,10 +84,10 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <input id="title" type="text" name="job_title" class="form-control" placeholder="your job title" value="<?php echo $emp_details->job_title;?>" required>
+                      <input id="title" type="text" name="job_title" class="form-control" placeholder="your job title" value="<?php echo (($emp_details->job_title != '')?$emp_details->job_title:'');?>" required>
                     </div>
                     <div class="form-group">
-                      <input id="title" type="text" name="company_name" class="form-control" placeholder="company name" value="<?php echo $emp_details->company_name;?>" required>
+                      <input id="title" type="text" name="company_name" class="form-control" placeholder="company name" value=" <?php echo (($emp_details->company_name != '')?$emp_details->company_name:'');?>" required>
                     </div>
                   </div>
                 </div>
@@ -98,7 +98,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="addsz">
-                          <input id="location" type="text" name="skills[]" placeholder="e.g. php developer , web design" class="form-control" value="<?php echo $emp_details->skills;?>" required>
+                          <input id="location" type="text" name="skills[]" placeholder="e.g. php developer , web design" class="form-control" value="<?php echo (($emp_details->skills != '')?$emp_details->skills:'');?>" required>
                         </div>
                         <!--<p class="add_something btn-warning" style="margin-top:11px;" >Add Another Skills</p>-->
                         <a href="javascript:void(0);" style="float:right;margin-top:15px;" class="add_something btn-warning">
@@ -111,37 +111,37 @@
               <div class="row">
                 <div class="col-md-6 form-group">
                   <label for="location" style="font-size:12px;">Start Date <span style="color:red;" title="This field is required">*</span></label>
-                  <input id="location" type="date" class="form-control" name="start_date" value="<?php echo date('Y,m,d',$emp_details->start_date);?>" placeholder="15 January 2014" required>
+                  <input id="location" type="date" class="form-control" name="start_date" value="<?php echo (($emp_details->start_date != '')?date("Y,m,d",$emp_details->start_date):'');?>" placeholder="15 January 2014" required>
                 </div>
                 <div class="col-md-6 form-group">
                   <label for="type" style="font-size:12px;">End Date <span style="color:red;" title="This field is required">*</span></label>
-                  <input id="location" type="date" class="form-control" name="end_date" value="<?php echo date('Y,m,d',$emp_details->end_date);?>" placeholder="15 January 2014" required>
+                  <input id="location" type="date" class="form-control" name="end_date" value="<?php echo (($emp_details->end_date != '')?date("Y,m,d",$emp_details->end_date):'');?>" placeholder="15 January 2014" required>
                 </div>
               </div>
               </br>
             <div class="row">
               <div class="col-md-12 form-group">
                 <label for="location" style="font-size:12px;">Education <span style="color:red;" title="This field is required">*</span></label>
-                <input id="education" type="text" placeholder="e.g. BTECH , Computer science" class="form-control" value="<?php echo $emp_details->education?>" name="education" required>
+                <input id="education" type="text" placeholder="e.g. BTECH , Computer science" class="form-control" value="<?php echo (($emp_details->education != '')?$emp_details->education:'');?>" name="education" required>
               </div>
             </div>
             </br>
           <div class="row">
             <div class="col-md-12 form-group">
               <label for="post_type" style="font-size:12px;">Maximum Salary <span style="color:red;" title="This field is required">*</span></label>
-              <select id="post_type" name="max_salary" data-placeholder="Choose type of the post" class="form-control select2me" required>
-			  <option value="<?php echo $emp_details->max_salary;?>" selected><?php echo $emp_details->max_salary;?></option>
-                <option style="background:#003A83;" value="30000">$30,000 +</option>
-                <option style="background:#003A83;" value="40000">$40,000 +</option>
-                <option style="background:#003A83;" value="50000">$50,000 +</option>
-                <option style="background:#003A83;" value="60000">$60,000 +</option>
-                <option style="background:#003A83;" value="70000">$70,000 +</option>
-                <option style="background:#003A83;" value="80000">$80,000 +</option>
-                <option style="background:#003A83;" value="100000">$100,000 +</option>
-                <option style="background:#003A83;" value="125000">$125,000 +</option>
-                <option style="background:#003A83;" value="150000">$150,000 +</option>
-                <option style="background:#003A83;" value="180000">$180,000 +</option>
-                <option style="background:#003A83;" value="200000">$200,000 +</option>
+              <select id="post_type" name="max_salary" data-placeholder="Choose type of the post" class="form-control select2" required>
+			  <option value="<?php echo (($emp_details->max_salary != '')?$emp_details->max_salary:'');?>" selected><?php echo (($emp_details->max_salary != '')?$emp_details->max_salary:'');?></option>
+                <option  value="30000">$30,000 +</option>
+                <option  value="40000">$40,000 +</option>
+                <option  value="50000">$50,000 +</option>
+                <option  value="60000">$60,000 +</option>
+                <option  value="70000">$70,000 +</option>
+                <option  value="80000">$80,000 +</option>
+                <option  value="100000">$100,000 +</option>
+                <option  value="125000">$125,000 +</option>
+                <option  value="150000">$150,000 +</option>
+                <option  value="180000">$180,000 +</option>
+                <option  value="200000">$200,000 +</option>
               </select>
             </div>
           </div>
@@ -150,19 +150,19 @@
           <div class="col-md-12 form-group">
             <label for="post_type" style="font-size:12px;">Willing to Travel <span style="color:red;" title="This field is required">*</span></label>
             <select id="post_type" name="travel_distance" data-placeholder="Choose type of the post" class="form-control select2" required>
-			<option value="<?php echo $emp_details->travel_distance;?>" selected ><?php echo $emp_details->travel_distance;?></option>
-              <option style="background:#003A83;" value="5">5km</option>
-              <option style="background:#003A83;" value="10">10km</option>
-              <option style="background:#003A83;" value="15">15km</option>
-              <option style="background:#003A83;" value="20">20km</option>
-              <option style="background:#003A83;" value="25">25km</option>
-              <option style="background:#003A83;" value="30">30km</option>
-              <option style="background:#003A83;" value="40">40km</option>
-              <option style="background:#003A83;" value="50">50km</option>
-              <option style="background:#003A83;" value="60">60km</option>
-              <option style="background:#003A83;" value="70">70km</option>
-              <option style="background:#003A83;" value="100">100km</option>
-              <option style="background:#003A83;" value="120">120km</option>
+			<option value="<?php echo (($emp_details->travel_distance != '')?$emp_details->travel_distance:'');?>" selected ><?php echo (($emp_details->travel_distance != '')?'$emp_details->travel_distance':'');?></option>
+              <option  value="5">5km</option>
+              <option  value="10">10km</option>
+              <option  value="15">15km</option>
+              <option  value="20">20km</option>
+              <option  value="25">25km</option>
+              <option  value="30">30km</option>
+              <option  value="40">40km</option>
+              <option  value="50">50km</option>
+              <option  value="60">60km</option>
+              <option  value="70">70km</option>
+              <option  value="100">100km</option>
+              <option  value="120">120km</option>
             </select>
           </div>
         </div>
@@ -209,9 +209,9 @@
       <label for="post_type" style="font-size:12px;">Privacy <span style="color:red;" title="This field is required">*</span>
       </label>
       <select id="post_type" data-placeholder="Choose type of the post" class="form-control select2" name="post_type" required>
-	  <option style="background:#003A83;" value="<?php echo $emp_details->post_type;?>"><?php echo $emp_details->post_type;?></option>
-        <option style="background:#003A83;"  value="standard">Standard</option>
-        <option style="background:#003A83;"  value="limited">Limited</option>
+	  <option  value="<?php echo $emp_details->post_type;?>"><?php echo $emp_details->post_type;?></option>
+        <option   value="standard">Standard</option>
+        <option   value="limited">Limited</option>
       </select>
     </div>
   </div>
