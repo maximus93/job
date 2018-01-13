@@ -150,7 +150,7 @@
           <div class="col-md-12 form-group">
             <label for="post_type" style="font-size:12px;">Willing to Travel <span style="color:red;" title="This field is required">*</span></label>
             <select id="post_type" name="travel_distance" data-placeholder="Choose type of the post" class="form-control select2" required>
-			<option value="<?php echo (($emp_details->travel_distance != '')?$emp_details->travel_distance:'');?>" selected ><?php echo (($emp_details->travel_distance != '')?'$emp_details->travel_distance':'');?></option>
+			<option value="<?php echo (($emp_details->travel_distance != '')?$emp_details->travel_distance:'');?>" selected ><?php echo (($emp_details->travel_distance != '')?$emp_details->travel_distance:'');?></option>
               <option  value="5">5km</option>
               <option  value="10">10km</option>
               <option  value="15">15km</option>
