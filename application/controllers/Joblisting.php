@@ -69,7 +69,8 @@ class Joblisting extends CI_Controller {
     }
 
     public function get_cities_list(){
-    	$cities = $this->
+    	$cities = $this->Job_listing_m->get_cities();
+    	return $cities;
 
     }
 }
