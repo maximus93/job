@@ -103,12 +103,46 @@ background:white;
                                     <li class="<?php echo(($page_name == 'joblisting')?'abc':'');?>">
                                         <a class="navbar-item-anchor" href="<?php echo base_url();?>joblisting" style="font-size:13px !important;<?php echo(($page_name == 'joblisting')?'color:black':'');?>">JOBS SEARCH</a>
                                     </li>
-                                    <li class="<?php echo(($page_name == 'post_resume')?'abc':'');?>">
-                                        <a href="<?php echo base_url();?>post_resume" style="font-size:13px !important;<?php echo(($page_name == 'post_resume')?'color:black':'');?>">POST RESUME</a>
-                                    </li>
-                                    <li class="<?php echo(($page_name == 'job_post')?'abc':'');?>">
-                                        <a class="navbar-item-anchor" style="font-size:13px !important;<?php echo(($page_name == 'job_post')?'color:black':'');?>" href="<?php echo base_url();?>job_post">POST A JOB</a>
-                                    </li>
+									
+									<?php 
+									if(isset($this->session->userdata['logged_in']) && $this->session->userdata['logged_in'] != NULL){
+										$userdata = $this->session->userdata['logged_in'];
+										$user_type = $userdata['user_type'];
+										if($user_type == 'employee'){
+									?>
+										<li class="<?php echo(($page_name == 'post_resume')?'abc':'');?>">
+											<a href="<?php echo base_url();?>post_resume" style="font-size:13px !important;<?php echo(($page_name == 'post_resume')?'color:black':'');?>">POST RESUME</a>
+										</li>
+									<?php
+										}
+									}else{
+									?>
+										<li class="<?php echo(($page_name == 'post_resume')?'abc':'');?>">
+											<a href="<?php echo base_url();?>post_resume" style="font-size:13px !important;<?php echo(($page_name == 'post_resume')?'color:black':'');?>">POST RESUME</a>
+										</li>
+									<?php
+									}
+									?>
+
+									<?php 
+									if(isset($this->session->userdata['logged_in']) && $this->session->userdata['logged_in'] != NULL){
+										$userdata = $this->session->userdata['logged_in'];
+										$user_type = $userdata['user_type'];
+										if($user_type == 'employeer'){
+									?>
+										<li class="<?php echo(($page_name == 'job_post')?'abc':'');?>">
+											<a class="navbar-item-anchor" style="font-size:13px !important;<?php echo(($page_name == 'job_post')?'color:black':'');?>" href="<?php echo base_url();?>job_post">POST A JOB</a>
+										</li>
+									<?php
+										}
+									}else{
+									?>
+										<li class="<?php echo(($page_name == 'job_post')?'abc':'');?>">
+											<a class="navbar-item-anchor" style="font-size:13px !important;<?php echo(($page_name == 'job_post')?'color:black':'');?>" href="<?php echo base_url();?>job_post">POST A JOB</a>
+										</li>
+									<?php
+									}
+									?>
                             		<li class="<?php echo(($page_name == 'browse_candidate')?'abc':'');?>">
                                         <a class="navbar-item-anchor" style="font-size:13px !important;<?php echo(($page_name == 'browse_candidate')?'color:black':'');?>" href="<?php echo base_url();?>browse_candidate">RESUME BROWSE</a>
                                     </li>
