@@ -50,7 +50,7 @@ class Job_details extends CI_Controller {
 		$data['page_nm'] = "job_details";
 		if(isset($this->session->userdata['logged_in']['user_id']) && $this->session->userdata['logged_in']['user_id']!= '') 
 		{
-			$data['user_id'] = $user_id;
+			$data['user_id'] = $this->session->userdata['logged_in']['user_id'];
 		}
 		else
 		{

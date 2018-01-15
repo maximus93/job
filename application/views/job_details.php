@@ -138,7 +138,10 @@
 										}
 									elseif($user_id == $fetch_job->company_id)
 									{
+										echo $fetch_job->company_id;
+
 									?>
+									
 									<div class="panel-body" style="border:1px solid #e1e1e1;">
                                         <a class="btn btn-primary" id="primary_button" onclick="show_box();" style="background:red;border:1px solid red;margin-left:75px;">Delete This Job</a>
                                         <form id="apply_form" style="display:none;" action="<?php echo base_url();?>job_details/delete_job" method="post" enctype="multipart/form-data">

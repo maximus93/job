@@ -98,7 +98,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="addsz">
-                          <input id="location" type="text" name="skills[]" data-role="tagsinput"  placeholder="e.g. php developer , web design" class="form-control" value="<?php echo $emp_details->skills;?>" required>
+                          <input id="location" type="text" name="skills[]" data-role="tagsinput"  placeholder="e.g. php developer , web design" class="form-control" value="Amsterdam,Washington,Sydney,Beijing,Cairo" multiple="multiple" required>
                         </div>
                         <!--<p class="add_something btn-warning" style="margin-top:11px;" >Add Another Skills</p>-->
                         <a href="javascript:void(0);" style="float:right;margin-top:15px;" class="add_something btn-warning">
