@@ -350,7 +350,7 @@
                           </a>
                         </li>
                         <li class="col-md-6" style="margin:0px !important;padding:0px !important;">
-                          <a href="#tab2primary" style="border:none;text-align:center;" data-toggle="tab">REGISTER AS A EMPLOYEER
+                          <a href="#tab2primary" style="border:none;text-align:center;" data-toggle="tab">REGISTER AS A EMPLOYER
                           </a>
                         </li>
                       </ul>
