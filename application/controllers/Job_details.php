@@ -50,13 +50,15 @@ class Job_details extends CI_Controller {
 		$data['page_nm'] = "job_details";
 		if(isset($this->session->userdata['logged_in']['user_id']) && $this->session->userdata['logged_in']['user_id']!= '') 
 		{
+			$atar_id = $this->session->userdata['logged_in']['user_id'];
 			$data['user_id'] = $this->session->userdata['logged_in']['user_id'];
 		}
 		else
 		{
+			$atar_id = '';
 			$data['user_id'] = NULL;
 		}
-		$atar_id = $this->session->userdata['logged_in']['user_id'];
+		
 		$get_apply_not = $this->job_details_m->get_apply_check($atar_id,$job_id);
 		if($get_apply_not > 0)
 		{
