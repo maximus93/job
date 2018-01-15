@@ -323,7 +323,7 @@ font-size: 13px;
                     </div></a>
 					</div>
 					<div class="col-md-12">
-					<a href="<?php echo base_url();?>edit_setting/fetch_setting/<?php echo $user_details->user_id?>"><div class="col-md-12" style="padding:20px;margin-top:-28px;width:100px;">
+					<a href="<?php echo base_url();?>edit_setting/fetch_setting/"><div class="col-md-12" style="padding:20px;margin-top:-28px;width:100px;">
                       <button class="btn btn-primary" style="background:#5cc069;border:1px solid #5cc069;font-size:12px;">Get Settings
                       </button>
                     </div></a>

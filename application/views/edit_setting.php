@@ -8,7 +8,9 @@
       $this->load->view("common/meta_links");
     ?>
     <script type="text/javascript" src="ckeditor/ckeditor.js">
+
     </script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVEqoCsKgUMmAcDVX9OAwVMDewLI6yOAQ&sensor=false&libraries=places&language=en"></script>
     <script>
       CKEDITOR.replace('editor');
     </script>
@@ -110,7 +112,7 @@
                           <div class="form-group col-md-12">
                             <label for="password" style="font-size:12px;">Address
                             </label>
-                            <textarea name="address" class="form-control"><?php echo $normal_details->address;?></textarea>
+                            <textarea name="address" id="cityz" class="form-control"><?php echo $normal_details->address;?></textarea>
                           </div>
 						 
 						
@@ -159,5 +161,10 @@
     });
       
     </script>
+
+<script>
+      var input = document.getElementById('cityz');
+      var autocomplete = new google.maps.places.Autocomplete(input);
+ </script>
 
 </html>

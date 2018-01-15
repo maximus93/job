@@ -74,12 +74,30 @@ background:white;
                                     class="navbar-toggle navbar-always-on collapsed pull-right navbar-item signedin-icon auth toggle-tracking">
                                 <span class="navbar-item-text"> </span>
                             </button>
-
+							<?php 
+									if(isset($this->session->userdata['logged_in']) && $this->session->userdata['logged_in'] != NULL){
+										$userdata = $this->session->userdata['logged_in'];
+										$user_type = $userdata['user_type'];
+										if($user_type == 'employeer'){
+									?>
     
                             <a href="<?php echo base_url();?>job_post" style="float:right;margin-top:15px;" class="btn-warning">
                                 <span class="navbar-item-text-no-icon register-text" style="background:#ff9900;padding:10px 20px;border-radius: 7px !important;font-size:12px !important;">POST A JOB</span>
                             </a>
+							<?php
+										}
+									}
+							else
+										{
 
+							?>
+
+							  <a href="<?php echo base_url();?>job_post" style="float:right;margin-top:15px;" class="btn-warning">
+                                <span class="navbar-item-text-no-icon register-text" style="background:#ff9900;padding:10px 20px;border-radius: 7px !important;font-size:12px !important;">POST A JOB</span>
+                            </a>
+							<?php
+										}
+							?>
                             <span id="navbar-register-separator" class="navbar-toggle navbar-always-on collapsed pull-right navbar-item navbar-item-anchor hidden-xs hidden-sm navbar-separator"></span>
 
                             <button id="navbar-site-toggle" type="button"

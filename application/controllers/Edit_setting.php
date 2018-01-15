@@ -33,8 +33,9 @@ class Edit_setting extends CI_Controller {
 
 	public function fetch_setting()
 	{
-		$emp_id = $this->uri->segment(3);
+		
 		$this->load->model('edit_setting_m');
+		$emp_id = $this->session->userdata['logged_in']['user_id'];
 		$normal_details['normal_details'] = $this->edit_setting_m->fetch_normal_details($emp_id);
 		$normal_details['page_nm'] = "edit_setting";
 		$this->load->view('edit_setting',$normal_details);
