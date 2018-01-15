@@ -8,6 +8,8 @@
 	 $this->load->view("common/meta_links");
 ?> 
 	<script type="text/javascript" src="<?php echo base_url();?>ckeditor/ckeditor.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVEqoCsKgUMmAcDVX9OAwVMDewLI6yOAQ&sensor=false&libraries=places&language=en"></script>
+
 <script>
 
  CKEDITOR.replace( 'editor' );
@@ -92,7 +94,7 @@
 			  <div class="row">
                 <div class="col-md-6 form-group">
                   <label for="location" style="font-size:12px;">Location <span style="color:red;" title="This field is required">*</span></label>
-                  <input id="location" type="text" name="location" placeholder="e.g. Rio de Janeiro" class="form-control" required>
+                  <input  type="text" name="location" id="cityz" placeholder="e.g. Rio de Janeiro" class="form-control" required>
                 </div>
                 <div class="col-md-6 form-group">
                   <label for="type" style="font-size:12px;">Type <span style="color:red;" title="This field is required">*</span></label>
@@ -213,4 +215,9 @@
 <?php
 	 $this->load->view("common/footer");
 ?> 
+
+<script>
+      var input = document.getElementById('cityz');
+      var autocomplete = new google.maps.places.Autocomplete(input);
+ </script>
 </html>
