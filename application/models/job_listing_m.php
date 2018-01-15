@@ -13,8 +13,8 @@ class Job_listing_m extends CI_Model {
         parent::__construct();
     }
 	public function record_count() {
-	        return $this->db->count_all("job_post");
-	    }
+		return $this->db->count_all("job_post");
+	}
 
 	public function fetch_job($limit, $start) {
 	        $this->db->select('*');
