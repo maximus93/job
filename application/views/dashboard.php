@@ -317,7 +317,7 @@ font-size: 13px;
                   </div>
                   <div class="col-md-3" >
 					<div class="col-md-12">
-                    <a href="<?php echo base_url();?>post_resume/fetch_data/<?php echo $user_details->user_id?>"><div class="col-md-12" style="padding:20px;width:100px;">
+                    <a href="<?php echo base_url();?>post_resume/fetch_data/"><div class="col-md-12" style="padding:20px;width:100px;">
                       <button class="btn btn-primary" style="background:#5cc069;border:1px solid #5cc069;font-size:12px;">Edit Profile
                       </button>
                     </div></a>

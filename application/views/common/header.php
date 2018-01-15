@@ -111,7 +111,7 @@ background:white;
 										if($user_type == 'employee'){
 									?>
 										<li class="<?php echo(($page_name == 'post_resume')?'abc':'');?>">
-											<a href="<?php echo base_url();?>post_resume" style="font-size:13px !important;<?php echo(($page_name == 'post_resume')?'color:black':'');?>">POST RESUME</a>
+											<a href="<?php echo base_url();?>post_resume/fetch_data" style="font-size:13px !important;<?php echo(($page_name == 'post_resume')?'color:black':'');?>">POST RESUME</a>
 										</li>
 									<?php
 										}

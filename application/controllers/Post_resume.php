@@ -116,8 +116,8 @@ class Post_resume extends CI_Controller {
 
 	public function fetch_data()
 	{
-		$emp_id = $this->uri->segment(3);
 		$this->load->model('post_resume_m');
+		$emp_id = $this->session->userdata['logged_in']['user_id'];
 		$data['emp_details'] = $this->post_resume_m->fetch_emp_details($emp_id);
 		$data['page_nm'] = "post_resume";
 		$this->load->view('post_resume',$data);
