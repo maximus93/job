@@ -218,8 +218,12 @@ font-size: 13px;
                       </button>
                     </div></a>
 				</div>
-
-					
+				  <div class="col-m-12" >
+                    <a href="<?php echo base_url();?>job_post/"><div class="col-md-12" style="padding:20px;width:100px;margin-left:15px;">
+                      <button class="btn btn-primary" style="background:#5cc069;border:1px solid #5cc069;font-size:12px;">Post Job
+                      </button>
+                    </div></a>
+				</div>
 				<div class="col-md-12">
 					<a href="<?php echo base_url();?>change_password/"><div class="col-md-12" style="padding:20px;margin-top:-28px;width:100px;">
                       <button class="btn btn-primary" style="background:#5cc069;border:1px solid #5cc069;font-size:12px;">Change Password
