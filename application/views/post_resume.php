@@ -7,8 +7,20 @@
     <?php
       $this->load->view("common/meta_links");
     ?>
-    <script type="text/javascript" src="ckeditor/ckeditor.js">
-    </script>
+    <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	 <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+  	 <script>
+  $( function() {
+    $( "#datepicker1" ).datepicker();
+  } );
+  </script>
     <script>
       CKEDITOR.replace('editor');
     </script>
@@ -65,29 +77,16 @@
         <div class="container">
           <div class="row" style="background:#fff;">
             <div class="col-lg-10 col-lg-offset-1">
-			<?php
-				if(isset($this->session->userdata['logged_in']['user_id']) && $this->session->userdata['logged_in']['user_id'] =! '')
-				{
-			?>
+			
 			 <form method="POST" action="<?php echo base_url();?>post_resume/edit_resume" enctype="multipart/form-data" class="job-add-form">
-              
-			  <?php
-				}
-			else
-			{
-			  ?>
-			  <form method="POST" action="<?php echo base_url();?>post_resume/save_resume" enctype="multipart/form-data" class="job-add-form">
 
-			  <?php
-			}
-			  ?>
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
                       <input id="title" type="text" name="job_title" class="form-control" placeholder="your job title" value="<?php echo (($emp_details->job_title != '')?$emp_details->job_title:'');?>" required>
                     </div>
                     <div class="form-group">
-                      <input id="title" type="text" name="company_name" class="form-control" placeholder="company name" value=" <?php echo (($emp_details->company_name != '')?$emp_details->company_name:'');?>" required>
+                      <input id="title" type="text" name="company_name" class="form-control" placeholder="Enter Company Name" value=" <?php echo (($emp_details->company_name != '')?$emp_details->company_name:'');?>" required>
                     </div>
                   </div>
                 </div>
@@ -98,7 +97,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="addsz">
-                          <input id="location" type="text" name="skills[]" data-role="tagsinput"  placeholder="e.g. php developer , web design" class="form-control" value="Amsterdam,Washington,Sydney,Beijing,Cairo" multiple="multiple" required>
+                          <input id="location" type="text" name="skills[]" data-role="tagsinput"  placeholder="e.g. php developer , web design" class="form-control" value="<?php echo $emp_details->skills;?>" multiple="multiple" required>
                         </div>
                         <!--<p class="add_something btn-warning" style="margin-top:11px;" >Add Another Skills</p>-->
                         <a href="javascript:void(0);" style="float:right;margin-top:15px;" class="add_something btn-warning">
@@ -111,11 +110,11 @@
               <div class="row">
                 <div class="col-md-6 form-group">
                   <label for="location" style="font-size:12px;">Start Date <span style="color:red;" title="This field is required">*</span></label>
-                  <input id="location" type="date" class="form-control" name="start_date" value="<?php echo (($emp_details->start_date != '')?date("Y,m,d",$emp_details->start_date):'');?>" placeholder="15 January 2014" required>
+                  <input id="datepicker"  class="form-control" name="start_date" value="<?php echo (($emp_details->start_date != '')?str_replace(",","/",date("Y,m,d",$emp_details->start_date)):'');?>" placeholder="15 January 2014" required>
                 </div>
                 <div class="col-md-6 form-group">
                   <label for="type" style="font-size:12px;">End Date <span style="color:red;" title="This field is required">*</span></label>
-                  <input id="location" type="date" class="form-control" name="end_date" value="<?php echo (($emp_details->end_date != '')?date("Y,m,d",$emp_details->end_date):'');?>" placeholder="15 January 2014" required>
+                  <input id="datepicker1" class="form-control" name="end_date" value="<?php echo (($emp_details->end_date != '')?str_replace(",","/",date("Y,m,d",$emp_details->end_date)):'');?>" placeholder="15 January 2014" required>
                 </div>
               </div>
               </br>

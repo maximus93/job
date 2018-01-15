@@ -125,6 +125,7 @@
 											if($statuszz =='apply')
 											{
 										?>
+											
 												<div class="panel-body" style="border:1px solid #e1e1e1;">
 													<a class="btn btn-primary" id="primary_button" onclick="show_box();" style="text-align:center;margin-left:75px;">Apply For This Job</a>
 													<div id="apply_form" style="display:none;">
@@ -138,7 +139,7 @@
 												}else{
 											   ?>
 													<div class="panel-body" style="border:1px solid #e1e1e1;">
-														<a class="btn btn-primary" id="primary_button" onclick="show_box();" style="text-align:center;margin-left:75px;">Already Applied</a>
+														<a class="btn btn-primary" id="primary_button"  style="text-align:center;margin-left:75px;">Already Applied</a>
 														<div id="apply_form" style="display:none;">
 															<p></p>
 															<div class="form-group">

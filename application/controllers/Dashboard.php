@@ -28,7 +28,12 @@ class Dashboard extends CI_Controller {
 	public function index()
 	{
 		$this->load->model('dashboard_m');
-		$user_id = $this->session->userdata['logged_in']['user_id'];
+		 if(isset($this->session->userdata['logged_in']) && $this->session->userdata['logged_in'] != NULL){
+			$userdata = $this->session->userdata['logged_in'];
+			$user_id = $userdata['user_id'];
+		 }
+		echo $user_id = $user_id;
+		
 		$data['user_details'] = $this->dashboard_m->fetch_details($user_id);
 
 		$data['page_nm'] = "dashboard";
@@ -38,8 +43,11 @@ class Dashboard extends CI_Controller {
 	public function edit_resume_file()
 	{
 		$this->load->model('dashboard_m');
-		$user_id = $this->session->userdata['logged_in']['user_id'];
-		
+		 if(isset($this->session->userdata['logged_in']) && $this->session->userdata['logged_in'] != NULL){
+			$userdata = $this->session->userdata['logged_in'];
+			$user_id = $userdata['user_id'];
+		 }
+		echo $user_id = $user_id;
 			$config['upload_path'] = 'uploads/';
 			$config['allowed_types'] = 'pdf|docx|doc';
 			$config['file_name'] = rand(999,99999).$_FILES['resume_file']['name'];

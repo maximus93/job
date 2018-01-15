@@ -46,7 +46,7 @@ class Post_resume extends CI_Controller {
 		$skills_get = $this->input->post('skills');
 		$all_skills = implode(",",$skills_get);
 		$posted_date = time();
-		$user_id = 1;
+		$user_id = $this->session->userdata['logged_in']['user_id'];
 
 		if(!empty($_FILES['resume']['name'])){
                 $config['upload_path'] = 'uploads/';
@@ -117,7 +117,11 @@ class Post_resume extends CI_Controller {
 	public function fetch_data()
 	{
 		$this->load->model('post_resume_m');
-		$emp_id = $this->session->userdata['logged_in']['user_id'];
+		 if(isset($this->session->userdata['logged_in']) && $this->session->userdata['logged_in'] != NULL){
+			$userdata = $this->session->userdata['logged_in'];
+			$emp_id = $userdata['user_id'];
+		 }
+		
 		$data['emp_details'] = $this->post_resume_m->fetch_emp_details($emp_id);
 		$data['page_nm'] = "post_resume";
 		$this->load->view('post_resume',$data);
@@ -125,7 +129,7 @@ class Post_resume extends CI_Controller {
 	public function edit_resume()
 	{
 		$this->load->model('post_resume_m');
-		$user_id = $this->session->userdata['logged_in']['user_id'];
+		$user_id = $emp_id;
 		$job_title = $this->input->post('job_title');
 		$company_name = $this->input->post('company_name');
 		$start_date = $this->input->post('start_date');
