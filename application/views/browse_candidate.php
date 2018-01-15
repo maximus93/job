@@ -165,8 +165,10 @@
                 <?php
                   //print_r($resume_details);
                   foreach($resume_details as $data_val){
-                      $skills = explode(",",$data_val->skills);
                       $resume_uploaded_date = date("M d Y",$data_val->date_posted);
+                      
+                      $skills = explode(",",$data_val->skills);
+                      
                       $pic = $data_val->profile_picture;
                 ?>
                 <div class="page_listing candidate" style="border:1px  solid #e1e1e1;border-bottom:  1px solid #e1e1e1;">
