@@ -164,7 +164,7 @@
                 ?>
                 <div class="job new " id="77913552">
                   <div class="row">
-                    <div class="col-sm-12">
+                    <!--<div class="col-sm-12">
                       <div class="job-title">
                         <a href="<?php echo base_url();?>job_details/<?php echo $fetch_job->job_id;?>" title="See details for a PHP Developer ( Laravel ) in Southampton (matches on php developer)">
                           <h2 style="color:#06c;"><?php echo $fetch_job->job_title;?>
@@ -233,10 +233,29 @@
                           </div>
                         </div>
                         
+                      </div>-->
+
+
+                      <div class="card-body col-md-12">
+                        <div class="col-md-2">
+                          <a href="<?php echo base_url();?>job_details/<?php echo $fetch_job->job_id;?>" title="<?php echo (($fetch_job->name_status == 'yes')?'Company Name Hidden':$fetch_job->company_name);?>"><img src="<?php echo base_url();?>uploads/<?php echo $fetch_job->company_logo;?>" title="<?php echo (($fetch_job->name_status == 'yes')?'Company Name Hidden':$fetch_job->company_name);?>" style="width:100%;margin-top:25px;"></a>
+                        </div>
+                        <div class="col-md-10" style="">
+                        <h2 class="card-title" style=""><a href="<?php echo base_url();?>job_details/<?php echo $fetch_job->job_id;?>" style="color:black !important;" title="<?php echo (($fetch_job->name_status == 'yes')?'Company Name Hidden':$fetch_job->company_name);?>"><?php echo ucfirst($fetch_job->job_title);?></a></h2>
+                        <p class="card-text " style=""> Posted on <?php echo date("M , d Y",$fetch_job->date);?> , <b><?php echo ucfirst($fetch_job->location);?></b></p>
+                        <p class="card-text"><?php echo substr($fetch_job->job_description,0,220);?>...</p>
+                        </div>
                       </div>
+
+
                     </div>
+
+
+
                   </div>
                 </div>
+
+
                 <?php
                 }
                 ?>    
