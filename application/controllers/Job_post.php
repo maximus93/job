@@ -37,7 +37,7 @@ class Job_post extends CI_Controller {
 	public function submit_job()
 	{
 		$this->load->model('job_post_m');
-		$company_id = '2';
+		$company_id = $this->session->userdata['logged_in']['user_id'];
 		$job_title = $this->input->post('job_title');
 		$yo = $this->input->post('job_cat');
 		$job_cat = implode(',',$yo);

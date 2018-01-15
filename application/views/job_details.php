@@ -111,35 +111,53 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-														<?php
-										if($user_id == '')
-										{
+									<?php
+
+										if($user_id == NULL){
 									?>
 									<div class="panel-body" style="border:1px solid #e1e1e1;">
                                         <a class="btn btn-primary" id="primary_button" href="<?php echo base_url();?>login" style="margin-left:75px;">Login For Apply</a>
                                     </div>
 									<?php
 										}
-										elseif($user_id != $fetch_job->company_id)
-										{
+
+										if($user_id != $fetch_job->company_id){
+											if($statuszz =='apply')
+											{
+											?>
 									?>
+
 									<div class="panel-body" style="border:1px solid #e1e1e1;">
-                                        <a class="btn btn-primary" id="primary_button" onclick="show_box();">Apply For This Job</a>
+                                        <a class="btn btn-primary" id="primary_button" onclick="show_box();" style="text-align:center;margin-left:75px;">Apply For This Job</a>
                                         <div id="apply_form" style="display:none;">
                                             <p></p>
                                             <div class="form-group">
                                                 <textarea  type="text" class="form-control" name="message" placeholder="Your Message"></textarea>
                                             </div>
-                                            
-                                            <a href="<?php echo base_url();?>job_details/delete_job/<?php echo $fetch_job->job_id;?>"><div class="btn btn-primary" type="submit">Apply For This Job</div>
-                                        </div>
+										     </div>
                                     </div>
+										<?php
+											}
+											else
+											{
+										   ?>
+										   	<div class="panel-body" style="border:1px solid #e1e1e1;">
+											<a class="btn btn-primary" id="primary_button" onclick="show_box();" style="text-align:center;margin-left:75px;">Already Applied</a>
+                                        <div id="apply_form" style="display:none;">
+                                            <p></p>
+                                            <div class="form-group">
+                                                <textarea  type="text" class="form-control" name="message" placeholder="Your Message"></textarea>
+                                            </div>
+										     </div>
+										</div>
+										   <?php
+											}
+										   ?>
+                                   
 									<?php
-										}
-									elseif($user_id == $fetch_job->company_id)
-									{
-										echo $fetch_job->company_id;
-
+										}else{
+											echo $fetch_job->company_id;
+											echo $user_id;
 									?>
 									
 									<div class="panel-body" style="border:1px solid #e1e1e1;">
@@ -158,7 +176,9 @@
 									?>
                                     <div class="panel-body" style="border:1px solid #e1e1e1;margin-top:18px;">
                                         <div class="job_title block1" style="font-weight:900;width:100% !important;padding:0px !important;">
+										<span style="color:black;">
                                             Company Profile
+										</span>
                                             <a href="#" style="color:#1c4972;float:left;margin-left:-10px;font-size:12px;" class="col-md-12"><?php echo (($fetch_job->name_status == 'yes')?'Company Name Hidden':$fetch_job->company_name);?></a>
                                         </div> 
 										 <div class="clearfix"></div>

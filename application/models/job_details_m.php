@@ -33,7 +33,7 @@ public function get_applicant($job_id)
 	//$this->db->join('resume', 'users.user_id = resume.user_id');
 	$this->db->where($condition);
 	$query = $this->db->get();
-	return $query->result();
+	return $query->row();
 }
 
 public function get_details_applicant($applicant_id)
@@ -44,7 +44,7 @@ public function get_details_applicant($applicant_id)
 	//$this->db->join('resume', 'users.user_id = resume.user_id');
 	$this->db->where($condition);
 	$query = $this->db->get();
-	return $query->row;
+	return $query->row();
 }
 public function insert_msg($job_id,$message)
 {
@@ -65,6 +65,16 @@ public function insert_msg($job_id,$message)
 	}
 }
 
+public function get_apply_check($user_id,$job_id)
+	{
+		$condition = "employee_id =" . "'" . $user_id . "' AND " . "job_id =" . "'" . $job_id . "'";
+		$this->db->select('*');
+		$this->db->from('apply');
+		$this->db->where($condition);
+		$query = $this->db->get();
+		return $query->num_rows();
+
+	}
 public function delete_job($job_id)
 	{
 		$query = $this->db->query("delete from job_post where job_id='".$job_id."'");

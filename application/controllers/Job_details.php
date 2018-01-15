@@ -56,6 +56,18 @@ class Job_details extends CI_Controller {
 		{
 			$data['user_id'] = NULL;
 		}
+
+		$get_apply_not = $this->job_details_m->get_apply_check($this->session->userdata['logged_in']['user_id'],$job_id);
+		if($get_apply_not > 0)
+		{
+			$status = "already applied";
+		}
+		else
+		{
+			$status = "apply";
+		}
+		$data['statuszz'] = $status;
+		
 		$this->load->view('job_details',$data);
 	}
 	public function send_message()
