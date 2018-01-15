@@ -173,7 +173,7 @@
 										<span style="color:black;">
                                             Company Profile
 										</span>
-                                            <a href="#" style="color:#1c4972;float:left;margin-left:-10px;font-size:12px;" class="col-md-12"><?php echo (($fetch_job->name_status == 'yes')?'Company Name Hidden':$fetch_job->company_name);?></a>
+                                            <a href="#" style="color:#1c4972;float:left;margin-left:-10px;font-size:12px;" class="col-md-12"><?php echo (($fetch_job->name_status == 'yes')?$fetch_job->company_name:'Company Name Hidden');?></a>
                                         </div> 
 										 <div class="clearfix"></div>
                                         <div class="contact_details">
