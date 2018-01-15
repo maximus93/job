@@ -121,43 +121,35 @@
 									<?php
 										}
 
-										if($user_id != $fetch_job->company_id){
+										if($user_id != $fetch_job->company_id && $user_id != ''){
 											if($statuszz =='apply')
 											{
-											?>
-									?>
-
-									<div class="panel-body" style="border:1px solid #e1e1e1;">
-                                        <a class="btn btn-primary" id="primary_button" onclick="show_box();" style="text-align:center;margin-left:75px;">Apply For This Job</a>
-                                        <div id="apply_form" style="display:none;">
-                                            <p></p>
-                                            <div class="form-group">
-                                                <textarea  type="text" class="form-control" name="message" placeholder="Your Message"></textarea>
-                                            </div>
-										     </div>
-                                    </div>
-										<?php
-											}
-											else
-											{
-										   ?>
-										   	<div class="panel-body" style="border:1px solid #e1e1e1;">
-											<a class="btn btn-primary" id="primary_button" onclick="show_box();" style="text-align:center;margin-left:75px;">Already Applied</a>
-                                        <div id="apply_form" style="display:none;">
-                                            <p></p>
-                                            <div class="form-group">
-                                                <textarea  type="text" class="form-control" name="message" placeholder="Your Message"></textarea>
-                                            </div>
-										     </div>
-										</div>
-										   <?php
-											}
-										   ?>
-                                   
-									<?php
+										?>
+												<div class="panel-body" style="border:1px solid #e1e1e1;">
+													<a class="btn btn-primary" id="primary_button" onclick="show_box();" style="text-align:center;margin-left:75px;">Apply For This Job</a>
+													<div id="apply_form" style="display:none;">
+														<p></p>
+														<div class="form-group">
+															<textarea  type="text" class="form-control" name="message" placeholder="Your Message"></textarea>
+														</div>
+														 </div>
+												</div>
+											<?php
+												}else{
+											   ?>
+													<div class="panel-body" style="border:1px solid #e1e1e1;">
+														<a class="btn btn-primary" id="primary_button" onclick="show_box();" style="text-align:center;margin-left:75px;">Already Applied</a>
+														<div id="apply_form" style="display:none;">
+															<p></p>
+															<div class="form-group">
+																<textarea  type="text" class="form-control" name="message" placeholder="Your Message"></textarea>
+															</div>
+														 </div>
+													</div>
+											   <?php
+												}
 										}else{
-											echo $fetch_job->company_id;
-											echo $user_id;
+											if($user_id != NULL){
 									?>
 									
 									<div class="panel-body" style="border:1px solid #e1e1e1;">
@@ -171,9 +163,11 @@
                                             <button class="btn btn-primary" type="submit" style="background:red;border:1px solid red;margin-left:75px;">Delete This Job</button>
                                         </form>
                                     </div>
-									<?php
-									}
-									?>
+										<?php
+
+											}
+										}
+										?>
                                     <div class="panel-body" style="border:1px solid #e1e1e1;margin-top:18px;">
                                         <div class="job_title block1" style="font-weight:900;width:100% !important;padding:0px !important;">
 										<span style="color:black;">
