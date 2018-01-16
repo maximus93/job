@@ -69,12 +69,12 @@ class Employeer_dashboard extends CI_Controller {
 		if($edit_resume_data)
 		{
 			$this->session->set_flashdata("success", "Success , Your Resume Has Been Updated Successfully!");
-			redirect('employeer_dashboard');
+			redirect('dashboard');
 		}
 		else
 		{
 			$this->session->set_flashdata("failed", "Something Went Wrong!");
-			redirect('employeer_dashboard');
+			redirect('dashboard');
 		}
 	}
 }

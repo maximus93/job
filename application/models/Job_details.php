@@ -34,15 +34,11 @@ class Job_details extends CI_Controller {
 			$fetch_similar = $this->job_details_m->get_similar($cat_id,$job_id);
 			$similiar = array_merge($similiar,$fetch_similar);
 		}
-		
+
 		$fetch_applicant = $this->job_details_m->get_applicant($job_id);
-		print_r($fetch_applicant);
-		exit;
 		if(count($fetch_applicant) > 0){
 			$applicant_id = $fetch_applicant->employee_id;
 			$fetch_applicant_details = $this->job_details_m->get_details_applicant($applicant_id);
-			print_r($fetch_applicant_details);
-		
 		}else{
 			$fetch_applicant_details = "";
 		}
@@ -100,7 +96,6 @@ class Job_details extends CI_Controller {
 	{
 		$this->load->model('job_details_m');
 		$job_id =  $job_id = $this->input->post('job_id');
-
 		$delete_job = $this->job_details_m->delete_job($job_id);
 		if($delete_job)
 		{
