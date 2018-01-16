@@ -45,13 +45,13 @@ public function get_applicant($job_id)
 
 public function get_details_applicant($applicant_id)
 {
-	$condition = "user_id =" . "'" . $applicant_id ."'";
-	$this->db->select('*');
-	$this->db->from('users');
-	//$this->db->join('resume', 'users.user_id = resume.user_id');
-	$this->db->where($condition);
-	$query = $this->db->get();
-	return $query->row();
+	$condition = "users.user_id =" . "'" . $applicant_id."'";
+		$this->db->select('*');
+		$this->db->from('users');
+		$this->db->join('resume', 'users.user_id = resume.user_id');
+		$this->db->where($condition);
+		$query = $this->db->get();
+		return $query->row();
 }
 public function insert_msg($job_id,$message,$user_id)
 {

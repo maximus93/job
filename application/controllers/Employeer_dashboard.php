@@ -28,6 +28,15 @@ class Employeer_dashboard extends CI_Controller {
 	public function index()
 	{
 		$this->load->model('employeer_dashboard_m');
+		//if(isset($this->uri->segment(2)) &&$this->uri->segment(2) != NULL)
+		if($this->uri->segment(2) != NULL)
+		{
+			$job_id = $this->uri->segment(2);
+			$data['user_details'] = $this->employeer_dashboard_m->employeer_details($job_id);
+			$data['posted_jobs'] = $this->employeer_dashboard_m->job_details($job_id);
+		}
+		else
+		{
 		if(isset($this->session->userdata['logged_in']) && $this->session->userdata['logged_in'] != NULL){
 			$userdata = $this->session->userdata['logged_in'];
 			$user_id = $userdata['user_id'];
@@ -36,6 +45,8 @@ class Employeer_dashboard extends CI_Controller {
 		$data['user_details'] = $this->employeer_dashboard_m->employeer_details($user_id);
 		$data['posted_jobs'] = $this->employeer_dashboard_m->job_details($user_id);
 	
+		
+	}
 		$data['page_nm'] = "employeer_dashboard";
 		$this->load->view('employeer_dashboard',$data);
 	}
