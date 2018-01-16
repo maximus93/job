@@ -127,7 +127,12 @@
         margin:3px !important;
         border-radius: 5px !important;
       }
+      .cont_advance{
+          display: none;
+      }
     </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVEqoCsKgUMmAcDVX9OAwVMDewLI6yOAQ&sensor=false&libraries=places&language=en"></script>
+
   </head>
   <body>
     <div id="adbanner-container" class="adbanner-container-display">
@@ -257,6 +262,20 @@
       </div>
     </div>
     <?php
-$this->load->view("common/footer");
-?>
+      $this->load->view("common/footer");
+    ?>
+    <script>
+      var input = document.getElementById('cityz');
+      var autocomplete = new google.maps.places.Autocomplete(input);
+
+      function show_advance_fult(){
+          $( ".cont_advance" ).slideDown( "slow", function() {
+            // Animation complete.
+          });
+
+          $( "#book" ).slideToggle( "slow", function() {
+            // Animation complete.
+          });
+      }
+    </script>
     </html>
