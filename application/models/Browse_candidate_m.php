@@ -20,7 +20,23 @@ class Browse_candidate_m extends CI_Model
    }
 
    public function fetch_uniqu_skills(){
+        $this->db->distinct();
         $this->db->select("skills");
+        $this->db->from("resume");
+        $query = $this->db->get();
+        return $query->result();
+   }
+
+   public function fetch_uniqu_edu(){
+        $this->db->distinct();
+        $this->db->select("education");
+        $this->db->from("resume");
+        $query = $this->db->get();
+        return $query->result();
+   }
+
+   public function fetchexp(){
+        $this->db->select("end_date-start-date");
         $this->db->from("resume");
         $query = $this->db->get();
         return $query->result();

@@ -68,10 +68,15 @@
 								<div class="col-sm-4 col-md-4">
 									<div class="form-group keywords-container">
 										<div>
-											<input class="form-control keywords search-keywords" type="search" name="Keywords" id="keywords" placeholder="Job Title" style="height:43px;">
+											<input class="form-control keywords search-keywords" type="search" name="Keywords" id="keywords" onkeypress="get_suggestion(this.value);" placeholder="Job Title" style="height:43px;">
 											<div class="clear-keywords">
 												<span>&#10005;</span>
 											</div>
+										</div>
+										<div>
+											<ul class="dropdown-menu" style="display: block;margin-left: 11px;width: 94%;">
+												<li style="margin-left: 14px;">jfhh</li>
+											</ul>
 										</div>
 									</div>
 								</div>
@@ -105,15 +110,15 @@
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="col-sm-2 col-xs-12">
 							<div class="form-group">
 								<input class="btn btn-primary new-btn" type="submit"  style="" name="search" value="browse" id="">
 							</div>
 						</div>
 					</div>
-
 				</div>
+
 			</form>
 		</div>
 
@@ -331,4 +336,16 @@
 <?php
 	$this->load->view("common/footer");
 ?>
+<script>
+	function get_suggestion(val) {
+		$.ajax({
+        url: '<?php echo base_url();?>Get_job_title',
+        data: {'key_word': val}, // change this to send js object
+        type: "post",
+        success: function(response){
+           alert(response);
+        }
+      });
+	}
+</script>>
 </html>

@@ -31,7 +31,7 @@ class Browse_candidate extends CI_Controller {
         $config = array();
         $config["base_url"] = base_url() . "browse_candidate";
         $config["total_rows"] = $this->browse_candidate_m->record_count();
-        $config['per_page'] = 10;
+        $config['per_page'] = 5;
 		$config['uri_segment'] = 2;
 		$config['num_links'] = 3;
 		$config['page_query_string'] = FALSE;
@@ -62,6 +62,7 @@ class Browse_candidate extends CI_Controller {
         //print_r($data["resume_details"]);
        	$data['page_nm'] = "browse_candidate";
        	$data['skills_all'] = $this->get_skills_list();
+       	$data['edu_all'] = $this->get_education();
         $this->load->view("browse_candidate", $data);
 
         //print_r($data);
@@ -72,5 +73,11 @@ class Browse_candidate extends CI_Controller {
     	$skills = $this->browse_candidate_m->fetch_uniqu_skills();
     	return $skills;
     }
+
+    public function get_education(){
+    	$education = $this->browse_candidate_m->fetch_uniqu_edu();
+    	return $education;
+    }
+
 }
 ?>
