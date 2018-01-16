@@ -30,10 +30,9 @@ class Home extends CI_Controller {
 		$this->load->model('home_m');
 		$key_word = $this->input->post('key_word');
 		$get_suggestion = $this->home_m->get_all($key_word);
+
 		foreach ($get_suggestion as $row) {
-			echo '
-					<li style="margin-left: 14px;" onclick="fetch_data(this);" >'.$row->job_title.'</li>
-			';
+			echo '<li style="margin-left: 14px;cursor:pointer;" onclick="fetch_data(this);" >'.$row->job_title.'</li>';
 		}
 
 	}
@@ -42,9 +41,9 @@ class Home extends CI_Controller {
 		$Key_words = $this->input->post('Key_words');
 		$job_type = $this->input->post('job_type');
 		$job_location = $this->input->post('job_location');
-		$this->session->set_tempdata("keyword","$Key_words");
-		$this->session->set_tempdata("jobtype","$job_type");
-		$this->session->set_tempdata("location","$job_location");
+		$this->session->set_tempdata("keyword",$Key_words);
+		$this->session->set_tempdata("jobtype",$job_type);
+		$this->session->set_tempdata("location",$job_location);
 		redirect('joblisting/job_search');
 	}
 
