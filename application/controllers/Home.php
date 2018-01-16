@@ -32,7 +32,13 @@ class Home extends CI_Controller {
 		$get_suggestion = $this->home_m->get_all($key_word);
 
 		foreach ($get_suggestion as $row) {
+<<<<<<< HEAD
 			echo '<li style="margin-left: 14px;cursor:pointer;" onclick="fetch_data(this);" >'.$row->job_title.'</li>';
+=======
+			echo '
+					<li style="margin-left: 14px;cursor: pointer;" onclick="fetch_data(this);" >'.$row->job_title.'</li>
+			';
+>>>>>>> 600d5cec569a63023da80b62323a6b7cc53f46c4
 		}
 
 	}
