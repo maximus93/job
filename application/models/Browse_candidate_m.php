@@ -35,11 +35,13 @@ class Browse_candidate_m extends CI_Model
         return $query->result();
    }
 
-   public function fetchexp(){
-        $this->db->select("end_date-start-date");
+   public function fetch_comp_name(){
+        $this->db->distinct();
+        $this->db->select("company_name");
         $this->db->from("resume");
         $query = $this->db->get();
         return $query->result();
+
    }
 
 }

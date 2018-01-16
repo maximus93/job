@@ -63,6 +63,7 @@ class Browse_candidate extends CI_Controller {
        	$data['page_nm'] = "browse_candidate";
        	$data['skills_all'] = $this->get_skills_list();
        	$data['edu_all'] = $this->get_education();
+       	$data['comp_name'] = $this->get_companyname();
         $this->load->view("browse_candidate", $data);
 
         //print_r($data);
@@ -77,6 +78,11 @@ class Browse_candidate extends CI_Controller {
     public function get_education(){
     	$education = $this->browse_candidate_m->fetch_uniqu_edu();
     	return $education;
+    }
+
+    public function get_companyname(){
+    	$comp_name = $this->browse_candidate_m->fetch_comp_name();
+    	return $comp_name;
     }
 
 }
