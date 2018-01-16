@@ -7,8 +7,25 @@
           </div>
           <p> </p>
           <select class="form-control" >
-            <option>Company Name</option>
+            <option selected disabled>Company Name</option>
+            <?php
+                //print_r($comp_name);
+                foreach($comp_name As $fetch_comp){
+                  if($fetch_comp->company_name != ""){
+            ?>
+            <option value="<?php echo $fetch_comp->company_name;?>">
+            <?php
+                    echo $fetch_comp->company_name;
+            ?>
+            </option>
+            <?php
+                }else{
+                  continue;
+                }
+              }
+            ?>
           </select>
+          
           <div class="search_icon">
             <span class="ti-location-pin"></span>
           </div>
