@@ -195,7 +195,7 @@ background:white;
                                     <a class="navbar-item-anchor" href="<?php echo base_url();?>joblisting" style="font-size:13px !important;<?php echo(($page_name == 'joblisting')?'color:black':'');?>">JOBS SEARCH</a>
                                 </li>
                                 <li class="<?php echo(($page_name == 'post_resume')?'abc':'');?>">
-                                    <a href="<?php echo base_url();?>post_resume" style="font-size:13px !important;<?php echo(($page_name == 'post_resume')?'color:black':'');?>">POST RESUME</a>
+                                    <a href="<?php echo base_url();?>post_resume/fetch_data" style="font-size:13px !important;<?php echo(($page_name == 'post_resume')?'color:black':'');?>">POST RESUME</a>
                                 </li>
                                 <li class="<?php echo(($page_name == 'job_post')?'abc':'');?>">
                                     <a class="navbar-item-anchor" style="font-size:13px !important;<?php echo(($page_name == 'job_post')?'color:black':'');?>" href="<?php echo base_url();?>job_post">POST A JOB</a>

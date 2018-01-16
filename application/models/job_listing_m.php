@@ -20,6 +20,7 @@ class Job_listing_m extends CI_Model {
 	        $this->db->select('*');
 	        $this->db->from('job_post');
 	        $this->db->limit($limit, $start);
+	        $this->db->order_by('job_id desc');
 	        $query = $this->db->get();
 	        return $query->result();
 	}
