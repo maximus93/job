@@ -32,7 +32,7 @@ class Dashboard extends CI_Controller {
 			$userdata = $this->session->userdata['logged_in'];
 			$user_id = $userdata['user_id'];
 		 }
-		echo $user_id = $user_id;
+	
 		
 		$data['user_details'] = $this->dashboard_m->fetch_details($user_id);
 
@@ -47,7 +47,7 @@ class Dashboard extends CI_Controller {
 			$userdata = $this->session->userdata['logged_in'];
 			$user_id = $userdata['user_id'];
 		 }
-		echo $user_id = $user_id;
+		
 			$config['upload_path'] = 'uploads/';
 			$config['allowed_types'] = 'pdf|docx|doc';
 			$config['file_name'] = rand(999,99999).$_FILES['resume_file']['name'];
@@ -68,7 +68,7 @@ class Dashboard extends CI_Controller {
 			'resume_file' => $resume_file,
 			'date_posted' => $posted_date,	
 		);
-		$edit_resume_data = $this->dashboard_m->edit_resume_file($user_id,$records);
+		$edit_resume_data = $this->dashboard_m->edit_resume($user_id,$records);
 		if($edit_resume_data)
 		{
 			$this->session->set_flashdata("success", "Success , Your Resume Has Been Updated Successfully!");

@@ -26,6 +26,7 @@ background:white;
                             $profile_picture = $userdata['profile_picture'];
                             $first_name = ucfirst($userdata['first_name']);
                             $last_name = ucfirst(substr($userdata['last_name'],0,1));
+							
 							if($userdata['user_type'] == 'employee')
 							{
 								$link = "dashboard";

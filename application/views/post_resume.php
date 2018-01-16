@@ -82,9 +82,11 @@
 
                 <div class="row">
                   <div class="col-md-12">
+				   <label for="location" style="font-size:12px;">Job Title</label>
                     <div class="form-group">
                       <input id="title" type="text" name="job_title" class="form-control" placeholder="your job title" value="<?php echo (($emp_details->job_title != '')?$emp_details->job_title:'');?>" required>
                     </div>
+					<label for="location" style="font-size:12px;">Comapany Name</label>
                     <div class="form-group">
                       <input id="title" type="text" name="company_name" class="form-control" placeholder="Enter Company Name" value=" <?php echo (($emp_details->company_name != '')?$emp_details->company_name:'');?>" required>
                     </div>

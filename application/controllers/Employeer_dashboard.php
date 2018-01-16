@@ -28,7 +28,11 @@ class Employeer_dashboard extends CI_Controller {
 	public function index()
 	{
 		$this->load->model('employeer_dashboard_m');
-		$user_id = $this->session->userdata['logged_in']['user_id'];
+		if(isset($this->session->userdata['logged_in']) && $this->session->userdata['logged_in'] != NULL){
+			$userdata = $this->session->userdata['logged_in'];
+			$user_id = $userdata['user_id'];
+		}
+	
 		$data['user_details'] = $this->employeer_dashboard_m->employeer_details($user_id);
 		$data['posted_jobs'] = $this->employeer_dashboard_m->job_details($user_id);
 	
@@ -65,12 +69,12 @@ class Employeer_dashboard extends CI_Controller {
 		if($edit_resume_data)
 		{
 			$this->session->set_flashdata("success", "Success , Your Resume Has Been Updated Successfully!");
-			redirect('dashboard');
+			redirect('employeer_dashboard');
 		}
 		else
 		{
 			$this->session->set_flashdata("failed", "Something Went Wrong!");
-			redirect('dashboard');
+			redirect('employeer_dashboard');
 		}
 	}
 }

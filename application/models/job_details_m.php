@@ -33,7 +33,14 @@ public function get_applicant($job_id)
 	//$this->db->join('resume', 'users.user_id = resume.user_id');
 	$this->db->where($condition);
 	$query = $this->db->get();
-	return $query->row();
+	return $query->result();
+	//$get_details = $query->result();
+	//foreach($get_details as $key)
+	//{
+		//$employee_id = $key->employee_id;
+	//}
+	//return $employee_id;
+
 }
 
 public function get_details_applicant($applicant_id)
@@ -46,7 +53,7 @@ public function get_details_applicant($applicant_id)
 	$query = $this->db->get();
 	return $query->row();
 }
-public function insert_msg($job_id,$message)
+public function insert_msg($job_id,$message,$user_id)
 {
 	$query = $this->db->query('select * from job_post where job_id = "'.$job_id.'"');
 	$yo = $query->result();
@@ -55,7 +62,7 @@ public function insert_msg($job_id,$message)
 		$date = time();
 		$data = array(
         'job_id' => $job_id,
-        'employee_id' => '1',
+        'employee_id' => $user_id,
         'employer_id' => $company_id,
         'message_data' => $message,
         'apply_date' => $date
