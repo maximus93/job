@@ -26,6 +26,12 @@ class Post_resume extends CI_Controller {
         }
     }
 
+	public function index()
+	{
+		$data['page_nm'] = "post_resume";
+		$this->load->view('post_resume');
+	}
+
 	public function fetch_data()
 	{
 		$this->load->model('post_resume_m');
