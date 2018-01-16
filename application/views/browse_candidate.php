@@ -269,11 +269,7 @@
       var autocomplete = new google.maps.places.Autocomplete(input);
 
       function show_advance_fult(){
-          $( ".cont_advance" ).slideDown( "slow", function() {
-            // Animation complete.
-          });
-
-          $( "#book" ).slideToggle( "slow", function() {
+          $( ".cont_advance" ).slideToggle( "slow", function() {
             // Animation complete.
           });
       }
