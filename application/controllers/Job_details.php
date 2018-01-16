@@ -36,21 +36,21 @@ class Job_details extends CI_Controller {
 		}
 		
 		$fetch_applicant = $this->job_details_m->get_applicant($job_id);
-		print_r($fetch_applicant);
-		exit;
-		if(count($fetch_applicant) > 0){
-			$applicant_id = $fetch_applicant->employee_id;
-			$fetch_applicant_details = $this->job_details_m->get_details_applicant($applicant_id);
-			print_r($fetch_applicant_details);
-		
+		//print_r($fetch_applicant);
+		$data['get_applicant_details'] = array();
+		if(count($fetch_applicant) > 1){
+			foreach($fetch_applicant As $value_appli){
+				//$emp_id = array_push($emp_id,$value_appli->employee_id);
+				$applicant_id = $value_appli->employee_id;
+				$data['get_applicant_details'][] = $this->job_details_m->get_details_applicant($applicant_id);
+			}
 		}else{
-			$fetch_applicant_details = "";
+			$data['get_applicant_details'][] = "";
 		}
 		
-
 		$data['fetch_cat'] = $cat;
 		$data['similar_job'] = $similiar;
-		$data['get_applicant_details'] = $fetch_applicant_details;
+		
 		$data['page_nm'] = "job_details";
 		if(isset($this->session->userdata['logged_in']['user_id']) && $this->session->userdata['logged_in']['user_id']!= '') 
 		{

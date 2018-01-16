@@ -238,7 +238,7 @@
                                         <table class="table" style="margin-bottom:0px;">
                                             <tbody>
                                                 <?php
-												
+												//print_r($get_applicant_details);
 												if($user_id == $fetch_job->company_id)
 												{
 													$get_row = count($get_applicant_details);
@@ -320,5 +320,5 @@
             $("#primary_button").hide();
             $("#apply_form").show();
         }
-    </script>>
+    </script>
 </html>
