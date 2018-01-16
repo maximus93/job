@@ -366,7 +366,12 @@ font-size: 13px;
                       </div>
                       <div class="col-md-6">
                         <p style="font-size:13px;">
+						<?php
+							if($user_details->date_posted != '')
+							{
+						?>
                           <strong><?php 
+						
 						  $posted_date = $user_details->date_posted;
 							$now = time();
 							$remain_date = $now - $posted_date;
@@ -374,6 +379,15 @@ font-size: 13px;
 
 						?> Months Ago
                           </strong>
+						  <?php
+							}
+						else
+							{
+						  ?>
+						  <strong>Please Upload Your Resume!!</strong>
+						  <?php
+							}
+						  ?>
                         </p>
                         <p>
                           <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">Update
@@ -448,10 +462,37 @@ font-size: 13px;
                   </p>
                   <p style="font-size:13px;"><?php echo $user_details->last_name;?>
                   </p>
-                  <p style="font-size:13px;"><?php echo $user_details->job_title;?>
-                  </p>
-                  <p style="font-size:13px;"><?php echo $user_details->skills;?>
-                  </p>
+                  
+				<?php if($user_details->job_title != '')	
+					{?>
+					<p style="font-size:13px;"><?php echo $user_details->job_title;?></p>
+				<?php
+					}
+				else
+					{
+				?>
+					 <p style="font-size:13px;">Not Provided Yet</p> 
+				<?php
+					}
+				?>
+
+					   
+				<?php if($user_details->skills != '')	
+					{?>
+					<p style="font-size:13px;"><?php echo $user_details->skills;?></p>
+				<?php
+					}
+				else
+					{
+				?>
+					 <p style="font-size:13px;">Not Provided Yet</p> 
+				<?php
+					}
+				?>
+			<?php
+				if($user_details->start_date != '')
+					{
+			?>
                   <p style="font-size:13px;"><?php
 					$start_date = $user_details->start_date;
 					$end_date = $user_details->end_date;
@@ -459,10 +500,42 @@ font-size: 13px;
 					echo date('m',$experience);
 				?> year's
                   </p>
-                  <p style="font-size:13px;">&#36;<?php echo $user_details->max_salary;?>
-                  </p>
-                  <p style="font-size:13px;"><?php echo $user_details->education;?>
-                  </p>
+				  <?php
+					}
+				else
+					{	
+				  ?>
+				  <p style="font-size:13px;">Not Provided Yet</p> 
+				  <?php
+					}
+				  ?>
+
+				 <?php if($user_details->max_salary != '')	
+					{?>
+					<p style="font-size:13px;"><?php echo $user_details->max_salary;?></p>
+				<?php
+					}
+				else
+					{
+				?>
+					 <p style="font-size:13px;">Not Provided Yet</p> 
+				<?php
+					}
+				?>
+
+					 <?php if($user_details->education != '')	
+					{?>
+					<p style="font-size:13px;"><?php echo $user_details->education;?></p>
+				<?php
+					}
+				else
+					{
+				?>
+					 <p style="font-size:13px;">Not Provided Yet</p> 
+				<?php
+					}
+				?>
+               
 				   <p style="font-size:13px;"><?php 
 				   echo date('d/m/Y',$user_details->registration_date);
 					

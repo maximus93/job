@@ -269,7 +269,7 @@ font-size: 13px;
 
 							<div class="row">
 								<div class="" style="text-align:center;">
-									<a href="job_details/<?php echo $key->job_id;?>"class="btn btn-primary" style="color:#fff;">View Details</a>
+									<a href="<?php echo base_url();?>job_details/<?php echo $key->job_id;?>"class="btn btn-primary" style="color:#fff;">View Details</a>
 								</div>
 							</div>
 						</a>

@@ -42,7 +42,7 @@ class Dashboard_m extends CI_Model
 		return $query->row();
 	}
 
-	public function edit_resume_file($user_id,$records)
+	public function edit_resume($user_id,$records)
 	{
 		$where  = array('user_id' => $user_id);
 		$this->db->where($where);
