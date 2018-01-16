@@ -25,6 +25,18 @@ class Home extends CI_Controller {
 		$data['categories'] = $this->job_details_m->get_all_cat();
 		$this->load->view('home',$data);
 	}
+	public function get_name_suggestion()
+	{
+		$this->load->model('home_m');
+		$key_word = $this->input->post('key_word');
+		$get_suggestion = $this->home_m->get_all($key_word);
+		foreach ($get_suggestion as $row) {
+			echo '
+					<li style="margin-left: 14px;" onclick="fetch_data(this);" >'.$row->job_title.'</li>
+			';
+		}
+
+	}
 
 
 }

@@ -37,6 +37,7 @@
 			margin-top:3px;
 		}
 	</style>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVEqoCsKgUMmAcDVX9OAwVMDewLI6yOAQ&sensor=false&libraries=places&language=en"></script>
 </head>
 <body>
 
@@ -68,14 +69,13 @@
 								<div class="col-sm-4 col-md-4">
 									<div class="form-group keywords-container">
 										<div>
-											<input class="form-control keywords search-keywords" type="search" name="Keywords" id="keywords" onkeypress="get_suggestion(this.value);" placeholder="Job Title" style="height:43px;">
-											<div class="clear-keywords">
+											<input class="form-control keywords search-keywords" type="search" name="Keywords" id="keywords_y" onkeyup="get_suggestion(this.value);" placeholder="Job Title" style="height:43px;">
+											<div class="clear-keywords" >
 												<span>&#10005;</span>
 											</div>
 										</div>
 										<div>
-											<ul class="dropdown-menu" style="display: block;margin-left: 11px;width: 94%;">
-												<li style="margin-left: 14px;">jfhh</li>
+											<ul class="dropdown-menu" id="replace_data" style="display:  none;margin-left: 11px;width: 94%;">
 											</ul>
 										</div>
 									</div>
@@ -103,7 +103,7 @@
 										<!--<label for="location" style="color:#fff;">Where</label>-->
 										<div class="">
 											<div class="location-input-container">
-												<input class="form-control location" type="search" name="LTxt" id="location" placeholder="Location" style="height:42px;margin-top:3px;margin-left:-12px;">
+												<input class="form-control location" type="search" name="LTxt" id="cityz" placeholder="Location" style="height:42px;margin-top:3px;margin-left:-12px;">
 											</div>
 										</div>
 									</div>
@@ -339,13 +339,27 @@
 <script>
 	function get_suggestion(val) {
 		$.ajax({
-        url: '<?php echo base_url();?>Get_job_title',
+        url: '<?php echo base_url();?>home/get_name_suggestion',
         data: {'key_word': val}, // change this to send js object
         type: "post",
         success: function(response){
-           alert(response);
+        	$("#replace_data").show();
+        	$("#replace_data").append(response);
+        	//alert(response);
         }
       });
 	}
-</script>>
+</script>
+<script>
+	function fetch_data(e) {
+		var value_z = $(e).text();
+		$("#keywords_y").val(value_z);
+		$("#replace_data").hide();
+	}
+</script>
+<script>
+  var input = document.getElementById('cityz');
+  var autocomplete = new google.maps.places.Autocomplete(input);
+  </script>
+
 </html>
