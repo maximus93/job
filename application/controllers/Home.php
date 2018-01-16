@@ -37,6 +37,16 @@ class Home extends CI_Controller {
 		}
 
 	}
+	public function send_data()
+	{
+		$Key_words = $this->input->post('Key_words');
+		$job_type = $this->input->post('job_type');
+		$job_location = $this->input->post('job_location');
+		$this->session->set_tempdata("keyword","$Key_words");
+		$this->session->set_tempdata("jobtype","$job_type");
+		$this->session->set_tempdata("location","$job_location");
+		redirect('joblisting/job_search');
+	}
 
 
 }
