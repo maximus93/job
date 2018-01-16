@@ -175,7 +175,23 @@
 										<span style="color:black;">
                                             Company Profile
 										</span>
-                                            <a href="#" style="color:#1c4972;float:left;margin-left:-10px;font-size:12px;" class="col-md-12"><?php echo (($fetch_job->name_status == 'yes')?$fetch_job->company_name:'Company Name Hidden');?></a>
+										<?php
+											if(isset($this->session->userdata['logged_in']) && $this->session->userdata['logged_in'] != NULL){
+												$userdata = $this->session->userdata['logged_in'];
+												$user_id = $userdata['user_id'];
+												$comapny_id = $fetch_job->company_id;
+												if($user_id == $comapny_id)
+												{
+													$link = "employeer_dashboard";
+												}
+												else
+												{
+													$link = "employeer_dashboard/$comapny_id";
+												}
+												
+											}
+										?>
+                                            <a href="<?php echo base_url();?><?php echo $link;?>" style="color:#1c4972;float:left;margin-left:-10px;font-size:12px;" class="col-md-12"><?php echo (($fetch_job->name_status == 'yes')?$fetch_job->company_name:'Company Name Hidden');?></a>
                                         </div> 
 										 <div class="clearfix"></div>
                                         <div class="contact_details">
@@ -245,18 +261,79 @@
 													  if($get_row > 1)
 														{
 														    foreach($get_applicant_details as $fetch_applicant) {
-																
-                                                        # code...
-                                                   
+																$skills = explode(",",$fetch_applicant->skills);
+																$resume_uploaded_date = date("M d Y",$fetch_applicant->date_posted);
+																$pic = $fetch_applicant->profile_picture;
 												?>
-											    <tr>
-                                                    <td class="col-md-6">
-														<div class="tab-image col-md-2"><img src="<?php echo base_url();?>uploads/<?php echo $fetch_applicant->profile_picture;?>" style="height:60px;width:60px;" alt="" class="img-responsive"></div>
-														<div class="col-md-10"><?php echo ucfirst($fetch_applicant->first_name);?> <?php echo ucfirst($fetch_applicant->last_name);?><p><?php echo $fetch_applicant->email?></p></div>
-													</td>
-                                                    
-                                                    <td class="col-md-2" style="font-size:12px;padding-top:25px;"><a href="<?php echo base_url();?>applicant_dashboard/<?php echo $fetch_applicant->user_id?>" class="table-btn-default" style="font-size:12px;margin-top:10px;color:black;padding-top:10px;padding-bottom:10px;border:1px solid black;padding-right:10px;padding-left:10px;">View Applicant Profile</a></td>
-                                                </tr>
+											
+												 <div class="page_listing candidate" style="border:1px  solid #e1e1e1 !important;">
+													  <div class="sorting_content col-md-7" style=" padding: 25px 15px 15px;overflow: hidden;">
+														<div class="tab-image" style="float: left;text-align: center;margin-right: 20px;">
+														  <img src="<?php echo base_url();?>uploads/<?php echo $fetch_applicant->profile_picture;?>" alt="" style="height:100px;" class="img-responsive">
+														</div>
+														<div class="overflow" style="overflow:hidden;">
+														  <div class="text-shorting" style="font-size: 16px;color: #333;line-height: 30px;font-weight: 500;margin: 0px;">
+															<a href="<?php echo base_url();?>applicant_dashboard/<?php echo $fetch_applicant->user_id;?>">
+															  <h1 style="font-size: 16px;color: #237fa5;line-height: 35px;font-weight: 700;margin-top:-10px;">
+																<u><?php echo ucfirst($fetch_applicant->first_name);?> <?php echo ucfirst($fetch_applicant->last_name);?></u>
+															  </h1>
+															</a>
+															<ul class="unstyled" style="margin-top:-25px;padding: 0px;">
+															  <li style="display: inline-block;padding: 0 50px 0 0;color: #7d7d7d;font-size: 13px;"> 
+																<?php 
+																  $addr = ucfirst($fetch_applicant->address);
+																  if($addr != NULL){
+																	echo $addr;
+																  }else{
+																	echo "Address not provided";
+																  }
+																?>
+																  
+															  </li>
+															</ul>
+
+															<ul class="" style="margin-top:-15px;padding: 0px;list-style: none;">
+															  <?php
+																if(count($skills) > 5){
+																	$count_skillz = 5;
+																}else{
+																	$count_skillz = count($skills);
+																}
+																for($i=0; $i<$count_skillz ; $i++){
+															  ?>
+															  <li style='float:left;background:#fafafa;border:1px solid #CCC;padding:3px 10px;margin:5px;font-size: 12px;'> <?php echo $skills[$i];?></li>
+															  <?php
+																}
+															  ?>
+															</ul>
+															<p>
+															</p>
+														  </div>
+														</div>
+													  </div>
+
+
+													  <div class="sorting_content col-md-5" style="padding: 25px 15px 15px;overflow: hidden;">
+														<!--<p style="font-size: 12px;"> 
+															<a href='' class="btn btn-warning" >Shortlist</a>
+															<a href='' class="btn btn-default" >Compare</a>
+															<a href='' class="btn btn-primary" >Details</a>
+														</p>-->
+														<div class="col-md-3 ">
+														  <p style="font-size: 12px;font-weight:bold;">Job Title:</p>
+														  <p style="font-size: 12px;font-weight:bold;">Salary:</p>
+														  <p style="font-size: 12px;font-weight:bold;">Relocation:</p>
+														  <p style="font-size: 12px;font-weight:bold;">Company:</p>
+														</div>
+
+														<div class="col-md-9"> 
+														  <p style="font-size: 12px;"> <?php echo $fetch_applicant->job_title;?> </p>
+														  <p style="font-size: 12px;"> $<?php echo $fetch_applicant->max_salary;?> </p>
+														  <p style="font-size: 12px;"> <?php echo $fetch_applicant->relocate;?> </p>
+														  <p style="font-size: 12px;"> <?php echo $fetch_applicant->company_name;?> </p>
+														</div>
+													  </div>
+													</div>
 											<?php
 											 }
 												}
@@ -280,15 +357,20 @@
                                                         # code...
                                                     }
                                                 ?>
-                                                <tr>
-                                                    <td class="col-md-6">
-														<div class="tab-image col-md-2"><img src="<?php echo base_url();?>uploads/<?php echo $fetch_similar->company_logo;?>" alt="" class="img-responsive"></div>
-														<div class="col-md-10" style="margin-top: 12px;color:black;"><?php echo ucfirst($fetch_similar->job_title);?><p><?php echo (($fetch_similar->name_status == 'yes')?'Company Name Hidden':$fetch_similar->company_name);?></p></div>
-													</td>
-                                                    <div class="col-md-2"><td class="work-time" style="font-size:12px;padding-top:34px;text-align:center;"><?php echo $fetch_similar->type;?></td></div>
-                                                    <td class="col-md-2" style="font-size:12px;padding-top:34px;"><span class="glyphicon glyphicon-map-marker " ></span> <?php echo ucfirst($fetch_similar->location);?></td>
-                                                    <td class="col-md-2" style="font-size:12px;padding-top:34px;"><a href="<?php echo base_url();?>job_details/<?php echo $fetch_similar->job_id;?>" class="table-btn-default" style="font-size:12px;margin-top:10px;color:black;padding-top:10px;padding-bottom:10px;border:1px solid black;padding-right:10px;padding-left:10px;">View Job</a></td>
-                                                </tr>
+												       <div class="job new " id="77913552">
+														  <div class="row">
+															  <div class="card-body col-md-12">
+																<div class="col-md-2">
+																  <a href="<?php echo base_url();?>job_details/<?php echo $fetch_similar->job_id;?>" title="<?php echo (($fetch_similar->name_status == 'yes')?'Company Name Hidden':$fetch_similar->company_name);?>"><img src="<?php echo base_url();?>uploads/<?php echo $fetch_similar->company_logo;?>" title="<?php echo (($fetch_similar->name_status == 'yes')?'Company Name Hidden':$fetch_similar->company_name);?>" style="width:100%;margin-top:25px;"></a>
+																</div>
+																<div class="col-md-10" style="">
+																<h2 class="card-title" style=""><a href="<?php echo base_url();?>job_details/<?php echo $fetch_similar->job_id;?>" style="color:black !important;" title="<?php echo (($fetch_similar->name_status == 'yes')?'Company Name Hidden':$fetch_similar->company_name);?>"><?php echo ucfirst($fetch_similar->job_title);?></a></h2>
+																<p class="card-text " style=""> Posted on <?php echo date("M , d Y",$fetch_similar->date);?> , <b><?php echo ucfirst($fetch_similar->location);?></b></p>
+																<p class="card-text"><?php echo substr($fetch_similar->job_description,0,220);?>...</p>
+																</div>
+															  </div>
+														  </div>
+														</div>
                                                 <?php
                                                 }
                                                 else{

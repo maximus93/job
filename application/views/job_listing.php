@@ -164,78 +164,6 @@
                 ?>
                 <div class="job new " id="77913552">
                   <div class="row">
-                    <!--<div class="col-sm-12">
-                      <div class="job-title">
-                        <a href="<?php echo base_url();?>job_details/<?php echo $fetch_job->job_id;?>" title="See details for a PHP Developer ( Laravel ) in Southampton (matches on php developer)">
-                          <h2 style="color:#06c;"><?php echo $fetch_job->job_title;?>
-                          </h2>
-                        </a>
-                      </div>
-                      <div class="detail-body">
-                        <div class="row">
-                          <div id="headerListContainer" class="col-xs-12 col-sm-8">
-                            <div class="applied-col pull-right" style="display: none;">
-                              <span class="applied-icon">Applied
-                              </span>
-                            </div>
-                            <ul class="header-list">
-                              <li class="location">
-                                <span>
-                                  <span>
-                                    <a href="#" style="color:black;"><?php echo $fetch_job->location;?>
-                                    </a>
-                                  </span>
-                                </span>
-                              </li>
-                              <li class="salary" title="salary"><i class="fa fa-usd" aria-hidden="true"></i><?php echo $fetch_job->salary_details;?>
-                              </li>
-                            </ul>
-                          </div>
-                          <div id="recruiterImageContainer" class="col-xs-5 col-sm-4 pull-right">
-                            <div class="recruiter-image">
-                              <a href="#" title="Spectrum IT Recruitment (South) Ltd">
-                                <img src="<?php echo base_url();?>uploads/<?php echo $fetch_job->company_logo;?>" />
-                              </a>
-                            </div>
-                          </div>
-                          <div class="col-xs-7 col-sm-8">
-                            <ul class="detail-list">
-
-                              <li class="company" title="hiring organization">
-                                <h3>
-                                  <a href="#" title="Spectrum IT Recruitment (South) Ltd" style="color:black;"><?php echo (($fetch_job->name_status == 'yes')?'Company Name Hidden':$fetch_job->company_name);?>
-                                  </a>
-                                </h3>
-                              </li>
-
-                            </ul>
-                          </div>
-                        </div>
-                        <div class="row detail-footer">
-                          <div class="col-sm-12 col-md-10">
-                            <div title="job details">
-                              <p class="job-intro">
-                               <?php echo $fetch_job->job_description;?>
-                              </p>
-                            </div>
-                          </div>
-                          <div class="email-job-col visible-xs visible-sm col-xs-4 col-md-2 col-sm-4">
-                            <button type="button" class="btn btn-default btn-sendjob" data-job-id="77913552" data-job-token="HWslqDKQw05oLDiF1Fo8ZWbrbQPV3OWtzCed8XkFwphSteX+Cy4Ehr6Ps0cK4NMv" data-toggle="modal" data-target="#sendJobModal">Send
-                            </button>
-                          </div>
-                          <div class="see-job-col visible-xs visible-sm col-xs-4 col-sm-4 col-md-4 ">
-                            <a class="btn btn-default btn-seejob" href="#" data-dynamic-qs="?entryurl=%2fjobs%2fphp-developer%2377913552">See
-                            </a>
-                          </div>
-                          <div class="save-job-col col-xs-4 col-sm-4 col-md-2">
-                            <button id="77913552" class="saved-jobs-icon btn btn-default btn-savejob btn-mobile-hover-fix"  >Save
-                            </button>
-                          </div>
-                        </div>
-                        
-                      </div>-->
-
-
                       <div class="card-body col-md-12">
                         <div class="col-md-2">
                           <a href="<?php echo base_url();?>job_details/<?php echo $fetch_job->job_id;?>" title="<?php echo (($fetch_job->name_status == 'yes')?'Company Name Hidden':$fetch_job->company_name);?>"><img src="<?php echo base_url();?>uploads/<?php echo $fetch_job->company_logo;?>" title="<?php echo (($fetch_job->name_status == 'yes')?'Company Name Hidden':$fetch_job->company_name);?>" style="width:100%;margin-top:25px;"></a>
@@ -246,12 +174,6 @@
                         <p class="card-text"><?php echo substr($fetch_job->job_description,0,220);?>...</p>
                         </div>
                       </div>
-
-
-                    
-
-
-
                   </div>
                 </div>
 

@@ -211,26 +211,38 @@ font-size: 13px;
                     </div>
                
                   </div>
+				  <?php
+					 if(isset($this->session->userdata['logged_in']) && $this->session->userdata['logged_in'] != NULL){
+						$userdata = $this->session->userdata['logged_in'];
+						 $user_id = $userdata['user_id'];
+					}
+						$employeer_id = $user_details->user_id;
+					if($user_id == $employeer_id)
+					{
+				  ?>
                   <div class="col-md-3" >
-				  <div class="col-m-12" >
-                    <a href="<?php echo base_url();?>edit_employeer/fetch_details/<?php echo $user_details->user_id?>"><div class="col-md-12" style="padding:20px;width:100px;margin-left:15px;">
-                      <button class="btn btn-primary" style="background:#5cc069;border:1px solid #5cc069;font-size:12px;">Get Settings
+				  <div class="col-md-4 col-md-offset-1" >
+                    <a href="<?php echo base_url();?>edit_employeer/fetch_details/<?php echo $user_details->user_id?>"><div class="col-md-12" style="padding:20px;margin-left:15px;">
+                      <button class="btn btn-primary" style="background:#5cc069;border:1px solid #5cc069;font-size:12px;">Settings
                       </button>
                     </div></a>
 				</div>
-				  <div class="col-m-12" >
-                    <a href="<?php echo base_url();?>job_post/"><div class="col-md-12" style="padding:20px;width:100px;margin-left:15px;">
+				  <div class="col-md-5 col-md-offset-1 " >
+                    <a href="<?php echo base_url();?>job_post/"><div class="col-md-12" style="padding:20px;margin-left:15px;">
                       <button class="btn btn-primary" style="background:#5cc069;border:1px solid #5cc069;font-size:12px;">Post Job
                       </button>
                     </div></a>
 				</div>
-				<div class="col-md-12">
-					<a href="<?php echo base_url();?>change_password/"><div class="col-md-12" style="padding:20px;margin-top:-28px;width:100px;">
+				<div class="col-md-10 col-md-offset-2">
+					<a href="<?php echo base_url();?>change_password/"><div class="col-md-12" style="padding:20px;margin-top:-28px;">
                       <button class="btn btn-primary" style="background:#5cc069;border:1px solid #5cc069;font-size:12px;">Change Password
                       </button>
                     </div></a>
 					</div>
                   </div>
+				  <?php
+					}
+				  ?>
                 </div>
                 <div class="">
                   <ul class="nav nav-tabs" style="border:1px solid #1c4972;background:#1c4972;">
@@ -253,27 +265,20 @@ font-size: 13px;
 						foreach($posted_jobs->result() as $key)
 						{
 					?>
-					<div class="col-xs-12 col-sm-4 tool-row alert-tool" >
-						<a href="">
-							<div class="row" >
-								<div class="col-xs-12 icon-wrapper" style="text-align:center;">
-									
-									<img src="<?php echo base_url();?>uploads/<?php echo $key->company_logo;?>" style="height:140px;text-align:center;">
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-xs-12 text-content" style="text-align:center;">
-									<h3 style="color:black;"><?php echo $key->job_title;?></h3>
-								</div>
-							</div>
-
-							<div class="row">
-								<div class="" style="text-align:center;">
-									<a href="<?php echo base_url();?>job_details/<?php echo $key->job_id;?>"class="btn btn-primary" style="color:#fff;">View Details</a>
-								</div>
-							</div>
-						</a>
-					</div>
+			       <div class="job  " id="77913552">
+                  <div class="row">
+                      <div class="card-body col-md-12">
+                        <div class="col-md-2">
+                          <a href="<?php echo base_url();?>job_details/<?php echo $key->job_id;?>" title="<?php echo (($key->name_status == 'yes')?'Company Name Hidden':$key->company_name);?>"><img src="<?php echo base_url();?>uploads/<?php echo $key->company_logo;?>" title="<?php echo (($key->name_status == 'yes')?'Company Name Hidden':$key->company_name);?>" style="width:100%;margin-top:25px;"></a>
+                        </div>
+                        <div class="col-md-10" style="">
+                        <h2 class="card-title" style=""><a href="<?php echo base_url();?>job_details/<?php echo $key->job_id;?>" style="color:black !important;" title="<?php echo (($key->name_status == 'yes')?'Company Name Hidden':$key->company_name);?>"><?php echo ucfirst($key->job_title);?></a></h2>
+                        <p class="card-text " style=""> Posted on <?php echo date("M , d Y",$key->date);?> , <b><?php echo ucfirst($key->location);?></b></p>
+                        <p class="card-text"><?php echo substr($key->job_description,0,220);?>...</p>
+                        </div>
+                      </div>
+                  </div>
+                </div>
 
 					<?php
 						}

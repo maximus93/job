@@ -56,3 +56,4 @@ $route['browse_candidate/(:num)'] = "browse_candidate";
 $route['job_details/(:num)'] = "job_details";
 $route['joblisting/(:num)'] = "joblisting";
 $route['applicant_dashboard/(:num)'] = "applicant_dashboard";
+$route['employeer_dashboard/(:num)'] = "employeer_dashboard";
