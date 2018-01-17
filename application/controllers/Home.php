@@ -44,7 +44,7 @@ class Home extends CI_Controller {
 		$this->session->set_tempdata("keyword",$Key_words);
 		$this->session->set_tempdata("jobtype",$job_type);
 		$this->session->set_tempdata("location",$job_location);
-		redirect('joblisting/job_search');
+		redirect('joblisting');
 	}
 
 

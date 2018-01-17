@@ -54,23 +54,32 @@ class Joblisting extends CI_Controller {
 		$end = ($this->uri->segment(2) == floor($config['total_rows']/ $config['per_page']))? $config['total_rows'] : (int)$this->uri->segment(2) * $config['per_page'] + $config['per_page'];
 
 		$data['result_count']= "Showing ".$start." - ".$end." of ".$config['total_rows']." Results";
+
+		/*$keyword = $this->session->userdata('keyword');
+    	$jobtype = $this->session->userdata('jobtype');
+    	$location = $this->session->userdata('location');
+    	$search_result = $this->job_listing_m->job_search($keyword,$jobtype,$location);
+    	foreach ($search_result as $row) {
+    		echo $row->company_name;
+    	}*/
+
         $data["job_details"] = $this->job_listing_m->fetch_job($config["per_page"], $page);
         $data["links"] = $this->pagination->create_links();
         //$data['skills_all'] = $this->Browse_candidate->get_skills_list();
-        $data['skills_all'] = $this->get_skills_list();
+        $data['job_type'] = $this->get_type_list();
+        $data['job_cat'] = $this->get_job_cat();
 		$data['page_nm'] = "joblisting";
 		$this->load->view('job_listing',$data);
 	}
 
-	public function get_skills_list(){
-		$this->load->model("browse_candidate_m");
-    	$skills = $this->browse_candidate_m->fetch_uniqu_skills();
-    	return $skills;
+	public function get_type_list(){
+    	$job_type = $this->job_listing_m->fetch_job_type();
+    	return $job_type;
     }
 
-    public function get_cities_list(){
-    	$cities = $this->job_listing_m->get_cities();
-    	return $cities;
+    public function get_job_cat(){
+    	$job_cat = $this->job_listing_m->get_job_cat();
+    	return $job_cat;
     }
 }
 ?>

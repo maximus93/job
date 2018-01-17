@@ -18,26 +18,19 @@
               </a>
             </div>
 
-            <div class="job_title">Skills</div>
-            <?php
-              //print_r($skills_all);
-              $merge = "";
-              foreach($skills_all As $skills_unique){
-                $merge .= $skills_unique->skills;
-              }
-              $convert_merge_to = explode(",",$merge);
-            ?>
+            <div class="job_title">Job Type</div>
+           
             <div class="borderfull-width"></div>
               <div class="page-heading">
                 <?php
-                foreach($convert_merge_to As $key=>$uniqu_skills){
+                foreach($job_type As $uniqu_type){
                 ?>
                     <div class="category">
                       <div class="col-md-2 col-sm-2 col-xs-2">
-                        <input type="checkbox" id="PHP" value="<?php echo $uniqu_skills;?>" name="ossm"> 
+                        <input type="radio" id="PHP" value="<?php echo $uniqu_type->type;?>" name="ossm"> 
                       </div>
-                      <div class="col-md-10 col-sm-10 col-xs-10 sidebar-text">
-                        <label for="PHP"><?php echo strtoupper($uniqu_skills);?>
+                      <div class="col-md-10 col-sm-10 col-xs-10 sidebar-text" style="margin-top:3px;">
+                        <label for="PHP"><?php echo strtoupper($uniqu_type->type);?>
                         </label> 
                       </div>
                     </div>
@@ -45,4 +38,26 @@
                  }
                 ?>
               </div>
+
+              <div class="job_title">Job Categories</div>
+           
+            <div class="borderfull-width"></div>
+              <div class="page-heading">
+                <?php
+                foreach($job_cat As $uniqu_cat){
+                ?>
+                    <div class="category">
+                      <div class="col-md-2 col-sm-2 col-xs-2">
+                        <input type="checkbox" id="PHP" value="<?php echo $uniqu_cat->category_name;?>" name="ossm"> 
+                      </div>
+                      <div class="col-md-10 col-sm-10 col-xs-10 sidebar-text" style="margin-top:2px;">
+                        <label for="PHP"><?php echo $uniqu_cat->category_name;?>
+                        </label> 
+                      </div>
+                    </div>
+                <?php
+                 }
+                ?>
+              </div>
+              
           </div>

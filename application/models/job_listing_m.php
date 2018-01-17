@@ -31,6 +31,21 @@ class Job_listing_m extends CI_Model {
         $query = $this->db->get();
         return $query->result();
 	}
+	public function fetch_job_type()
+	{
+		$this->db->distinct();
+        $this->db->select("type");
+        $this->db->from("job_post");
+        $query = $this->db->get();
+        return $query->result();
+	}
+	public function get_job_cat()
+	{
+        $this->db->select("category_name");
+        $this->db->from("job_category");
+        $query = $this->db->get();
+        return $query->result();
+	}
 	   
 }
 
