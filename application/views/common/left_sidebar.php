@@ -8,7 +8,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="City / zip code">
+                <input type="text" class="form-control" id="cityz" placeholder="City / zip code">
                 <div class="search_icon">
                   <span class="ti-location-pin">
                   </span>
@@ -59,5 +59,5 @@
                  }
                 ?>
               </div>
-              
+
           </div>
