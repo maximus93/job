@@ -6,7 +6,22 @@ class Browse_candidate_m extends CI_Model
     }
 
     public function record_count() {
-        return $this->db->count_all("resume");
+        $this->db->select('*');
+        $this->db->from('resume');
+        $this->db->join('users', 'users.user_id = resume.user_id');
+        $this->db->where('resume.date_posted != ""');
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
+    public function search_record_count($search_data) {
+        $this->db->select('*');
+        $this->db->from('resume');
+        $this->db->join('users', 'users.user_id = resume.user_id');
+        $this->db->like($search_data);
+        $this->db->where('resume.date_posted != ""');
+        $query = $this->db->get();
+        return $query->num_rows();
     }
 
     public function fetch_resume($limit, $start , $search_data) {
