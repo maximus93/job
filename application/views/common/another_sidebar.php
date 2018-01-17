@@ -4,7 +4,7 @@
     echo $valuez;
   }*/
 ?>
-<div class="col-sm-3" style="background-color: #f2f2f2;padding: 10px;background-color: #f2f2f2;border: 1px solid #e0e0e0;">	
+<div class="col-sm-3" style="background-color: #f2f2f2;padding: 10px;background-color: #f2f2f2;border: 1px solid #e0e0e0;min-height:450px;">	
       <form name="adv_search" method="POST" action="<?php echo base_url();?>/browse_candidate">
       <div class="job_search" >
         <div class="form-group">
