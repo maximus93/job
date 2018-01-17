@@ -107,7 +107,7 @@
                   ?>
                   <div class="category">
                     <div class="col-md-2 col-sm-2 col-xs-2">
-                      <input type="radio" value="<?php echo $i;?>" name="exp" onchange="this.form.submit()"> 
+                      <input type="radio" value="<?php echo $i;?>" name="exp" onchange="this.form.submit()" <?php echo(($this->session->tempdata("exp") == $i)?'checked':'');?>> 
                     </div>
                     <div class="col-md-10 col-sm-10 col-xs-10 sidebar-text">
                       <?php echo $i;?>+ yrs
@@ -125,7 +125,7 @@
               
                   <div class="category">
                     <div class="col-md-2 col-sm-2 col-xs-2">
-                      <input type="radio" value="yes" name="reloc" onchange="this.form.submit()"> 
+                      <input type="radio" value="yes" name="reloc" onchange="this.form.submit()" <?php echo(($this->session->tempdata("reloc") == "yes")?'checked':'');?>> 
                     </div>
                     <div class="col-md-10 col-sm-10 col-xs-10 sidebar-text">
                       Yes
@@ -134,7 +134,7 @@
 
                   <div class="category">
                     <div class="col-md-2 col-sm-2 col-xs-2">
-                      <input type="radio" value="no" name="reloc" onchange="this.form.submit()"> 
+                      <input type="radio" value="no" name="reloc" onchange="this.form.submit()" <?php echo(($this->session->tempdata("reloc") == "no")?'checked':'');?>> 
                     </div>
                     <div class="col-md-10 col-sm-10 col-xs-10 sidebar-text">
                       No 
@@ -150,11 +150,11 @@
               
                     <?php
                     $m=10000;
-                    for($i=1; $i < 9 ; $i++){
+                    for($i=1; $i < 15 ; $i++){
                     ?>
                     <div class="category">
                       <div class="col-md-2 col-sm-2 col-xs-2">
-                        <input type="radio" value="<?php echo $m*$i;?>" name="ann_pay" onchange="this.form.submit()"> 
+                        <input type="radio" value="<?php echo $m*$i;?>" name="ann_pay" onchange="this.form.submit()" <?php echo(($this->session->tempdata("ann_pay") == $m*$i)?'checked':'');?>> 
                       </div>
                       <div class="col-md-10 col-sm-10 col-xs-10 sidebar-text">
                         $ <?php echo $m*$i;?>
