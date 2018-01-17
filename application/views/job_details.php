@@ -189,7 +189,10 @@
 													$link = "employeer_dashboard/$comapny_id";
 												}
 												
-											}else{
+											}
+											else
+											{
+												$comapny_id = $fetch_job->company_id;
 												$link = "employeer_dashboard/$comapny_id";
 
 											}
