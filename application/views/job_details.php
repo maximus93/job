@@ -189,6 +189,12 @@
 													$link = "employeer_dashboard/$comapny_id";
 												}
 												
+												
+											}
+											else
+											{
+												$comapny_id = $fetch_job->company_id;
+												$link = "employeer_dashboard/$comapny_id";
 											}
 										?>
                                             <a href="<?php echo base_url();?><?php echo $link;?>" style="color:#1c4972;float:left;margin-left:-10px;font-size:12px;" class="col-md-12"><?php echo (($fetch_job->name_status == 'yes')?$fetch_job->company_name:'Company Name Hidden');?></a>
