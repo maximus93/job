@@ -109,9 +109,8 @@ class Browse_candidate extends CI_Controller {
         $this->session->set_tempdata("ann_pay",$ann_pay);
 
         $skills_get = $this->input->post('skills');
-        if(count($skills_get) > 1){
+        if(count($skills_get) > 0){
             $all_skills = implode(",",$skills_get);
-
         }else{
             $all_skills = "";
         }
