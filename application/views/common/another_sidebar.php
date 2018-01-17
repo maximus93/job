@@ -1,19 +1,27 @@
+<?php
+  /*print_r($search_array['company_name']);
+  foreach($search_array As $valuez){
+    echo $valuez;
+  }*/
+?>
 <div class="col-sm-3" style="background-color: #f2f2f2;padding: 10px;background-color: #f2f2f2;border: 1px solid #e0e0e0;">	
+      <form name="adv_search" method="POST" action="<?php echo base_url();?>/browse_candidate">
       <div class="job_search" >
         <div class="form-group">
-          <input type="text" class="form-control" id="cityz" placeholder="City / zip code">
+          <input type="text" class="form-control" id="cityz" name="city" value="<?php echo(($this->session->tempdata("city") != '')?$this->session->tempdata("city"):'');?>" placeholder="City / zip code" onchange="this.form.submit()">
           <div class="search_icon">
             <span class="ti-location-pin"></span>
           </div>
           <p> </p>
-          <select class="form-control" >
+          
+          <select class="form-control" name="comp_name" onchange="this.form.submit()">
             <option selected disabled>Company Name</option>
             <?php
                 //print_r($comp_name);
                 foreach($comp_name As $fetch_comp){
                   if($fetch_comp->company_name != ""){
             ?>
-            <option value="<?php echo $fetch_comp->company_name;?>">
+            <option value="<?php echo $fetch_comp->company_name;?>" <?php echo(($this->session->tempdata("comp_name") == $fetch_comp->company_name)?'selected':'');?>>
             <?php
                     echo $fetch_comp->company_name;
             ?>
@@ -46,11 +54,13 @@
             <div class="borderfull-width"></div>
             <div class="page-heading">
               <?php
+              print_r($this->session->tempdata("all_skills"));
               foreach($convert_merge_to As $key=>$uniqu_skills){
+
               ?>
                   <div class="category">
                     <div class="col-md-2 col-sm-2 col-xs-2">
-                      <input type="checkbox" id="PHP" value="<?php echo $uniqu_skills;?>" name="ossm"> 
+                      <input type="checkbox" value="<?php echo $uniqu_skills;?>" name="skills[]" onchange="this.form.submit()"> 
                     </div>
                     <div class="col-md-10 col-sm-10 col-xs-10 sidebar-text">
                       <?php echo strtoupper($uniqu_skills);?>
@@ -77,7 +87,7 @@
               ?>
                   <div class="category">
                     <div class="col-md-2 col-sm-2 col-xs-2">
-                      <input type="checkbox" id="PHP" value="<?php echo $uniqu_skills;?>" name="ossm"> 
+                      <input type="radio" value="<?php echo $uniqu_skills;?>" <?php echo(($this->session->tempdata("edu") == $uniqu_skills)?'checked':'');?> name="edu" onchange="this.form.submit()"> 
                     </div>
                     <div class="col-md-10 col-sm-10 col-xs-10 sidebar-text">
                       <?php echo strtoupper($uniqu_skills);?>
@@ -92,52 +102,20 @@
 
             <div class="borderfull-width"></div>
             <div class="page-heading">
-
+                  <?php
+                    for($i=0; $i<7; $i++){
+                  ?>
                   <div class="category">
                     <div class="col-md-2 col-sm-2 col-xs-2">
-                      <input type="radio" id="PHP" value="1" name="ossm"> 
+                      <input type="radio" value="<?php echo $i;?>" name="exp" onchange="this.form.submit()"> 
                     </div>
                     <div class="col-md-10 col-sm-10 col-xs-10 sidebar-text">
-                      0-1 yrs
+                      <?php echo $i;?>+ yrs
                     </div>
                   </div>
-
-                  <div class="category">
-                    <div class="col-md-2 col-sm-2 col-xs-2">
-                      <input type="radio" id="PHP" value="2" name="ossm"> 
-                    </div>
-                    <div class="col-md-10 col-sm-10 col-xs-10 sidebar-text">
-                      1-2 yrs
-                    </div>
-                  </div>
-
-                  <div class="category">
-                    <div class="col-md-2 col-sm-2 col-xs-2">
-                      <input type="radio" id="PHP" value="3" name="ossm"> 
-                    </div>
-                    <div class="col-md-10 col-sm-10 col-xs-10 sidebar-text">
-                      2-3 yrs
-                    </div>
-                  </div>
-
-                  <div class="category">
-                    <div class="col-md-2 col-sm-2 col-xs-2">
-                      <input type="radio" id="PHP" value="5" name="ossm"> 
-                    </div>
-                    <div class="col-md-10 col-sm-10 col-xs-10 sidebar-text">
-                      3-5 yrs
-                    </div>
-                  </div>
-
-                  <div class="category">
-                    <div class="col-md-2 col-sm-2 col-xs-2">
-                      <input type="radio" id="PHP" value="6" name="ossm"> 
-                    </div>
-                    <div class="col-md-10 col-sm-10 col-xs-10 sidebar-text">
-                      5+ yrs 
-                    </div>
-                  </div>
-
+                  <?php
+                  }
+                  ?>
             </div>
 
             <div class="job_title">Relocation</div>
@@ -147,7 +125,7 @@
               
                   <div class="category">
                     <div class="col-md-2 col-sm-2 col-xs-2">
-                      <input type="radio" id="PHP" value="yes" name="ossm"> 
+                      <input type="radio" value="yes" name="reloc" onchange="this.form.submit()"> 
                     </div>
                     <div class="col-md-10 col-sm-10 col-xs-10 sidebar-text">
                       Yes
@@ -156,7 +134,7 @@
 
                   <div class="category">
                     <div class="col-md-2 col-sm-2 col-xs-2">
-                      <input type="radio" id="PHP" value="no" name="ossm"> 
+                      <input type="radio" value="no" name="reloc" onchange="this.form.submit()"> 
                     </div>
                     <div class="col-md-10 col-sm-10 col-xs-10 sidebar-text">
                       No 
@@ -176,7 +154,7 @@
                     ?>
                     <div class="category">
                       <div class="col-md-2 col-sm-2 col-xs-2">
-                        <input type="radio" id="PHP" value="1" name="ossm"> 
+                        <input type="radio" value="<?php echo $m*$i;?>" name="ann_pay" onchange="this.form.submit()"> 
                       </div>
                       <div class="col-md-10 col-sm-10 col-xs-10 sidebar-text">
                         $ <?php echo $m*$i;?>
@@ -187,5 +165,6 @@
                   ?>
               
             </div>
+          </form>
       </div>
 </div>

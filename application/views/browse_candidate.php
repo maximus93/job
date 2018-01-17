@@ -128,7 +128,7 @@
         border-radius: 5px !important;
       }
       .cont_advance{
-          display: none;
+          /*display: none;*/
       }
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVEqoCsKgUMmAcDVX9OAwVMDewLI6yOAQ&sensor=false&libraries=places&language=en"></script>

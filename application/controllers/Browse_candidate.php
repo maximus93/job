@@ -56,7 +56,10 @@ class Browse_candidate extends CI_Controller {
 		$end = ($this->uri->segment(2) == floor($config['total_rows']/ $config['per_page']))? $config['total_rows'] : (int)$this->uri->segment(2) * $config['per_page'] + $config['per_page'];
 
 		$data['result_count']= "Showing ".$start." - ".$end." of ".$config['total_rows']." Results";
-        $data["resume_details"] = $this->browse_candidate_m->fetch_resume($config["per_page"], $page);
+
+        $search_data = $this->resume_search();
+        $data["resume_details"] = $this->browse_candidate_m->fetch_resume($config["per_page"], $page , $search_data);
+
         $data["links"] = $this->pagination->create_links();
         //$v = $data["resume_details"];
         //print_r($data["resume_details"]);
@@ -64,6 +67,7 @@ class Browse_candidate extends CI_Controller {
        	$data['skills_all'] = $this->get_skills_list();
        	$data['edu_all'] = $this->get_education();
        	$data['comp_name'] = $this->get_companyname();
+        $data['search_array'] = $search_data;
         $this->load->view("browse_candidate", $data);
 
         //print_r($data);
@@ -85,5 +89,46 @@ class Browse_candidate extends CI_Controller {
     	return $comp_name;
     }
 
+    public function resume_search(){
+        $city = $this->input->post('city');
+        $this->session->set_tempdata("city",$city);
+
+        $company_name = $this->input->post('comp_name');
+        $this->session->set_tempdata("comp_name",$company_name);
+
+        $edu = $this->input->post('edu');
+        $this->session->set_tempdata("edu",$edu);
+
+        $exp = $this->input->post('exp');
+        $this->session->set_tempdata("exp",$exp);
+
+        $reloc = $this->input->post('reloc');
+        $this->session->set_tempdata("reloc",$reloc);
+
+        $ann_pay = $this->input->post('ann_pay');
+        $this->session->set_tempdata("ann_pay",$ann_pay);
+
+        $skills_get = $this->input->post('skills');
+        if(count($skills_get) > 1){
+            $all_skills = implode(",",$skills_get);
+
+        }else{
+            $all_skills = "";
+        }
+        $this->session->set_tempdata("all_skills",$all_skills);
+
+        $search_array = array(
+            'address' => $city,
+            'company_name' => $company_name,
+            'education' => $edu,
+            /*'exp' => $exp,*/
+            'relocate' => $reloc,
+            'max_salary' => $ann_pay,
+            'skills' => $all_skills,
+        );
+        //print_r($search_array);
+
+        return $search_array;
+    }
 }
 ?>
