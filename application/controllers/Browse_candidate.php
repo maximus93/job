@@ -64,7 +64,6 @@ class Browse_candidate extends CI_Controller {
 
 		$data['result_count']= "Showing ".$start." - ".$end." of ".$config['total_rows']." Results";
 
-        $search_data = $this->resume_search();
         $data["resume_details"] = $this->browse_candidate_m->fetch_resume($config["per_page"], $page , $search_data);
 
         $data["links"] = $this->pagination->create_links();

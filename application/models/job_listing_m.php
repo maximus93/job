@@ -13,12 +13,26 @@ class Job_listing_m extends CI_Model {
         parent::__construct();
     }
 	public function record_count() {
-		return $this->db->count_all("job_post");
+		$this->db->select('*');
+	        $this->db->from('job_post');
+	        $this->db->order_by('job_id desc');
+	        $query = $this->db->get();
+	        return $query->num_rows();
 	}
 
-	public function fetch_job($limit, $start) {
+	public function search_record_count($search_data)
+	{
+		$this->db->select('*');
+        $this->db->from('job_post');
+        $this->db->like($search_data);
+        $this->db->order_by('job_id desc');
+        $query = $this->db->get();
+        return $query->num_rows();
+	}
+	public function fetch_job($limit, $start , $search_data) {
 	        $this->db->select('*');
 	        $this->db->from('job_post');
+	        $this->db->like($search_data);
 	        $this->db->limit($limit, $start);
 	        $this->db->order_by('job_id desc');
 	        $query = $this->db->get();
@@ -41,7 +55,7 @@ class Job_listing_m extends CI_Model {
 	}
 	public function get_job_cat()
 	{
-        $this->db->select("category_name");
+        $this->db->select("");
         $this->db->from("job_category");
         $query = $this->db->get();
         return $query->result();

@@ -27,8 +27,16 @@ class Joblisting extends CI_Controller {
 	public function index()
 	{
 		$config = array();
+		
+		$search_data = $this->get_job_search();
+		//print_r($search_data);
+        $config = array();
+        if($search_data['location'] == '' && $search_data['job_title'] == '' && $search_data['type'] == '' && $search_data['salary_details'] == '' && $search_data['job_category'] == ''){
+            $config["total_rows"] = $this->job_listing_m->record_count();
+        }else{
+            $config["total_rows"] = $this->job_listing_m->search_record_count($search_data);
+        }
         $config["base_url"] = base_url() . "joblisting";
-        $config["total_rows"] = $this->job_listing_m->record_count();
         $config['per_page'] = 5;
 		$config['uri_segment'] = 2;
 		$config['num_links'] = 3;
@@ -63,7 +71,7 @@ class Joblisting extends CI_Controller {
     		echo $row->company_name;
     	}*/
 
-        $data["job_details"] = $this->job_listing_m->fetch_job($config["per_page"], $page);
+        $data["job_details"] = $this->job_listing_m->fetch_job($config["per_page"], $page , $search_data);
         $data["links"] = $this->pagination->create_links();
         //$data['skills_all'] = $this->Browse_candidate->get_skills_list();
         $data['job_type'] = $this->get_type_list();
@@ -80,6 +88,39 @@ class Joblisting extends CI_Controller {
     public function get_job_cat(){
     	$job_cat = $this->job_listing_m->get_job_cat();
     	return $job_cat;
+    }
+
+    public function get_job_search(){
+    	$job_title = $this->input->post('job_title');
+        $this->session->set_tempdata("job_title",$job_title);
+
+        $city = $this->input->post('city');
+        $this->session->set_tempdata("city",$city);
+
+        $type = $this->input->post('type');
+        $this->session->set_tempdata("type",$type);
+
+        $ann_pay = $this->input->post('ann_pay');
+        $this->session->set_tempdata("ann_pay",$ann_pay);
+
+        $cat = $this->input->post('cat');
+        if(count($cat) > 0){
+            $all_cat = implode(",",$cat);
+        }else{
+            $all_cat = "";
+        }
+        $this->session->set_tempdata("cat",$all_cat);
+
+        $search_array = array(
+            'location' => $city,
+            'job_title' => $job_title,
+            'type' => $type,
+            'salary_details' => $ann_pay,
+            'job_category' => $all_cat,
+        );
+        //print_r($search_array);
+
+        return $search_array;
     }
 }
 ?>
