@@ -1,29 +1,6 @@
 <footer>
-	<div class="container">
-		
-		<div class="recruiter-mobile hidden-sm hidden-md hidden-lg">
-			<div class="row recruiter">
-				<div class="col-xs-12">
-					<div class="arrow">
-						<a href="#">
-							Recruiter sign in
-						</a>
-					</div>
-				</div>
-			</div>
-			<div class="row recruiter">
-				<div class="col-xs-12">
-					<div class="arrow">
-						<a href="#">
-							Advertise a job
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
+	<!--<div class="container">
 
-		
-		<div class="row">
 		<div class="row" >
 			<div class="col-xs-12 social-links text-center" style="margin-top:-30px;">
 		
@@ -136,7 +113,7 @@
 			</div>
 		</div>
 
-	</div>
+	</div>-->
 
 	
 	<div class="copyright" style="background:#0a181e;">

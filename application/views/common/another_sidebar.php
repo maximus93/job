@@ -4,7 +4,7 @@
     echo $valuez;
   }*/
 ?>
-<div class="col-sm-3" style="background-color: #f2f2f2;padding: 10px;background-color: #f2f2f2;border: 1px solid #e0e0e0;">	
+<div class="col-sm-3" style="background-color: #f2f2f2;padding: 10px;background-color: #f2f2f2;border: 1px solid #e0e0e0;min-height:450px;">	
       <form name="adv_search" method="POST" action="<?php echo base_url();?>/browse_candidate">
       <div class="job_search" >
         <div class="form-group">
@@ -44,7 +44,7 @@
       <div class="cont_advance">
             <div class="job_title">Skills</div>
             <?php
-              print_r($this->session->tempdata("all_skills"));
+              //print_r($this->session->tempdata("all_skills"));
               $merge = "";
               foreach($skills_all As $skills_unique){
                 $merge .= $skills_unique->skills;
@@ -55,10 +55,11 @@
             <div class="page-heading">
               <?php
               foreach($convert_merge_to As $key=>$uniqu_skills){
+                $search_data_rr = explode(",",$this->session->tempdata("all_skills"));
               ?>
                   <div class="category">
                     <div class="col-md-2 col-sm-2 col-xs-2">
-                      <input type="checkbox" value="<?php echo $uniqu_skills;?>" name="skills[]" <?php echo(($this->session->tempdata("all_skills") == $uniqu_skills)?'checked':'');?> onchange="this.form.submit()"> 
+                      <input type="checkbox" value="<?php echo $uniqu_skills;?>" name="skills[]" <?php echo((in_array($uniqu_skills, $search_data_rr))?'checked':'');?> onchange="this.form.submit()"> 
                     </div>
                     <div class="col-md-10 col-sm-10 col-xs-10 sidebar-text">
                       <?php echo strtoupper($uniqu_skills);?>

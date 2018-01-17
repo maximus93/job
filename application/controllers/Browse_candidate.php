@@ -28,9 +28,16 @@ class Browse_candidate extends CI_Controller {
 
 
     public function index() {
+        $search_data = $this->resume_search();
         $config = array();
+        if($search_data['address'] == '' && $search_data['company_name'] == '' && $search_data['education'] == '' && $search_data['relocate'] == '' && $search_data['max_salary'] == '' && $search_data['skills'] == ''){
+            $config["total_rows"] = $this->browse_candidate_m->record_count();
+        }else{
+            $config["total_rows"] = $this->browse_candidate_m->search_record_count($search_data);
+        }
+
+        
         $config["base_url"] = base_url() . "browse_candidate";
-        $config["total_rows"] = $this->browse_candidate_m->record_count();
         $config['per_page'] = 5;
 		$config['uri_segment'] = 2;
 		$config['num_links'] = 3;
