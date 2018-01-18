@@ -350,6 +350,10 @@ font-size: 13px;
                       <a href="#menu2" style="border:none;">Additional Info
                       </a>
                     </li>
+					  <li>
+                      <a href="#menu3" style="border:none;">Applied Jobs
+                      </a>
+                    </li>
                     <!-- <li><a href="#menu3">Menu 3</a></li> -->
                   </ul>
                   <div class="tab-content" style="padding-bottom:15px;">
@@ -544,6 +548,40 @@ font-size: 13px;
                 </div>
               </div>
             </div>
+			<div id="menu3" class="tab-pane fade">
+			<?php
+				$get_row = count($get_applied_details);
+				if($get_row > 0)
+				{
+					foreach($get_applied_details As $get_details)
+					{
+			?>
+			     <div class="job new " id="77913552">
+				  <div class="row">
+					  <div class="card-body col-md-12">
+						<div class="col-md-2">
+						  <a href="<?php echo base_url();?>job_details/<?php echo $get_details->job_id;?>" title="<?php echo (($get_details->name_status == 'yes')?'Company Name Hidden':$get_details->company_name);?>"><img src="<?php echo base_url();?>uploads/<?php echo $get_details->company_logo;?>" title="<?php echo (($get_details->name_status == 'yes')?'Company Name Hidden':$get_details->company_name);?>" style="width:100%;margin-top:25px;"></a>
+						</div>
+						<div class="col-md-10" style="">
+						<h2 class="card-title" style=""><a href="<?php echo base_url();?>job_details/<?php echo $get_details->job_id;?>" style="color:black !important;" title="<?php echo (($get_details->name_status == 'yes')?'Company Name Hidden':$get_details->company_name);?>"><?php echo ucfirst($get_details->job_title);?></a></h2>
+						<p class="card-text " style=""> Posted on <?php echo date("M , d Y",$get_details->date);?> , <b><?php echo ucfirst($get_details->location);?></b></p>
+						<p class="card-text"><?php echo substr($get_details->job_description,0,220);?>...</p>
+						</div>
+					  </div>
+				  </div>
+				</div>
+				<?php
+					}
+				 }
+			else
+				{
+				?>
+				<h3>Menu 3</h3>
+				<p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+			<?php
+				}
+			?>
+			</div>
             <!-- <div id="menu3" class="tab-pane fade">
 <h3>Menu 3</h3>
 <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>

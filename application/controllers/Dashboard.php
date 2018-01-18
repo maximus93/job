@@ -35,6 +35,21 @@ class Dashboard extends CI_Controller {
 	
 		
 		$data['user_details'] = $this->dashboard_m->fetch_details($user_id);
+		//$data['applied_details'] = $this->dashboard_m->fetch_applied_details($user_id);
+		$applied_details= $this->dashboard_m->fetch_applied_details($user_id);
+		$data['get_applied_details'] = array();
+		if(count($applied_details) > 1)
+		{
+			foreach($applied_details As $value_apply)
+			{
+				$job_id = $value_apply->job_id;
+				$data['get_applied_details'][] = $this->dashboard_m->fetch_job_details($job_id);
+			}
+		}
+		else
+		{
+			$data['get_applied_details'][] = '';
+		}
 
 		$data['page_nm'] = "dashboard";
 		$this->load->view('dashboard',$data);
