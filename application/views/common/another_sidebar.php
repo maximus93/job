@@ -38,7 +38,7 @@
             <span class="ti-location-pin"></span>
           </div>
         </div>
-        <a href="javascript:void(0)" class="btn btn-primary adv_filt" onclick="show_advance_fult();" style="padding-top:10px;padding-bottom:10px;border-radius:0px;text-align:center">Advance Filters</a>
+        <!--<a href="javascript:void(0)" class="btn btn-primary adv_filt" onclick="show_advance_fult();" style="padding-top:10px;padding-bottom:10px;border-radius:0px;text-align:center">Advance Filters</a>-->
       </div>
 
       <div class="cont_advance">

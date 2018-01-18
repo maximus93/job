@@ -127,6 +127,7 @@
         border-radius: 5px !important;
       }
     </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVEqoCsKgUMmAcDVX9OAwVMDewLI6yOAQ&sensor=false&libraries=places&language=en"></script>
   </head>
   <body>
     <div id="adbanner-container" class="adbanner-container-display">
@@ -210,4 +211,8 @@
   <?php
 	$this->load->view("common/footer");
 	?>
+  <script>
+  var input = document.getElementById('cityz');
+  var autocomplete = new google.maps.places.Autocomplete(input);
+  </script>
 </html>
