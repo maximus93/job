@@ -59,7 +59,7 @@
 		
 
 		<div class="search-container navbar-site-search-bar" style="margin-top:10px;padding-bottom:30px;">
-			<form method="POST" class="form-inline" action="<?php echo base_url();?>home/send_data">
+			<form method="POST" class="form-inline" action="<?php echo base_url();?>joblisting">
 				<div class="row" style="">
 					<div class="keywords-location-container" style="padding: 15px;
     background: rgba(255,255,255,0.2);
@@ -69,7 +69,7 @@
 								<div class="col-sm-4 col-md-4">
 									<div class="form-group keywords-container">
 										<div>
-											<input class="form-control keywords search-keywords" type="search" name="Key_words" id="keywords_y" onkeyup="get_suggestion(this.value);" placeholder="Job Title" style="height:43px;">
+											<input class="form-control keywords search-keywords" type="text" name="job_title" id="keywords_y" onkeyup="get_suggestion(this.value);" placeholder="Job Title" style="height:43px;">
 											<div class="clear-keywords" >
 												<span>&#10005;</span>
 											</div>
@@ -83,7 +83,7 @@
 								<div class="col-sm-4 col-md-4">
 									<div class="form-group keywords-container">
 										<div>
-											<select id="keywords" name="job_type" class="form-control keywords search-keywords" style="height:45px;">
+											<select id="keywords" name="cat[]" class="form-control keywords search-keywords" style="height:45px;">
 												 <option selected="selected" value="Category">Category</option>
 												 <?php
 												 	foreach($categories As $cat){
@@ -103,7 +103,7 @@
 										<!--<label for="location" style="color:#fff;">Where</label>-->
 										<div class="">
 											<div class="location-input-container">
-												<input class="form-control location" type="search" name="job_location" id="cityz" placeholder="Location" style="height:42px;margin-top:3px;margin-left:-12px;">
+												<input class="form-control location" type="search" name="city" id="cityz" placeholder="Location" style="height:42px;margin-top:3px;margin-left:-12px;">
 											</div>
 										</div>
 									</div>
