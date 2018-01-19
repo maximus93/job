@@ -69,7 +69,7 @@
 								<div class="col-sm-4 col-md-4">
 									<div class="form-group keywords-container">
 										<div>
-											<input class="form-control keywords search-keywords" type="text" name="job_title" id="keywords_y" onkeyup="get_suggestion(this.value);" placeholder="Job Title" style="height:43px;">
+											<input class="form-control keywords search-keywords" type="text" name="job_title" id="keywords_y" onkeyup="get_suggestion(this.value);" placeholder="Job Title" style="height:43px;" autocomplete="false">
 											<div class="clear-keywords" >
 												<span>&#10005;</span>
 											</div>
@@ -84,7 +84,7 @@
 									<div class="form-group keywords-container">
 										<div>
 											<select id="keywords" name="cat[]" class="form-control keywords search-keywords" style="height:45px;">
-												 <option selected="selected" value="Category">Category</option>
+												 <option selected="selected" value="">Category</option>
 												 <?php
 												 	foreach($categories As $cat){
 												 ?>
@@ -113,6 +113,8 @@
 
 						<div class="col-sm-2 col-xs-12">
 							<div class="form-group">
+								<input type="hidden" name="type" value="">
+								<input type="hidden" name="ann_pay" value="">
 								<input class="btn btn-primary new-btn" type="submit"  style="" name="search" value="browse" id="">
 							</div>
 						</div>
