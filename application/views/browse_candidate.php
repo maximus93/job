@@ -158,13 +158,26 @@
           <div class="col-sm-9 job-results clearfix" style="background:none;">
             <div class="row">
               <div class="col-xs-12 job-results clearfix" style="background:none;">
+                <?php
+                 if($this->session->flashdata('success')){
+                ?>
+                 <div class="alert alert-success" style="margin-bottom: 10px;text-align: center;"> <strong><?php echo $this->session->flashdata('success');?></strong> </div>
+                <?php
+                 }
+                 if($this->session->flashdata('failed')){
+                ?>
+                 <div class="alert alert-danger" style="margin-bottom: 10px;text-align: center;"> <strong><?php echo $this->session->flashdata('failed');?></strong> </div>
+                <?php
+                 }
+                ?>
                 <div class="col-md-7 col-sm-7 p-l">
                   <div class="page-heading">
                     <p><?php echo $result_count;?></p>
                   </div>
                 </div>  
 
-
+                
+                
                 <div class="clearfix"></div>
                 
                 <?php
@@ -173,7 +186,11 @@
                       $skills = explode(",",$data_val->skills);
                       $resume_uploaded_date = date("M d Y",$data_val->date_posted);
                       $pic = $data_val->profile_picture;
+
+                      print_r($data_val);
+
                 ?>
+
                 <div class="page_listing candidate" style="border:1px  solid #e1e1e1;border-bottom:  1px solid #e1e1e1;">
                   <div class="sorting_content col-md-7" style=" padding: 25px 15px 15px;overflow: hidden;">
                     <div class="tab-image" style="float: left;text-align: center;margin-right: 20px;">
@@ -214,19 +231,28 @@
                             }
                           ?>
                         </ul>
-                        <p>
-                        </p>
+
                       </div>
                     </div>
                   </div>
 
 
                   <div class="sorting_content col-md-5" style="padding: 25px 15px 15px;overflow: hidden;">
-                    <!--<p style="font-size: 12px;"> 
-                        <a href='' class="btn btn-warning" >Shortlist</a>
-                        <a href='' class="btn btn-default" >Compare</a>
-                        <a href='' class="btn btn-primary" >Details</a>
-                    </p>-->
+                    <?php 
+                    if(isset($this->session->userdata['logged_in']) && $this->session->userdata['logged_in'] != NULL){
+                      $userdata = $this->session->userdata['logged_in'];
+                      $user_type = $userdata['user_type'];
+                      if($user_type == 'employeer')
+                      {
+                    ?>
+                      <p style="font-size: 12px;"> 
+                          <a href='<?php echo base_url();?>browse_candidate/add_compare/<?php echo $data_val->user_id;?>' class="btn btn-warning" style="text-decoration: none;">Compare</a>
+                          <a href='<?php echo base_url();?>applicant_dashboard/<?php echo $data_val->user_id;?>' class="btn btn-primary" style="text-decoration: none;">Details</a>
+                        </p>
+                      <?php
+                     }
+                    }
+                      ?>
                     <div class="col-md-3 ">
                       <p style="font-size: 12px;font-weight:bold;">Job Title:</p>
                       <p style="font-size: 12px;font-weight:bold;">Salary:</p>
@@ -236,7 +262,7 @@
 
                     <div class="col-md-9"> 
                       <p style="font-size: 12px;"> <?php echo $data_val->job_title;?> </p>
-                      <p style="font-size: 12px;"> $<?php echo $data_val->max_salary;?> </p>
+                      <p style="font-size: 12px;"> $<?php echo number_format($data_val->max_salary);?> / Year</p>
                       <p style="font-size: 12px;"> <?php echo $data_val->relocate;?> </p>
                       <p style="font-size: 12px;"> <?php echo $data_val->company_name;?> </p>
                     </div>

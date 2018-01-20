@@ -66,6 +66,11 @@ class Browse_candidate extends CI_Controller {
 
         $data["resume_details"] = $this->browse_candidate_m->fetch_resume($config["per_page"], $page , $search_data);
 
+        $employer_id = $this->session->userdata['logged_in']['user_id'];
+        echo $resume_user = $this->browse_candidate_m->select_user($config["per_page"], $page , $search_data,$employer_id);
+
+       exit;
+
         $data["links"] = $this->pagination->create_links();
         //$v = $data["resume_details"];
         //print_r($data["resume_details"]);
@@ -134,6 +139,24 @@ class Browse_candidate extends CI_Controller {
         //print_r($search_array);
 
         return $search_array;
+    }
+    public function add_compare()
+    {
+        $this->load->model('browse_candidate_m');
+        $user_id = $this->uri->segment(3);
+        $employer_id = $this->session->userdata['logged_in']['user_id'];
+        $date = time();
+        $data = array('employer_id' => $employer_id,'employee_id' => $user_id,'date' => $date);
+        $insert_data = $this->browse_candidate_m->add_new_compare($data);
+        if($insert_data)
+        {
+            $this->session->set_flashdata('success', 'Added To Compare List!');
+            redirect('browse_candidate');
+        }
+        else{
+            $this->session->set_flashdata('failed', 'Something Went Wrong!');
+            redirect('browse_candidate');
+        }
     }
 }
 ?>
