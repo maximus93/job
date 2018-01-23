@@ -61,15 +61,11 @@ class Browse_candidate extends CI_Controller {
         $page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
         $start= (int)$this->uri->segment(2) * $config['per_page']+1;
 		$end = ($this->uri->segment(2) == floor($config['total_rows']/ $config['per_page']))? $config['total_rows'] : (int)$this->uri->segment(2) * $config['per_page'] + $config['per_page'];
-
 		$data['result_count']= "Showing ".$start." - ".$end." of ".$config['total_rows']." Results";
-
         $data["resume_details"] = $this->browse_candidate_m->fetch_resume($config["per_page"], $page , $search_data);
+        $resume_user = $this->browse_candidate_m->select_user($config["per_page"], $page , $search_data);
+	
 
-        $employer_id = $this->session->userdata['logged_in']['user_id'];
-        echo $resume_user = $this->browse_candidate_m->select_user($config["per_page"], $page , $search_data,$employer_id);
-
-       exit;
 
         $data["links"] = $this->pagination->create_links();
         //$v = $data["resume_details"];

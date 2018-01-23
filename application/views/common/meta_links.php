@@ -14,6 +14,8 @@
 <link rel="stylesheet" href="<?php echo base_url();?>css/font-awesome.min.css">
 <link rel="stylesheet" href="<?php echo base_url();?>css/select2.css">
 <link rel="stylesheet" href="<?php echo base_url();?>css/style.default.css" id="theme-stylesheet">
+
+<link rel="stylesheet" href="<?php echo base_url();?>css/app.css" id="theme-stylesheet">
 <!-- <link href="css/themify-icons.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
 <link href="css/responsive.css" rel="stylesheet"> -->

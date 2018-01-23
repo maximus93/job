@@ -181,13 +181,13 @@
                 <div class="clearfix"></div>
                 
                 <?php
-                  //print_r($resume_details);
+                  //print_r($resume_details)
+				
                   foreach($resume_details as $data_val){
                       $skills = explode(",",$data_val->skills);
                       $resume_uploaded_date = date("M d Y",$data_val->date_posted);
                       $pic = $data_val->profile_picture;
-
-                      print_r($data_val);
+						
 
                 ?>
 
@@ -246,6 +246,7 @@
                       {
                     ?>
                       <p style="font-size: 12px;"> 
+							
                           <a href='<?php echo base_url();?>browse_candidate/add_compare/<?php echo $data_val->user_id;?>' class="btn btn-warning" style="text-decoration: none;">Compare</a>
                           <a href='<?php echo base_url();?>applicant_dashboard/<?php echo $data_val->user_id;?>' class="btn btn-primary" style="text-decoration: none;">Details</a>
                         </p>

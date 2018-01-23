@@ -32,24 +32,17 @@ class Dashboard_m extends CI_Model
 
 	public function fetch_applied_details($user_id)
 	{
-		$condition = "employee_id =" . "'" . $user_id ."'";
+		$condition = "apply.employee_id =" . "'" . $user_id ."'";
 		$this->db->select('*');
 		$this->db->from('apply');
+		$this->db->join('job_post', 'apply.job_id = job_post.job_id');
 		$this->db->where($condition);
 		$query = $this->db->get();
 		return $query->result();
 
 	}
 
-	public function fetch_job_details($job_id)
-	{
-		$condition = "job_id =" . "'" . $job_id ."'";
-		$this->db->select('*');
-		$this->db->from('job_post');
-		$this->db->where($condition);
-		$query = $this->db->get();
-		return $query->row();
-	}
+
 
 	public function employeer_details($user_id)
 	{

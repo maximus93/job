@@ -34,7 +34,7 @@ class Browse_candidate_m extends CI_Model
         $query = $this->db->get();
         return $query->result();
    }
-   public function select_user($limit, $start , $search_data,$employer_id) {
+   public function select_user($limit, $start , $search_data) {
         $this->db->select('resume.user_id');
         $this->db->from('resume');
         $this->db->join('users', 'users.user_id = resume.user_id');
@@ -42,12 +42,20 @@ class Browse_candidate_m extends CI_Model
         $this->db->where('resume.date_posted != ""');
         $this->db->limit($limit, $start);
         $query = $this->db->get();
-        return $query->user_id;
-        /*foreach ($query as $value) {
-            $query2 = $this->db->query('SELECT * FROM resume_compare WHERE employee_id=user_id AND s');
-           return $query2->num_rows();
-        }*/
+        return $query->result(); 
    }
+
+   public function get_compared_list($emp_id,$emplr_id)
+	{
+		$condition = "employer_id =" . "'" . $emplr_id . "' AND " . "employee_id =" . "'" . $emp_id . "'";
+		$this->db->select("*");
+        $this->db->from("resume_compare");
+		$this->db->where($condition);
+        $query = $this->db->get();
+		$check_rows = $query->num_rows();
+		return $check_rows;
+   }
+	
 
    public function fetch_uniqu_skills(){
         $this->db->distinct();
