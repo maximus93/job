@@ -32,3 +32,5 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.bak
 application/controllers/Post_resume.php
 application/controllers/Post_resume.php
+application/models/Browse_candidate_m.php
+application/models/Browse_candidate_m.php
