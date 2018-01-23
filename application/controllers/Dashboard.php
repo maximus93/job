@@ -79,7 +79,7 @@ class Dashboard extends CI_Controller {
 			'resume_file' => $resume_file,
 			'date_posted' => $posted_date,	
 		);
-		$edit_resume_data = $this->dashboard_m->edit_resume($user_id,$records);
+		$edit_resume_data = $this->dashboard_m->edit_resume_file($user_id,$records);
 		if($edit_resume_data)
 		{
 			$this->session->set_flashdata("success", "Success , Your Resume Has Been Updated Successfully!");
