@@ -28,3 +28,4 @@
 		color:#fff;
 	}
 </style>
+<link href="<?php echo base_url();?>css/app.css?r=20161215" rel="stylesheet">
