@@ -76,9 +76,6 @@ class Browse_candidate extends CI_Controller {
        	$data['comp_name'] = $this->get_companyname();
         $data['search_array'] = $search_data;
         $this->load->view("browse_candidate", $data);
-
-        //print_r($data);
-        //exit;
     }
 
     public function get_skills_list(){
@@ -142,17 +139,26 @@ class Browse_candidate extends CI_Controller {
         $user_id = $this->uri->segment(3);
         $employer_id = $this->session->userdata['logged_in']['user_id'];
         $date = time();
-        $data = array('employer_id' => $employer_id,'employee_id' => $user_id,'date' => $date);
-        $insert_data = $this->browse_candidate_m->add_new_compare($data);
-        if($insert_data)
+        $check_row = $this->browse_candidate_m->get_rows($employer_id,$user_id);
+        if($check_row < 1)
         {
-            $this->session->set_flashdata('success', 'Added To Compare List!');
-            redirect('browse_candidate');
+            $data = array('employer_id' => $employer_id,'employee_id' => $user_id,'date' => $date);
+            $insert_data = $this->browse_candidate_m->add_new_compare($data);
+            if($insert_data)
+            {
+                $this->session->set_flashdata('success', 'Added To Compare List!');
+                redirect('browse_candidate');
+            }
+            else{
+                $this->session->set_flashdata('failed', 'Something Went Wrong!');
+                redirect('browse_candidate');
+            }
         }
         else{
-            $this->session->set_flashdata('failed', 'Something Went Wrong!');
+            $this->session->set_flashdata('exist', 'You allready put this resume to your compare list!');
             redirect('browse_candidate');
         }
+        
     }
 }
 ?>

@@ -45,18 +45,6 @@ class Browse_candidate_m extends CI_Model
         return $query->result(); 
    }
 
-   public function get_compared_list($emp_id,$emplr_id)
-	{
-		$condition = "employer_id =" . "'" . $emplr_id . "' AND " . "employee_id =" . "'" . $emp_id . "'";
-		$this->db->select("*");
-        $this->db->from("resume_compare");
-		$this->db->where($condition);
-        $query = $this->db->get();
-		$check_rows = $query->num_rows();
-		return $check_rows;
-   }
-	
-
    public function fetch_uniqu_skills(){
         $this->db->distinct();
         $this->db->select("skills");
@@ -80,6 +68,16 @@ class Browse_candidate_m extends CI_Model
         $query = $this->db->get();
         return $query->result();
 
+   }
+   public function get_rows($employer_id,$user_id)
+   {
+        $condition = "employer_id =" . "'" . $employer_id . "' AND " . "employee_id =" . "'" . $user_id . "'";
+        $this->db->select("*");
+        $this->db->from("resume_compare");
+        $this->db->where($condition);
+        $query = $this->db->get();
+        $check_rows = $query->num_rows();
+        return $check_rows;
    }
    public function add_new_compare($data)
    {

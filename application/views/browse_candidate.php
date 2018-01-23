@@ -168,8 +168,12 @@
                 ?>
                  <div class="alert alert-danger" style="margin-bottom: 10px;text-align: center;"> <strong><?php echo $this->session->flashdata('failed');?></strong> </div>
                 <?php
-                 }
+                 }if($this->session->flashdata('exist')){
                 ?>
+                 <div class="alert alert-danger" style="margin-bottom: 10px;text-align: center;"> <strong><?php echo $this->session->flashdata('exist');?></strong> </div>
+                <?php
+                }
+              ?>
                 <div class="col-md-7 col-sm-7 p-l">
                   <div class="page-heading">
                     <p><?php echo $result_count;?></p>
@@ -203,7 +207,7 @@
                             <u><?php echo ucfirst($data_val->first_name);?> <?php echo ucfirst($data_val->last_name);?></u>
                           </h1>
                         </a>
-                        <ul class="unstyled" style="margin-top:-25px;padding: 0px;">
+                        <ul class="unstyled" style="margin-top:-15px;padding: 0px;">
                           <li style="display: inline-block;padding: 0 50px 0 0;color: #7d7d7d;font-size: 13px;"> 
                             <?php 
                               $addr = ucfirst($data_val->address);
@@ -226,7 +230,7 @@
                             }
                             for($i=0; $i<$count_skillz ; $i++){
                           ?>
-                          <li style='float:left;background:#fafafa;border:1px solid #CCC;padding:3px 10px;margin:5px;font-size: 12px;'> <?php echo $skills[$i];?></li>
+                          <li style='float:left;background:#fafafa;border:1px solid #CCC;padding:3px 10px;margin:5px;font-size: 12px;margin-left: 0px;margin-top:10px;'> <?php echo $skills[$i];?></li>
                           <?php
                             }
                           ?>
@@ -246,8 +250,9 @@
                       {
                     ?>
                       <p style="font-size: 12px;"> 
-							
+							           
                           <a href='<?php echo base_url();?>browse_candidate/add_compare/<?php echo $data_val->user_id;?>' class="btn btn-warning" style="text-decoration: none;">Compare</a>
+                        
                           <a href='<?php echo base_url();?>applicant_dashboard/<?php echo $data_val->user_id;?>' class="btn btn-primary" style="text-decoration: none;">Details</a>
                         </p>
                       <?php
